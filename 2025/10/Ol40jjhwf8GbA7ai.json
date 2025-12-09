@@ -1,0 +1,355 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-04T13:41:37.814Z",
+    "createdAt": "2025-12-04T13:41:37.814Z",
+    "versionId": "bf7cfb39-c150-4791-98fe-58f9f3dd6456",
+    "workflowId": "Ol40jjhwf8GbA7ai",
+    "nodes": [
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          -144,
+          0
+        ],
+        "id": "b32c4840-5f3f-4787-a5f7-20db392ec04f",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "mode": "list",
+            "value": ""
+          },
+          "sheetName": {
+            "__rl": true,
+            "mode": "list",
+            "value": ""
+          }
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          64,
+          0
+        ],
+        "id": "811ffdd8-20aa-471f-87f6-0c1bf788c729",
+        "name": "Get row(s) in sheet"
+      },
+      {
+        "parameters": {
+          "operation": "get"
+        },
+        "type": "n8n-nodes-base.googleDocs",
+        "typeVersion": 2,
+        "position": [
+          64,
+          -144
+        ],
+        "id": "bcbe2861-acdc-4b42-9dff-a469465d2cb6",
+        "name": "Get a document",
+        "credentials": {
+          "googleDocsOAuth2Api": {
+            "id": "BfkJ3BfONgjC8j1U",
+            "name": "Google Docs account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "fileId": {
+            "__rl": true,
+            "mode": "list",
+            "value": ""
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "position": [
+          64,
+          256
+        ],
+        "id": "4f446614-b19e-4a04-8030-e50e68a56090",
+        "name": "Update file"
+      },
+      {
+        "parameters": {
+          "resource": "video",
+          "operation": "get",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.youTube",
+        "typeVersion": 1,
+        "position": [
+          64,
+          384
+        ],
+        "id": "459d79e7-36e4-49ad-bb14-7d4dc1b1e326",
+        "name": "Get a video"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2.1,
+        "position": [
+          64,
+          128
+        ],
+        "id": "6a91624a-e9f2-4c3c-bd78-d07be5be25d5",
+        "name": "Send a message",
+        "webhookId": "89b5eec9-cc65-423a-8ec8-9eaa769a1854"
+      },
+      {
+        "parameters": {
+          "calendar": {
+            "__rl": true,
+            "mode": "list",
+            "value": ""
+          },
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.googleCalendar",
+        "typeVersion": 1.3,
+        "position": [
+          64,
+          512
+        ],
+        "id": "e0ab884c-0c8b-4387-a7da-2ab05aa6b450",
+        "name": "Create an event"
+      }
+    ],
+    "connections": {
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "Get row(s) in sheet",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Get a document",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Update file",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Get a video",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Send a message",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Create an event",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "bf7cfb39-c150-4791-98fe-58f9f3dd6456",
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get a document",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Update file",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get a video",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-27T09:17:11.069Z",
+  "id": "Ol40jjhwf8GbA7ai",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        0
+      ],
+      "id": "b32c4840-5f3f-4787-a5f7-20db392ec04f",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        64,
+        0
+      ],
+      "id": "811ffdd8-20aa-471f-87f6-0c1bf788c729",
+      "name": "Get row(s) in sheet"
+    },
+    {
+      "parameters": {
+        "operation": "get"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        64,
+        -144
+      ],
+      "id": "bcbe2861-acdc-4b42-9dff-a469465d2cb6",
+      "name": "Get a document",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "BfkJ3BfONgjC8j1U",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "fileId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        64,
+        256
+      ],
+      "id": "4f446614-b19e-4a04-8030-e50e68a56090",
+      "name": "Update file"
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "get",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1,
+      "position": [
+        64,
+        384
+      ],
+      "id": "459d79e7-36e4-49ad-bb14-7d4dc1b1e326",
+      "name": "Get a video"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        64,
+        128
+      ],
+      "id": "6a91624a-e9f2-4c3c-bd78-d07be5be25d5",
+      "name": "Send a message",
+      "webhookId": "89b5eec9-cc65-423a-8ec8-9eaa769a1854"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        64,
+        512
+      ],
+      "id": "e0ab884c-0c8b-4387-a7da-2ab05aa6b450",
+      "name": "Create an event"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nbak",
+  "repo_owner": "wodaili-kingpwf",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-10-27T09:17:11.074Z",
+      "createdAt": "2025-10-27T09:17:11.074Z",
+      "role": "workflow:owner",
+      "workflowId": "Ol40jjhwf8GbA7ai",
+      "projectId": "bhYbeEidmtHtdTx7"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-10-28T00:37:47.000Z",
+  "versionId": "bf7cfb39-c150-4791-98fe-58f9f3dd6456"
+}
