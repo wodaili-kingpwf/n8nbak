@@ -1,0 +1,361 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-04T13:41:37.814Z",
+    "createdAt": "2025-12-04T13:41:37.814Z",
+    "versionId": "10bd93b1-b7f4-43aa-ac1f-0055d39fba2b",
+    "workflowId": "AUNtt062uldjTmKO",
+    "nodes": [
+      {
+        "parameters": {
+          "url": "https://pc4ewt2xvj.re.qweatherapi.com/v7/weather/now?location=101010100",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "key",
+                "value": "52b437f6030e44b199ca66b28a829a07"
+              },
+              {
+                "name": "location",
+                "value": "101300311"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          288,
+          176
+        ],
+        "id": "8311c287-69ee-47a9-a0be-0919482a4e83",
+        "name": "HTTP Request"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "58812501-5a06-4e2c-8969-f795b8b53320",
+                "name": "weather1",
+                "value": "={{ $json.now.temp }}",
+                "type": "string"
+              },
+              {
+                "id": "b1082329-b105-460d-9bd6-196fea4b2b37",
+                "name": "weather2",
+                "value": "={{ $json.now.text }}",
+                "type": "string"
+              },
+              {
+                "id": "ff14d6d1-0dea-467a-8a1d-d8d41b81276e",
+                "name": "weather3",
+                "value": "={{ $json.now.obsTime }}",
+                "type": "string"
+              },
+              {
+                "id": "d9a1a527-57be-445b-8633-76534f7fc7cd",
+                "name": "weather4",
+                "value": "={{ $json.now.windDir }}",
+                "type": "string"
+              },
+              {
+                "id": "11b623a2-cf2e-4009-9186-45667af1ee62",
+                "name": "weather5",
+                "value": "={{ $json.updateTime }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          432,
+          176
+        ],
+        "id": "6cd99a1e-0742-4ac0-9009-4465d26badd2",
+        "name": "Edit Fields1"
+      },
+      {
+        "parameters": {
+          "fromEmail": "31874445@qq.com",
+          "toEmail": "31874445@qq.com",
+          "subject": "={{ $json.weather3 }}{{ $json.weather2 }}{{ $json.weather1 }}{{ $json.weather4 }}",
+          "html": "={{ $json.weather3 }}{{ $json.weather2 }}{{ $json.weather1 }}",
+          "options": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 2.1,
+        "position": [
+          576,
+          176
+        ],
+        "id": "53f195a1-e57d-48c6-85da-077fc680110a",
+        "name": "Send email",
+        "webhookId": "5e436030-9244-41c7-bebf-f48335d201bf",
+        "credentials": {
+          "smtp": {
+            "id": "kWZcOWhk0DiwTFcj",
+            "name": "SMTP account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "hours",
+                "hoursInterval": 5
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.2,
+        "position": [
+          112,
+          176
+        ],
+        "id": "49e79d41-e343-4c2d-8608-3d343199cc6c",
+        "name": "Schedule Trigger"
+      }
+    ],
+    "connections": {
+      "HTTP Request": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields1": {
+        "main": [
+          [
+            {
+              "node": "Send email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "10bd93b1-b7f4-43aa-ac1f-0055d39fba2b",
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-24T13:03:24.455Z",
+  "id": "AUNtt062uldjTmKO",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "发送天气",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://pc4ewt2xvj.re.qweatherapi.com/v7/weather/now?location=101010100",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "52b437f6030e44b199ca66b28a829a07"
+            },
+            {
+              "name": "location",
+              "value": "101300311"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        288,
+        176
+      ],
+      "id": "8311c287-69ee-47a9-a0be-0919482a4e83",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "58812501-5a06-4e2c-8969-f795b8b53320",
+              "name": "weather1",
+              "value": "={{ $json.now.temp }}",
+              "type": "string"
+            },
+            {
+              "id": "b1082329-b105-460d-9bd6-196fea4b2b37",
+              "name": "weather2",
+              "value": "={{ $json.now.text }}",
+              "type": "string"
+            },
+            {
+              "id": "ff14d6d1-0dea-467a-8a1d-d8d41b81276e",
+              "name": "weather3",
+              "value": "={{ $json.now.obsTime }}",
+              "type": "string"
+            },
+            {
+              "id": "d9a1a527-57be-445b-8633-76534f7fc7cd",
+              "name": "weather4",
+              "value": "={{ $json.now.windDir }}",
+              "type": "string"
+            },
+            {
+              "id": "11b623a2-cf2e-4009-9186-45667af1ee62",
+              "name": "weather5",
+              "value": "={{ $json.updateTime }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        432,
+        176
+      ],
+      "id": "6cd99a1e-0742-4ac0-9009-4465d26badd2",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "fromEmail": "31874445@qq.com",
+        "toEmail": "31874445@qq.com",
+        "subject": "={{ $json.weather3 }}{{ $json.weather2 }}{{ $json.weather1 }}{{ $json.weather4 }}",
+        "html": "={{ $json.weather3 }}{{ $json.weather2 }}{{ $json.weather1 }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        576,
+        176
+      ],
+      "id": "53f195a1-e57d-48c6-85da-077fc680110a",
+      "name": "Send email",
+      "webhookId": "5e436030-9244-41c7-bebf-f48335d201bf",
+      "credentials": {
+        "smtp": {
+          "id": "kWZcOWhk0DiwTFcj",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 5
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        112,
+        176
+      ],
+      "id": "49e79d41-e343-4c2d-8608-3d343199cc6c",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nbak",
+  "repo_owner": "wodaili-kingpwf",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-10-24T13:03:24.459Z",
+      "createdAt": "2025-10-24T13:03:24.459Z",
+      "role": "workflow:owner",
+      "workflowId": "AUNtt062uldjTmKO",
+      "projectId": "bhYbeEidmtHtdTx7"
+    }
+  ],
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": [
+        20
+      ]
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-10-25T05:27:06.000Z",
+  "versionId": "10bd93b1-b7f4-43aa-ac1f-0055d39fba2b"
+}
