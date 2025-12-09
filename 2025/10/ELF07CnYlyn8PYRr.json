@@ -1,0 +1,1102 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "读取英文SRT": {
+      "main": [
+        [
+          {
+            "node": "解析英文字幕",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "解析英文字幕": {
+      "main": [
+        [
+          {
+            "node": "🔀 是否批处理",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔀 是否批处理": {
+      "main": [
+        [
+          {
+            "node": "批量合并字幕",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "单条翻译API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📄 批量翻译API": {
+      "main": [
+        [
+          {
+            "node": "🔍 拆分翻译结果",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔍 拆分翻译结果": {
+      "main": [
+        [
+          {
+            "node": "准备TTS命令",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "单条翻译API": {
+      "main": [
+        [
+          {
+            "node": "合并单条翻译",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "合并单条翻译": {
+      "main": [
+        [
+          {
+            "node": "准备TTS命令",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "准备TTS命令": {
+      "main": [
+        [
+          {
+            "node": "生成中文配音",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "生成中文配音": {
+      "main": [
+        [
+          {
+            "node": "聚合所有结果",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⭐ 是否需要字幕": {
+      "main": [
+        [
+          {
+            "node": "准备字幕数据",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "恢复变量2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "准备字幕数据": {
+      "main": [
+        [
+          {
+            "node": "保存字幕文件",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "保存字幕文件": {
+      "main": [
+        [
+          {
+            "node": "恢复变量2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "恢复变量2": {
+      "main": [
+        [
+          {
+            "node": "验证字幕文件",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "字幕配置": {
+      "main": [
+        [
+          {
+            "node": "读取英文视频",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "设置工作变量": {
+      "main": [
+        [
+          {
+            "node": "提取音频",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "提取音频": {
+      "main": [
+        [
+          {
+            "node": "Whisper识别英文字幕",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "读取英文视频": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "字幕配置",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "恢复变量": {
+      "main": [
+        [
+          {
+            "node": "读取英文SRT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Whisper识别英文字幕": {
+      "main": [
+        [
+          {
+            "node": "恢复变量",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "批量合并字幕": {
+      "main": [
+        [
+          {
+            "node": "📄 批量翻译API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "聚合所有结果": {
+      "main": [
+        [
+          {
+            "node": "合并音频片段",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "合并音频片段": {
+      "main": [
+        [
+          {
+            "node": "⭐ 是否需要字幕",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "准备视频合成命令": {
+      "main": [
+        [
+          {
+            "node": "执行视频合成",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "执行视频合成": {
+      "main": [
+        [
+          {
+            "node": "完成信息",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "验证字幕文件": {
+      "main": [
+        [
+          {
+            "node": "准备视频合成命令",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "设置工作变量",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "完成信息": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-24T12:08:15.114Z",
+  "id": "ELF07CnYlyn8PYRr",
+  "isArchived": false,
+  "meta": null,
+  "name": "英文视频转中文配音 - IndexTTS优化长音频中断 copy 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -32,
+        -16
+      ],
+      "typeVersion": 1,
+      "id": "4316ecdf-0206-4312-94bd-fb38b94cc82f",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "fileSelector": "={{ $json.srtPath }}",
+        "options": {}
+      },
+      "id": "ef01ef1c-a181-4847-b648-86b6f0ebe89e",
+      "name": "读取英文SRT",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -2656,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first();\nconst workDir = $('恢复变量').first().json.workDir;\nconst baseName = $('恢复变量').first().json.baseName;\nconst fileName = $('恢复变量').first().json.fileName;\nconst subtitleMode = $('设置工作变量').first().json.subtitleMode;\nconst batchSize = $('设置工作变量').first().json.batchSize || 15;\nconst minBatchThreshold = $('设置工作变量').first().json.minBatchThreshold || 10;\n\ntry {\n  let srtContent = '';\n\n  if (item.binary && item.binary.data && item.binary.data.data) {\n    const base64Data = item.binary.data.data;\n    srtContent = Buffer.from(base64Data, 'base64').toString('utf-8');\n  } else if (item.json.data) {\n    if (Buffer.isBuffer(item.json.data)) {\n      srtContent = item.json.data.toString('utf-8');\n    } else {\n      srtContent = item.json.data;\n    }\n  } else {\n    throw new Error('无法读取SRT文件内容');\n  }\n\n  srtContent = srtContent\n    .replace(/^\\uFEFF/, '')\n    .replace(/\\r\\n/g, '\\n')\n    .replace(/\\r/g, '\\n');\n\n  // 解析时间戳的函数\n  function parseTimestamp(timeStr) {\n    const match = timeStr.match(/(\\d{2}):(\\d{2}):(\\d{2}),(\\d{3})/);\n    if (!match) return 0;\n    const hours = parseInt(match[1]);\n    const minutes = parseInt(match[2]);\n    const seconds = parseInt(match[3]);\n    const milliseconds = parseInt(match[4]);\n    return hours * 3600 + minutes * 60 + seconds + milliseconds / 1000;\n  }\n\n  function parseSrt(text) {\n    const subtitles = [];\n    const blocks = text.trim().split(/\\n\\n+/);\n    \n    for (const block of blocks) {\n      const lines = block.trim().split('\\n');\n      if (lines.length < 3) continue;\n      \n      const index = parseInt(lines[0].trim());\n      if (isNaN(index)) continue;\n      \n      const time = lines[1].trim();\n      if (!time.includes('-->')) continue;\n      \n      const [startTime, endTime] = time.split('-->').map(t => t.trim());\n      const startSeconds = parseTimestamp(startTime);\n      const endSeconds = parseTimestamp(endTime);\n      const duration = endSeconds - startSeconds;\n      \n      // ✅ 验证时长合理性\n      if (duration <= 0) {\n        console.warn(`⚠️ 字幕 ${index} 时长异常: ${duration}s,跳过`);\n        continue;\n      }\n      \n      if (duration > 30) {\n        console.warn(`⚠️ 字幕 ${index} 时长过长: ${duration}s`);\n      }\n      \n      const text = lines.slice(2).join('\\n').trim().replace(/<[^>]+>/g, '');\n      if (!text) continue;\n      \n      subtitles.push({ \n        index: index, \n        time: time,\n        startTime: startTime,\n        endTime: endTime,\n        startSeconds: startSeconds,\n        endSeconds: endSeconds,\n        duration: duration,\n        text: text \n      });\n    }\n    return subtitles;\n  }\n\n  const subtitles = parseSrt(srtContent);\n\n  if (subtitles.length === 0) {\n    throw new Error('未能解析任何字幕!');\n  }\n\n  const useBatching = subtitles.length >= minBatchThreshold;\n  const processingMode = useBatching ? '批量处理' : '单条处理';\n\n  console.log('\\n' + '='.repeat(60));\n  console.log('🎬 视频字幕分析报告');\n  console.log('='.repeat(60));\n  console.log(`📊 总字幕数: ${subtitles.length} 条`);\n  console.log(`⚙️ 字幕模式: ${subtitleMode}`);\n  console.log(`🔧 处理模式: ${processingMode}`);\n  if (useBatching) {\n    const batchCount = Math.ceil(subtitles.length / batchSize);\n    console.log(`📦 批次设置: ${batchSize} 条/批`);\n    console.log(`📞 API调用: ${batchCount} 次 (节省 ${Math.round((1 - batchCount/subtitles.length) * 100)}%)`);\n  } else {\n    console.log(`📞 API调用: ${subtitles.length} 次 (短视频,无需批处理)`);\n  }\n  console.log('='.repeat(60) + '\\n');\n\n  return subtitles.map(sub => ({\n    json: {\n      index: sub.index,\n      time: sub.time,\n      startTime: sub.startTime,\n      endTime: sub.endTime,\n      startSeconds: sub.startSeconds,\n      endSeconds: sub.endSeconds,\n      duration: sub.duration,\n      englishText: sub.text,\n      workDir: workDir,\n      baseName: baseName,\n      fileName: fileName,\n      subtitleMode: subtitleMode,\n      batchSize: batchSize,\n      minBatchThreshold: minBatchThreshold,\n      totalSubtitles: subtitles.length,\n      useBatching: useBatching\n    }\n  }));\n\n} catch (error) {\n  console.error('❌ 解析字幕失败:', error.message);\n  throw error;\n}"
+      },
+      "id": "f3057f21-b873-4e34-a33b-ca0ff29ea549",
+      "name": "解析英文字幕",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2480,
+        208
+      ],
+      "notes": "✅ 已添加错误处理和时长验证"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "use-batching",
+              "leftValue": "={{ $json.useBatching }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6063a84b-4433-487a-940b-76334dd66446",
+      "name": "🔀 是否批处理",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -2224,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "deepSeekApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ {\n  model: 'deepseek-chat',\n  messages: [\n    {\n      role: 'system',\n      content: '你是专业翻译助手。翻译英文字幕为简体中文,保持原意和语气。格式规则:1.每条字幕以[数字]开头 2.保持格式在[数字]后直接写中文 3.只返回翻译不加解释。示例-输入:[1]Hello[2]Welcome 输出:[1]大家好[2]欢迎'\n    },\n    {\n      role: 'user',\n      content: $json.combinedText\n    }\n  ],\n  temperature: 0.3\n} }}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "2c409a80-5060-476b-9003-f147e4dad993",
+      "name": "📄 批量翻译API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1760,
+        -16
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "notes": "✅ 完全修复: 直接返回JavaScript对象,n8n自动处理JSON转换"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 🔨 拆分所有批次的翻译结果\n\ntry {\n  const translationItems = $input.all();\n  const batchItems = $('批量合并字幕').all();\n\n  console.log(`\\n📦 开始处理所有批次: 共 ${translationItems.length} 个批次\\n`);\n\n  const allResults = [];\n\n  for (let i = 0; i < translationItems.length; i++) {\n    const translationItem = translationItems[i].json;\n    const batchItem = batchItems[i].json;\n    \n    const batchId = batchItem.batchId;\n    const translatedText = translationItem.choices[0].message.content.trim();\n    const originalItems = batchItem.originalItems;\n    \n    console.log(`🔍 批次 ${batchId}: 开始拆分翻译结果`);\n    console.log(`📊 原始字幕数: ${originalItems.length} 条`);\n    \n    const lines = translatedText.split('\\n').filter(line => line.trim());\n    const translations = {};\n    \n    for (const line of lines) {\n      const match = line.match(/^\\[(\\d+)\\]\\s*(.+)$/);\n      if (match) {\n        const index = parseInt(match[1]);\n        translations[index] = match[2].trim();\n      }\n    }\n    \n    console.log(`✅ 成功解析 ${Object.keys(translations).length} 条翻译`);\n    \n    const batchResults = originalItems.map((original) => {\n      const chineseText = translations[original.index];\n      \n      if (!chineseText) {\n        console.warn(`⚠️ 字幕 ${original.index} 未找到翻译,使用原文`);\n      }\n      \n      return {\n        json: {\n          index: original.index,\n          time: original.time,\n          startTime: original.startTime,\n          endTime: original.endTime,\n          startSeconds: original.startSeconds,\n          endSeconds: original.endSeconds,\n          duration: original.duration,\n          englishText: original.englishText,\n          chineseText: chineseText || original.englishText,\n          workDir: original.workDir,\n          baseName: original.baseName,\n          fileName: original.fileName,\n          subtitleMode: original.subtitleMode\n        }\n      };\n    });\n    \n    console.log(`🎉 批次 ${batchId}: 拆分完成,返回 ${batchResults.length} 条结果`);\n    allResults.push(...batchResults);\n  }\n\n  console.log(`\\n✨ 所有批次处理完成: 总共 ${allResults.length} 条字幕\\n`);\n\n  return allResults;\n\n} catch (error) {\n  console.error('❌ 拆分翻译结果失败:', error.message);\n  throw error;\n}"
+      },
+      "id": "40bbe1da-bef3-4c47-ad39-c87564730a05",
+      "name": "🔍 拆分翻译结果",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1504,
+        -32
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "deepSeekApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ {\n  model: 'deepseek-chat',\n  messages: [\n    {\n      role: 'system',\n      content: '你是专业翻译助手。请将英文翻译成简体中文,保持原意和语气。只返回翻译结果,不要添加任何解释。'\n    },\n    {\n      role: 'user',\n      content: '请翻译:\\n\\n' + $json.englishText\n    }\n  ],\n  temperature: 0.3\n} }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "8791b092-2ca4-4c1d-8d4f-a2240e130943",
+      "name": "单条翻译API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1904,
+        256
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000,
+      "notes": "✅ 完全修复: 直接返回JavaScript对象,n8n自动处理JSON转换"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "index",
+              "value": "={{ $('解析英文字幕').item.json.index }}",
+              "type": "number"
+            },
+            {
+              "id": "2",
+              "name": "time",
+              "value": "={{ $('解析英文字幕').item.json.time }}",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "startTime",
+              "value": "={{ $('解析英文字幕').item.json.startTime }}",
+              "type": "string"
+            },
+            {
+              "id": "4",
+              "name": "endTime",
+              "value": "={{ $('解析英文字幕').item.json.endTime }}",
+              "type": "string"
+            },
+            {
+              "id": "5",
+              "name": "startSeconds",
+              "value": "={{ $('解析英文字幕').item.json.startSeconds }}",
+              "type": "number"
+            },
+            {
+              "id": "6",
+              "name": "endSeconds",
+              "value": "={{ $('解析英文字幕').item.json.endSeconds }}",
+              "type": "number"
+            },
+            {
+              "id": "7",
+              "name": "duration",
+              "value": "={{ $('解析英文字幕').item.json.duration }}",
+              "type": "number"
+            },
+            {
+              "id": "8",
+              "name": "englishText",
+              "value": "={{ $('解析英文字幕').item.json.englishText }}",
+              "type": "string"
+            },
+            {
+              "id": "9",
+              "name": "chineseText",
+              "value": "={{ $json.choices[0].message.content.trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "10",
+              "name": "workDir",
+              "value": "={{ $('解析英文字幕').item.json.workDir }}",
+              "type": "string"
+            },
+            {
+              "id": "11",
+              "name": "baseName",
+              "value": "={{ $('解析英文字幕').item.json.baseName }}",
+              "type": "string"
+            },
+            {
+              "id": "12",
+              "name": "fileName",
+              "value": "={{ $('解析英文字幕').item.json.fileName }}",
+              "type": "string"
+            },
+            {
+              "id": "13",
+              "name": "subtitleMode",
+              "value": "={{ $('解析英文字幕').item.json.subtitleMode }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5804fa4b-0d28-4e9c-9de7-4532b33fafcd",
+      "name": "合并单条翻译",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1584,
+        256
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// ✅ 断点续传版：自动跳过已生成，删除损坏文件\n// 适用场景：长视频中断后继续生成\n\ntry {\n  const item = $input.item.json;\n  const audioIndex = String(item.index).padStart(4, '0');\n  const outputFile = `${item.workDir}/${item.baseName}_audio_${audioIndex}.mp3`;\n  const config = $('字幕配置').first().json;\n  const indexTTSDir = config.indexTTSDir;\n  const promptAudio = config.indexTTSPromptAudio;\n  \n  // 配置：损坏文件阈值（字节）\n  const MIN_VALID_SIZE = 1024; // 1KB，小于此值视为损坏\n\n  // ✅ 清理文本（移除特殊字符避免命令执行错误）\n  const cleanText = item.chineseText\n    .replace(/\\\\/g, '')\n    .replace(/\"/g, '')\n    .replace(/'/g, '')\n    .replace(/`/g, '')\n    .replace(/\\$/g, '')\n    .replace(/\\n/g, ' ')\n    .replace(/\\r/g, ' ')\n    .replace(/\\t/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim();\n\n  if (!cleanText) {\n    console.warn(`⚠️ 字幕 ${item.index} 清理后为空，将跳过`);\n    return {\n      ...item,\n      audioOutputFile: outputFile,\n      ttsCommand: `echo ⚠️ 字幕 ${item.index} 文本为空，已跳过`,\n      audioIndex: audioIndex,\n      cleanedText: cleanText,\n      skipped: true\n    };\n  }\n\n  // 🔥 核心逻辑：断点续传命令\n  // 1. 文件不存在 → 生成\n  // 2. 文件存在且 > 1KB → 跳过（已成功）\n  // 3. 文件存在但 ≤ 1KB → 删除后重新生成（损坏）\n  \n  const ttsCommand = `powershell -Command \"if (Test-Path '${outputFile}') { $size = (Get-Item '${outputFile}').Length; if ($size -gt ${MIN_VALID_SIZE}) { Write-Host '✅ 字幕 ${item.index}: 音频已存在 (' $size '字节)，跳过'; exit 0 } else { Write-Host '🔄 字幕 ${item.index}: 检测到损坏文件 (' $size '字节)，删除并重新生成'; Remove-Item '${outputFile}' -Force } }; Write-Host '🎵 生成字幕 ${item.index} 音频...'; & '${indexTTSDir}/env/python.exe' '${indexTTSDir}/tts_cli.py' --text '${cleanText}' --output '${outputFile}' --prompt '${promptAudio}' --model_dir '${indexTTSDir}/checkpoints' --fp16; if ($LASTEXITCODE -eq 0) { Write-Host '✅ 生成成功' } else { Write-Host '❌ 生成失败'; exit 1 }\"`;\n\n  console.log(`✅ 字幕 ${item.index}: TTS命令准备完成`);\n\n  return {\n    ...item,\n    audioOutputFile: outputFile,\n    ttsCommand: ttsCommand,\n    audioIndex: audioIndex,\n    cleanedText: cleanText,\n    minValidSize: MIN_VALID_SIZE\n  };\n\n} catch (error) {\n  console.error('❌ 准备TTS命令失败:', error.message);\n  throw error;\n}"
+      },
+      "id": "984e817f-084b-41ca-a0d7-6ad97ea2e2e1",
+      "name": "准备TTS命令",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1296,
+        176
+      ],
+      "notes": "Mixed TTS Engine Support: Edge-TTS (fast) + IndexTTS (quality)"
+    },
+    {
+      "parameters": {
+        "executeOnce": false,
+        "command": "={{ $json.ttsCommand }}"
+      },
+      "id": "71724ed6-6637-4041-94f3-66dc625ae47a",
+      "name": "生成中文配音",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        -1088,
+        176
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 3000,
+      "maxTries": 2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "need-subtitle",
+              "leftValue": "={{ $('聚合所有结果').first().json.subtitleMode }}",
+              "rightValue": "none",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f7d31fba-d07c-4b83-9270-c18f055e703c",
+      "name": "⭐ 是否需要字幕",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -176,
+        64
+      ],
+      "notes": "✅ 已修复: 使用 .first() 而不是 .item"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ✅ 修复版:准备字幕数据\n// 关键修复:显式从\"聚合所有结果\"节点获取数据\n\nconst aggregatedData = $('聚合所有结果').first().json;\n\nconsole.log('\\n' + '='.repeat(60));\nconsole.log('📋 准备字幕数据');\nconsole.log('='.repeat(60));\nconsole.log(`📂 工作目录: ${aggregatedData.workDir}`);\nconsole.log(`🎯 基础名称: ${aggregatedData.baseName}`);\nconsole.log(`🎭 字幕模式: ${aggregatedData.subtitleMode}`);\n\nconst srtContent = aggregatedData.bilingualSrt || '';\nconst fileName = aggregatedData.srtFileName || `${aggregatedData.baseName}_subtitle.srt`;\n\nconsole.log(`📊 字幕内容长度: ${srtContent.length} 字符`);\nconsole.log(`📄 字幕行数: ${srtContent.split('\\n').length} 行`);\nconsole.log(`📝 字幕文件名: ${fileName}`);\n\n// ✅ 关键检查:字幕内容不能为空\nif (!srtContent || srtContent.length === 0) {\n  console.error('\\n❌ 错误: 字幕内容为空!');\n  console.error('可能原因:');\n  console.error('1. \"聚合所有结果\"节点未正确生成字幕');\n  console.error('2. bilingualSrt 字段为空');\n  throw new Error('字幕内容为空,无法生成字幕文件');\n}\n\n// 显示字幕内容前几行预览(帮助调试)\nconst preview = srtContent.split('\\n').slice(0, 8).join('\\n');\nconsole.log('\\n📄 字幕内容预览:');\nconsole.log(preview);\nconsole.log('...\\n');\n\n// 转换为binary格式\nconst srtBuffer = Buffer.from(srtContent, 'utf-8');\n\nconsole.log(`✅ 字幕数据准备完成`);\nconsole.log(`💾 Base64编码后大小: ${srtBuffer.toString('base64').length} 字符`);\nconsole.log('='.repeat(60) + '\\n');\n\nreturn [{\n  json: aggregatedData,\n  binary: {\n    data: {\n      data: srtBuffer.toString('base64'),\n      mimeType: 'text/plain',\n      fileName: fileName\n    }\n  }\n}];"
+      },
+      "id": "8dd91d2f-39a2-402b-8ac3-0ba17859aeaf",
+      "name": "准备字幕数据",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        144,
+        -96
+      ],
+      "notes": "✅ 已修复: 显式从\"聚合所有结果\"获取数据"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('聚合所有结果').first().json.srtFilePath }}",
+        "options": {}
+      },
+      "id": "6b2addaa-252e-48a0-8816-f5ceebda0849",
+      "name": "保存字幕文件",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        448,
+        -96
+      ],
+      "notes": "✅ 已修复: 使用 .first() 而不是 .item"
+    },
+    {
+      "parameters": {
+        "jsCode": "const aggregatedData = $('聚合所有结果').first().json;\n\nreturn [{\n  json: {\n    workDir: aggregatedData.workDir,\n    baseName: aggregatedData.baseName,\n    fileName: aggregatedData.fileName,\n    outputAudio: aggregatedData.outputAudio,\n    srtFilePath: aggregatedData.srtFilePath,\n    srtFileName: aggregatedData.srtFileName,\n    subtitleMode: aggregatedData.subtitleMode,\n    totalItems: aggregatedData.totalItems,\n    ffmpegComplexFilter: aggregatedData.ffmpegComplexFilter\n  }\n}];"
+      },
+      "id": "2f854261-8800-473f-b198-47160b7ffdc9",
+      "name": "恢复变量2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        704,
+        32
+      ],
+      "notes": "✅ 已修复: 显式从\"聚合所有结果\"获取数据"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "状态",
+              "value": "✅ 视频处理完成!",
+              "type": "string"
+            },
+            {
+              "id": "2",
+              "name": "输出视频",
+              "value": "={{ $('字幕配置').first().json.outputDir }}/{{ $('恢复变量2').first().json.baseName }}_chinese.mp4",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "字幕模式",
+              "value": "={{ $('恢复变量2').first().json.subtitleMode }}",
+              "type": "string"
+            },
+            {
+              "id": "4",
+              "name": "字幕文件",
+              "value": "={{ $('恢复变量2').first().json.subtitleMode === 'none' ? '无字幕' : $('恢复变量2').first().json.srtFilePath }}",
+              "type": "string"
+            },
+            {
+              "id": "5",
+              "name": "中文音频",
+              "value": "={{ $('恢复变量2').first().json.outputAudio }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e4f116ed-c940-4f28-a8c0-3c59df972cf5",
+      "name": "完成信息",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1664,
+        400
+      ],
+      "notes": "✅ 已修复: 所有 .item 改为 .first()"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "subtitleMode",
+              "value": "chinese",
+              "type": "string"
+            },
+            {
+              "id": "2",
+              "name": "workDir",
+              "value": "I:/youtube",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "outputDir",
+              "value": "I:/output",
+              "type": "string"
+            },
+            {
+              "id": "4",
+              "name": "batchSize",
+              "value": 15,
+              "type": "number"
+            },
+            {
+              "id": "5",
+              "name": "minBatchThreshold",
+              "value": 10,
+              "type": "number"
+            },
+            {
+              "id": "6",
+              "name": "volumeLevel",
+              "value": 1.8,
+              "type": "number"
+            },
+            {
+              "id": "11",
+              "name": "indexTTSDir",
+              "value": "H:/AI/IndexTTS_AIBL_VIP_3.0",
+              "type": "string"
+            },
+            {
+              "id": "12",
+              "name": "indexTTSPromptAudio",
+              "value": "H:/AI/IndexTTS_AIBL_VIP_3.0/examples/11.wav",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6965138d-6b56-4d70-9205-1f373646e2a5",
+      "name": "字幕配置",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -4240,
+        240
+      ],
+      "notes": "// - subtitleMode: 字幕模式\n//   * none: 无字幕\n//   * english: 仅英文字幕\n//   * chinese: 仅中文字幕\n//   * both: 双语字幕\n//\n// - indexTTSDir: IndexTTS 的安装路径\n// - indexTTSPromptAudio: 参考音色的wav文件路径\n//   可以使用 IndexTTS/examples 目录下的示例音频\n//   或者自己准备3-10秒的清晰人声wav文件"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "fileName",
+              "value": "={{ $json.fileName }}",
+              "type": "string"
+            },
+            {
+              "id": "2",
+              "name": "baseName",
+              "value": "={{ $json.fileName.replace(/\\.[^/.]+$/, '') }}",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "audioFile",
+              "value": "={{ $json.fileName.replace(/\\.[^/.]+$/, '') }}_audio.wav",
+              "type": "string"
+            },
+            {
+              "id": "4",
+              "name": "workDir",
+              "value": "={{ $('字幕配置').first().json.workDir }}",
+              "type": "string"
+            },
+            {
+              "id": "5",
+              "name": "subtitleMode",
+              "value": "={{ $('字幕配置').first().json.subtitleMode }}",
+              "type": "string"
+            },
+            {
+              "id": "6",
+              "name": "batchSize",
+              "value": "={{ $('字幕配置').first().json.batchSize }}",
+              "type": "number"
+            },
+            {
+              "id": "7",
+              "name": "minBatchThreshold",
+              "value": "={{ $('字幕配置').first().json.minBatchThreshold }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "538f985b-7a65-4f28-a771-45c7a1079efd",
+      "name": "设置工作变量",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3520,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "executeOnce": false,
+        "command": "=ffmpeg -y -i \"{{ $json.workDir }}/{{ $json.fileName }}\" -vn -acodec pcm_s16le -ar 16000 -ac 1 \"{{ $json.workDir }}/{{ $json.audioFile }}\""
+      },
+      "id": "ec20ae26-80a7-46af-8b99-cf1ab7b3a641",
+      "name": "提取音频",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        -3328,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "workDir",
+              "value": "={{ $('设置工作变量').item.json.workDir }}",
+              "type": "string"
+            },
+            {
+              "id": "2",
+              "name": "baseName",
+              "value": "={{ $('设置工作变量').item.json.baseName }}",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "fileName",
+              "value": "={{ $('设置工作变量').item.json.fileName }}",
+              "type": "string"
+            },
+            {
+              "id": "4",
+              "name": "srtPath",
+              "value": "={{ $('设置工作变量').item.json.workDir }}/{{ $('设置工作变量').item.json.baseName }}_audio.srt",
+              "type": "string"
+            },
+            {
+              "id": "5",
+              "name": "subtitleMode",
+              "value": "={{ $('设置工作变量').item.json.subtitleMode }}",
+              "type": "string"
+            },
+            {
+              "id": "6",
+              "name": "batchSize",
+              "value": "={{ $('设置工作变量').item.json.batchSize }}",
+              "type": "number"
+            },
+            {
+              "id": "7",
+              "name": "minBatchThreshold",
+              "value": "={{ $('设置工作变量').item.json.minBatchThreshold }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1a1570cb-8252-44bd-a743-b126d0842081",
+      "name": "恢复变量",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2880,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "={{ $('字幕配置').first().json.workDir }}/*.mp4",
+        "options": {}
+      },
+      "id": "7342f71c-b91c-42b1-9f5b-2b7cdc9a7426",
+      "name": "读取英文视频",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -4032,
+        224
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -4480,
+        224
+      ],
+      "id": "8272e345-94a2-49e7-ac8c-bad89a432014",
+      "name": "When clicking 'Execute workflow'"
+    },
+    {
+      "parameters": {
+        "executeOnce": false,
+        "command": "=\"D:/openai-whisper/env/python.exe\" \"D:/openai-whisper/env/Scripts/whisper.exe\" \"{{ $('设置工作变量').item.json.workDir }}/{{ $('设置工作变量').item.json.audioFile }}\" --model large --language English --task transcribe --output_format srt --output_dir \"{{ $('设置工作变量').item.json.workDir }}\" --word_timestamps True --condition_on_previous_text True --no_speech_threshold 0.6"
+      },
+      "id": "94fe10d6-657d-4860-b098-90657df5f2a8",
+      "name": "Whisper识别英文字幕",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        -3088,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ✅ 修复版:批量合并字幕\n\ntry {\n  const items = $input.all();\n  const batchSize = items[0].json.batchSize;\n\n  console.log(`\\n📦 开始批量合并: 总共 ${items.length} 条字幕`);\n  console.log(`⚙️ 批次大小: ${batchSize} 条/批\\n`);\n\n  const batches = [];\n\n  for (let i = 0; i < items.length; i += batchSize) {\n    const batch = items.slice(i, i + batchSize);\n    \n    // ✅ 修复:直接使用原始文本,用真正的换行符连接\n    // ❌ 旧代码: .join('\\\\\\\\n\\\\\\\\n') - 产生字面字符串\n    // ✅ 新代码: .join('\\n\\n') - 产生真正的换行符\n    const combinedText = batch.map((item) => {\n      return `[${item.json.index}] ${item.json.englishText}`;\n    }).join('\\n\\n');\n    \n    const batchInfo = {\n      json: {\n        batchId: Math.floor(i / batchSize) + 1,\n        batchStart: i + 1,\n        batchEnd: Math.min(i + batchSize, items.length),\n        batchSize: batch.length,\n        combinedText: combinedText,\n        originalItems: batch.map(item => ({\n          index: item.json.index,\n          time: item.json.time,\n          startTime: item.json.startTime,\n          endTime: item.json.endTime,\n          startSeconds: item.json.startSeconds,\n          endSeconds: item.json.endSeconds,\n          duration: item.json.duration,\n          englishText: item.json.englishText,\n          workDir: item.json.workDir,\n          baseName: item.json.baseName,\n          fileName: item.json.fileName,\n          subtitleMode: item.json.subtitleMode\n        })),\n        workDir: batch[0].json.workDir,\n        baseName: batch[0].json.baseName,\n        fileName: batch[0].json.fileName,\n        subtitleMode: batch[0].json.subtitleMode\n      }\n    };\n    \n    batches.push(batchInfo);\n    console.log(`✅ 批次 ${batchInfo.json.batchId}: 字幕 ${batchInfo.json.batchStart}-${batchInfo.json.batchEnd} (${batch.length}条)`);\n  }\n\n  console.log(`\\n🎉 批量合并完成: ${items.length} 条 → ${batches.length} 批\\n`);\n\n  return batches;\n\n} catch (error) {\n  console.error('❌ 批量合并失败:', error.message);\n  throw error;\n}"
+      },
+      "id": "6c31dd01-4365-46e2-b979-2f769c6fd5d9",
+      "name": "批量合并字幕",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2000,
+        16
+      ],
+      "notes": "✅ 已修复换行符问题,删除escapeJsonString"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ✅ 修复版:聚合所有结果(含详细调试信息)\n\ntry {\n  const preparedItems = $('准备TTS命令').all();\n\n  if (!preparedItems || preparedItems.length === 0) {\n    throw new Error('没有从\"准备TTS命令\"节点获取到数据!');\n  }\n\n  console.log('\\n' + '='.repeat(70));\n  console.log('📦 聚合所有结果 - 开始处理');\n  console.log('='.repeat(70));\n  console.log(`📊 接收项目数: ${preparedItems.length} 条`);\n  \n  // ✅ 关键调试:检查第一个项目的数据结构\n  const firstItem = preparedItems[0].json;\n  console.log('\\n🔍 第一个项目的数据结构检查:');\n  console.log(`  - index: ${firstItem.index}`);\n  console.log(`  - englishText: ${firstItem.englishText ? '✅ 存在' : '❌ 缺失'}`);\n  console.log(`  - chineseText: ${firstItem.chineseText ? '✅ 存在' : '❌ 缺失'}`);\n  console.log(`  - time: ${firstItem.time}`);\n  console.log(`  - duration: ${firstItem.duration}s`);\n  \n  // ✅ 如果chineseText缺失,显示完整的keys\n  if (!firstItem.chineseText) {\n    console.error('\\n⚠️ 警告: chineseText字段缺失!');\n    console.error('可用字段:', Object.keys(firstItem));\n  }\n  \n  const workDir = firstItem.workDir;\n  const baseName = firstItem.baseName;\n  const fileName = firstItem.fileName;\n  const subtitleMode = firstItem.subtitleMode || 'both';\n  \n  // 获取可配置的音量参数\n  const volumeLevel = $('字幕配置').first().json.volumeLevel || 1.8;\n\n  console.log(`\\n⚙️ 配置信息:`);\n  console.log(`  - 工作目录: ${workDir}`);\n  console.log(`  - 基础名称: ${baseName}`);\n  console.log(`  - 字幕模式: ${subtitleMode}`);\n  console.log(`  - 音量设置: ${volumeLevel}x`);\n\n  const sortedItems = preparedItems.sort((a, b) => a.json.index - b.json.index);\n  const outputAudio = `${workDir}/${baseName}_chinese_audio.mp3`;\n\n  console.log('\\n' + '='.repeat(70));\n  console.log('🎵 音频时间轴对齐处理');\n  console.log('='.repeat(70));\n\n  const lastItem = sortedItems[sortedItems.length - 1].json;\n  const estimatedDuration = (lastItem.endSeconds || lastItem.startSeconds || 60) + 2;\n\n  console.log(`📊 视频预估时长: ${estimatedDuration.toFixed(2)}秒`);\n  console.log(`📝 处理字幕数: ${sortedItems.length} 条\\n`);\n\n  const filterInputs = [];\n  const filterComplex = [];\n  const mixInputs = [];\n\n  sortedItems.forEach((item, idx) => {\n    const sub = item.json;\n    const startSec = sub.startSeconds || 0;\n    const delayMs = Math.round(startSec * 1000);\n    \n    filterInputs.push(`-i \"${sub.audioOutputFile}\"`);\n    // ✅ 删除 loudnorm 滤镜，仅保留 adelay（控制片段时间对齐）\n    filterComplex.push(`[${idx + 1}:a]adelay=${delayMs}|${delayMs}[a${idx}]`);\n    mixInputs.push(`[a${idx}]`);\n  });\n  \n  // ✅ 给 amix 加 normalize=0，关闭默认音量均分（关键！）\n  const inputCount = sortedItems.length;\n  const mixFilter = `${mixInputs.join('')}amix=inputs=${inputCount}:duration=longest:normalize=0[aout]`;\n  filterComplex.push(mixFilter);\n\n  const fullFilterComplex = filterComplex.join(';');\n\n  const ffmpegCommand = `cd /d \"${workDir}\" && ffmpeg -y -f lavfi -t ${estimatedDuration} -i anullsrc=r=44100:cl=stereo ${filterInputs.join(' ')} -filter_complex \"${fullFilterComplex}\" -map \"[aout]\" -c:a libmp3lame -b:a 192k -t ${estimatedDuration} \"${outputAudio}\"`;\n\n  console.log('✅ FFmpeg命令已生成\\n');\n\n  // ========== 关键部分:生成字幕内容 ==========\n  console.log('='.repeat(70));\n  console.log('📝 生成字幕文件');\n  console.log('='.repeat(70));\n\n  let bilingualSrt = '';\n  let srtSuffix = '';\n\n  switch(subtitleMode) {\n    case 'none':\n      bilingualSrt = '';\n      srtSuffix = 'none';\n      console.log('🚫 字幕模式: 无字幕');\n      break;\n      \n    case 'english':\n      bilingualSrt = sortedItems.map(item => {\n        const sub = item.json;\n        return `${sub.index}\\n${sub.time}\\n${sub.englishText}\\n`;\n      }).join('\\n');\n      srtSuffix = 'english';\n      console.log('🇬🇧 字幕模式: 仅英文');\n      console.log(`📊 生成内容长度: ${bilingualSrt.length} 字符`);\n      break;\n      \n    case 'chinese':\n      // ✅ 添加检查:确保chineseText存在\n      const missingChinese = sortedItems.filter(item => !item.json.chineseText);\n      if (missingChinese.length > 0) {\n        console.error(`\\n❌ 错误: ${missingChinese.length} 条字幕缺少中文翻译!`);\n        console.error('缺失的索引:', missingChinese.map(i => i.json.index).slice(0, 10).join(', '));\n        throw new Error('部分字幕缺少中文翻译,无法生成中文字幕');\n      }\n      \n      bilingualSrt = sortedItems.map(item => {\n        const sub = item.json;\n        return `${sub.index}\\n${sub.time}\\n${sub.chineseText}\\n`;\n      }).join('\\n');\n      srtSuffix = 'chinese';\n      console.log('🇨🇳 字幕模式: 仅中文');\n      console.log(`📊 生成内容长度: ${bilingualSrt.length} 字符`);\n      break;\n      \n    case 'both':\n    default:\n      // ✅ 添加检查:确保两种语言都存在\n      const missingBoth = sortedItems.filter(item => \n        !item.json.englishText || !item.json.chineseText\n      );\n      if (missingBoth.length > 0) {\n        console.error(`\\n❌ 错误: ${missingBoth.length} 条字幕数据不完整!`);\n        console.error('缺失的索引:', missingBoth.map(i => i.json.index).slice(0, 10).join(', '));\n        throw new Error('部分字幕数据不完整,无法生成双语字幕');\n      }\n      \n      bilingualSrt = sortedItems.map(item => {\n        const sub = item.json;\n        return `${sub.index}\\n${sub.time}\\n${sub.englishText}\\n${sub.chineseText}\\n`;\n      }).join('\\n');\n      srtSuffix = 'bilingual';\n      console.log('🌐 字幕模式: 双语字幕');\n      console.log(`📊 生成内容长度: ${bilingualSrt.length} 字符`);\n      break;\n  }\n\n  // ✅ 显示字幕内容预览\n  if (bilingualSrt && bilingualSrt.length > 0) {\n    const lines = bilingualSrt.split('\\n');\n    const preview = lines.slice(0, 12).join('\\n');\n    console.log('\\n📄 字幕内容预览(前12行):');\n    console.log(preview);\n    if (lines.length > 12) {\n      console.log('...');\n      console.log(`(共 ${lines.length} 行)`);\n    }\n  } else if (subtitleMode !== 'none') {\n    console.error('\\n⚠️ 警告: 字幕内容为空!');\n  }\n\n  const srtFilePath = `${workDir}/${baseName}_${srtSuffix}.srt`;\n  const srtFileName = `${baseName}_${srtSuffix}.srt`;\n\n  console.log(`\\n📁 字幕文件路径: ${srtFilePath}`);\n  console.log(`📝 字幕文件名: ${srtFileName}`);\n  console.log('='.repeat(70));\n\n  console.log('\\n✅ 聚合处理完成!');\n  console.log(`   - 总计处理: ${sortedItems.length} 条字幕`);\n  console.log(`   - 字幕内容: ${bilingualSrt.length} 字符`);\n  console.log(`   - 音频文件: ${outputAudio}`);\n  console.log('='.repeat(70) + '\\n');\n\n  return [{\n    json: {\n      workDir: workDir,\n      baseName: baseName,\n      fileName: fileName,\n      outputAudio: outputAudio,\n      bilingualSrt: bilingualSrt,\n      srtFilePath: srtFilePath,\n      srtFileName: srtFileName,\n      subtitleMode: subtitleMode,\n      totalItems: sortedItems.length,\n      ffmpegCommand: ffmpegCommand,\n      estimatedDuration: estimatedDuration,\n      volumeLevel: volumeLevel\n    }\n  }];\n\n} catch (error) {\n  console.error('\\n' + '='.repeat(70));\n  console.error('❌ 聚合处理失败');\n  console.error('='.repeat(70));\n  console.error('错误信息:', error.message);\n  console.error('错误堆栈:', error.stack);\n  console.error('='.repeat(70) + '\\n');\n  throw error;\n}"
+      },
+      "id": "53d409e2-c7fd-425b-a215-66d717ef5b70",
+      "name": "聚合所有结果",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -784,
+        144
+      ],
+      "notes": "✅ 已修复音量设置,使用loudnorm标准化"
+    },
+    {
+      "parameters": {
+        "executeOnce": false,
+        "command": "={{ $json.ffmpegCommand }}"
+      },
+      "id": "2383d13a-e729-4370-8449-1d64d436acc7",
+      "name": "合并音频片段",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        -448,
+        96
+      ],
+      "notes": "✅ 使用优化后的时间轴对齐策略"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 🎬 准备视频合成命令(完全修复版)\n\nconst data = $('恢复变量2').first().json;\nconst workDir = data.workDir;\nconst baseName = data.baseName;\nconst fileName = data.fileName || `${baseName}.mp4`;\nconst outputDir = $('字幕配置').first().json.outputDir;\nconst subtitleMode = data.subtitleMode;\n\nconsole.log('\\n' + '='.repeat(70));\nconsole.log('🎬 准备视频合成命令');\nconsole.log('='.repeat(70));\nconsole.log(`📂 工作目录: ${workDir}`);\nconsole.log(`📹 输入视频: ${fileName}`);\nconsole.log(`🎵 中文音频: ${baseName}_chinese_audio.mp3`);\nconsole.log(`🎭 字幕模式: ${subtitleMode}`);\nconsole.log(`📤 输出目录: ${outputDir}`);\n\nlet ffmpegCommand;\n\nif (subtitleMode === 'none') {\n  // ========== 无字幕模式 ==========\n  console.log('\\n✅ 模式: 仅替换音频(不烧录字幕)');\n  \n  ffmpegCommand = [\n    `cd /d \"${workDir}\"`,\n    '&&',\n    'ffmpeg -y',\n    `-i \"${fileName}\"`,\n    `-i \"${baseName}_chinese_audio.mp3\"`,\n    '-map 0:v -map 1:a',\n    '-c:v copy',\n    '-c:a aac -b:a 192k',\n    `\"${outputDir}/${baseName}_chinese.mp4\"`\n  ].join(' ');\n  \n  console.log('🚀 编码方式: 视频直接复制(最快)');\n  \n} else {\n  // ========== 有字幕模式 ==========\n  const srtFileName = data.srtFileName;\n  \n  // ✅ 关键修复:使用相对路径,因为已经cd到工作目录\n  // 这样可以避免Windows路径中冒号的转义问题\n  console.log(`\\n📄 字幕文件: ${srtFileName}`);\n  console.log(`📍 使用相对路径避免Windows路径问题`);\n  console.log(`✅ 模式: 烧录${subtitleMode}字幕到视频`);\n  \n  // 方案1: 使用相对路径(推荐,简单可靠)\n  const subtitleFilter = `subtitles=${srtFileName}:force_style='FontName=Microsoft YaHei,FontSize=14,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,Outline=1,MarginV=20'`;\n  \n  // 方案2备注: 如果需要使用绝对路径,必须转义冒号\n  // const srtFullPath = `${workDir}/${srtFileName}`.replace(/\\\\/g, '/').replace(/:/g, '\\\\\\\\:');\n  // const subtitleFilter = `subtitles='${srtFullPath}':force_style='...'`;\n  \n  console.log(`\\n🔧 字幕滤镜: ${subtitleFilter}`);\n  \n  ffmpegCommand = [\n    `cd /d \"${workDir}\"`,\n    '&&',\n    'ffmpeg -y',\n    `-i \"${fileName}\"`,\n    `-i \"${baseName}_chinese_audio.mp3\"`,\n    `-vf \"${subtitleFilter}\"`,\n    '-map 0:v -map 1:a',\n    '-c:v libx264 -preset medium -crf 23',\n    '-c:a aac -b:a 192k',\n    `\"${outputDir}/${baseName}_chinese.mp4\"`\n  ].join(' ');\n  \n  console.log('🚀 编码方式: 重新编码(烧录字幕)');\n}\n\nconsole.log(`\\n📋 命令长度: ${ffmpegCommand.length} 字符`);\nconsole.log('\\n🔍 完整命令:');\nconsole.log(ffmpegCommand);\nconsole.log('='.repeat(70) + '\\n');\n\nreturn [{\n  json: {\n    ...data,\n    ffmpegCommand: ffmpegCommand,\n    videoOutputPath: `${outputDir}/${baseName}_chinese.mp4`\n  }\n}];"
+      },
+      "id": "b8eaee46-ddfb-47be-8673-6732303ac8bf",
+      "name": "准备视频合成命令",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1184,
+        48
+      ],
+      "notes": "MarginV 字幕位置大小,默认20  数值越大，字幕位置越靠上（远离底部边缘）；数值越小，字幕越靠近底部边缘。\n字体颜色：由 PrimaryColour 控制\n描边颜色：由 OutlineColour 控制\n描边粗细：由 Outline 控制,数值越大描边越粗"
+    },
+    {
+      "parameters": {
+        "executeOnce": false,
+        "command": "={{ $json.ffmpegCommand }}"
+      },
+      "id": "0dbdb286-0b79-46f7-a8a1-347c731d21fc",
+      "name": "执行视频合成",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1424,
+        80
+      ],
+      "notes": "执行FFmpeg命令"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ✅ 修复版:验证字幕文件\n// 关键修复:显式从\"聚合所有结果\"节点获取数据,确保有 bilingualSrt 字段\n\nconst aggregatedData = $('聚合所有结果').first().json;\nconst subtitleMode = aggregatedData.subtitleMode;\n\nif (subtitleMode === 'none') {\n  console.log('ℹ️  无字幕模式,跳过字幕验证\\n');\n  return [{ json: $input.first().json }];\n}\n\nconst srtFilePath = aggregatedData.srtFilePath;\nconst srtFileName = aggregatedData.srtFileName;\nconst srtContent = aggregatedData.bilingualSrt || '';\n\nconsole.log('\\n' + '='.repeat(60));\nconsole.log('🔍 字幕文件验证');\nconsole.log('='.repeat(60));\nconsole.log(`📁 文件路径: ${srtFilePath}`);\nconsole.log(`📝 文件名: ${srtFileName}`);\nconsole.log(`📊 内容长度: ${srtContent.length} 字符`);\nconsole.log(`📄 行数: ${srtContent.split('\\n').length} 行`);\n\n// 验证内容\nif (!srtContent || srtContent.length === 0) {\n  console.error('\\n❌ 错误: 字幕内容为空!');\n  console.error('调试信息:');\n  console.error('  - subtitleMode:', subtitleMode);\n  console.error('  - srtFilePath:', srtFilePath);\n  console.error('  - srtFileName:', srtFileName);\n  console.error('\\n💡 可能的原因:');\n  console.error('  1. \"聚合所有结果\"节点未正确生成字幕');\n  console.error('  2. bilingualSrt 字段为空或未定义');\n  console.error('  3. 请检查\"聚合所有结果\"节点的日志输出');\n  throw new Error('字幕内容为空,无法继续处理');\n}\n\nif (!srtFilePath || srtFilePath.includes('undefined')) {\n  console.error('❌ 错误: 字幕文件路径无效!');\n  throw new Error(`字幕文件路径无效: ${srtFilePath}`);\n}\n\n// 显示前几行内容预览\nconst preview = srtContent.split('\\n').slice(0, 8).join('\\n');\nconsole.log('\\n📋 内容预览:');\nconsole.log(preview);\nconsole.log('...');\n\nconsole.log('\\n✅ 字幕文件验证通过!');\nconsole.log('='.repeat(60) + '\\n');\n\n// 返回上游的数据(恢复变量2的输出)\nreturn [{ json: $input.first().json }];"
+      },
+      "id": "be91c6a5-6f6d-4136-a02b-a04d04348516",
+      "name": "验证字幕文件",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        944,
+        16
+      ],
+      "notes": "✅ 已修复: 显式从\"聚合所有结果\"获取 bilingualSrt"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -3792,
+        192
+      ],
+      "id": "9d48519b-3c46-4866-8ebc-8b4275812b87",
+      "name": "Loop Over Items"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nbak",
+  "repo_owner": "wodaili-kingpwf",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-10-24T12:08:15.116Z",
+      "createdAt": "2025-10-24T12:08:15.116Z",
+      "role": "workflow:owner",
+      "workflowId": "ELF07CnYlyn8PYRr",
+      "projectId": "bhYbeEidmtHtdTx7"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-10-24T12:08:15.114Z",
+  "versionId": "f503705d-de2c-4eba-a1e2-c068c24a8a3a"
+}
