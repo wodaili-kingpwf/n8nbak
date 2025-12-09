@@ -1,0 +1,231 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-04T13:41:37.814Z",
+    "createdAt": "2025-12-04T13:41:37.814Z",
+    "versionId": "e50377c1-fcaf-46c9-9c6d-617da8e2d720",
+    "workflowId": "qedyv1mWfNmwrFVl",
+    "nodes": [
+      {
+        "parameters": {
+          "options": {}
+        },
+        "id": "1de1d7cf-ab6f-451d-95f6-03bb2e7f283e",
+        "name": "When chat message received",
+        "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+        "position": [
+          736,
+          16
+        ],
+        "webhookId": "53c136fe-3e77-4709-a143-fe82746dd8b6",
+        "typeVersion": 1.1
+      },
+      {
+        "parameters": {},
+        "id": "2bf85cbb-1716-4df3-bc02-cd6fc36d788d",
+        "name": "Simple Memory",
+        "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+        "position": [
+          1088,
+          240
+        ],
+        "typeVersion": 1.3
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "id": "831c952b-98cb-4954-8b97-de4959be745c",
+        "name": "AI Agent",
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "position": [
+          976,
+          16
+        ],
+        "typeVersion": 1.8
+      },
+      {
+        "parameters": {
+          "model": "qwen3:8b",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+        "typeVersion": 1,
+        "position": [
+          848,
+          224
+        ],
+        "id": "f9f86715-6a72-4709-9b1c-ffd4032227dd",
+        "name": "Ollama Chat Model",
+        "credentials": {
+          "ollamaApi": {
+            "id": "6HpsR0fR2lkzPktt",
+            "name": "Ollama account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Simple Memory": {
+        "ai_memory": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_memory",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "When chat message received": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ollama Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "e50377c1-fcaf-46c9-9c6d-617da8e2d720",
+  "connections": {
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-24T15:24:28.198Z",
+  "id": "qedyv1mWfNmwrFVl",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "ai agent chat",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1de1d7cf-ab6f-451d-95f6-03bb2e7f283e",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "position": [
+        736,
+        16
+      ],
+      "webhookId": "53c136fe-3e77-4709-a143-fe82746dd8b6",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {},
+      "id": "2bf85cbb-1716-4df3-bc02-cd6fc36d788d",
+      "name": "Simple Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "position": [
+        1088,
+        240
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "831c952b-98cb-4954-8b97-de4959be745c",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        976,
+        16
+      ],
+      "typeVersion": 1.8
+    },
+    {
+      "parameters": {
+        "model": "qwen3:8b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        848,
+        224
+      ],
+      "id": "f9f86715-6a72-4709-9b1c-ffd4032227dd",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "6HpsR0fR2lkzPktt",
+          "name": "Ollama account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nbak",
+  "repo_owner": "wodaili-kingpwf",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-10-24T15:24:28.201Z",
+      "createdAt": "2025-10-24T15:24:28.201Z",
+      "role": "workflow:owner",
+      "workflowId": "qedyv1mWfNmwrFVl",
+      "projectId": "bhYbeEidmtHtdTx7"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-10-24T15:34:26.000Z",
+  "versionId": "e50377c1-fcaf-46c9-9c6d-617da8e2d720"
+}
