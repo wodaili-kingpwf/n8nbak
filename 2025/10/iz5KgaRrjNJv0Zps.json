@@ -1,0 +1,2985 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-04T13:41:37.814Z",
+    "createdAt": "2025-12-04T13:41:37.814Z",
+    "versionId": "e0844488-04e7-4596-b9e2-cd3dae213317",
+    "workflowId": "iz5KgaRrjNJv0Zps",
+    "nodes": [
+      {
+        "parameters": {
+          "action": "hmac",
+          "type": "=SHA1",
+          "value": "={{ $json.subStr }}",
+          "secret": "={{ $('参数').item.json.libSecretKey }}",
+          "encoding": "base64"
+        },
+        "type": "n8n-nodes-base.crypto",
+        "typeVersion": 1,
+        "position": [
+          2144,
+          688
+        ],
+        "id": "5f51c819-96cf-4232-a19e-fc6796b06399",
+        "name": "签名-生图"
+      },
+      {
+        "parameters": {
+          "jsCode": "// 获取CryptoJS节点输出的签名\nconst base64Signature = $input.first().json.data;\n\n// 转换为URL-safe Base64格式（不补全位数）\nconst urlSafeSignature = base64Signature\n    .replace(/\\+/g, '-')    // 将 + 替换为 -\n    .replace(/\\//g, '_')    // 将 / 替换为 _\n    .replace(/=+$/, '');    // 去掉末尾的 = 填充字符\n\nreturn {\n    json: {\n        ...($input.first().json),  // 保留原有数据\n        signature: urlSafeSignature  // 添加最终签名\n    }\n};\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          2320,
+          688
+        ],
+        "id": "af46d9ee-78ab-4115-8f14-1973b64fd7a1",
+        "name": "URL 安全-结果"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "=https://openapi.liblibai.cloud{{ $('参数').item.json[\"Liblib 结果 url\"] }}?AccessKey={{ $('参数').item.json.libAccessKey }}&Signature={{ $json.signature }}&Timestamp={{ $('参数').item.json.Timestamp }}&SignatureNonce={{ $('参数').item.json.SignatureNonce }}",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "generateUuid",
+                "value": "={{ $('lib生图').item.json.data.generateUuid }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          2496,
+          688
+        ],
+        "id": "fbcd467c-4c17-4cf5-887c-1b03c0f1e3e2",
+        "name": "Liblib 结果"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "29897656-ff7e-4b3b-9da1-25c4667d28d8",
+                "leftValue": "={{ $('Liblib 结果').item.json.data.images[0].imageUrl }}",
+                "rightValue": "https",
+                "operator": {
+                  "type": "string",
+                  "operation": "contains"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          2816,
+          976
+        ],
+        "id": "b7ebf3bb-2b0d-45f3-9ca3-3b8e1fcfc686",
+        "name": "判断-Liblib"
+      },
+      {
+        "parameters": {
+          "amount": 15
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          1808,
+          688
+        ],
+        "id": "0d695bdd-91fb-4129-8677-05b027573b56",
+        "name": "等待",
+        "webhookId": "016e8072-1857-41fe-8040-4955ecd77d60"
+      },
+      {
+        "parameters": {
+          "url": "={{ $json.data.images[0].imageUrl }}",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          2944,
+          688
+        ],
+        "id": "1fb5578a-03ae-409e-a8b6-87acca11a9c9",
+        "name": "下载图片"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $json.content }}",
+          "hasOutputParser": true,
+          "options": {
+            "systemMessage": "=你是一位专业的古诗词文生图及视频提示词生成器。请严格遵循以下规则处理用户输入，确保所有输出内容都符合中国古代（特别是唐代）的背景。\n\n**核心规则：**\n* **严禁现代化元素**：所有生成的提示词中，绝对不能包含任何现代科技、建筑、服饰或物品（如无人机、电灯、现代道路等）。这是最高优先级规则。\n* **输出格式**：最终结果必须是严格的 JSON 数组格式。\n\n---\n\n### **处理流程**\n\n**1. 输入解析：**\n* **元信息**：识别由 `《》` 包裹的标题和 `[]` 包裹的年代作者。\n* **诗句**：其余内容按标点（`，。；`）和换行符拆分为独立诗句。\n\n**2. 整体意境提示词 (针对元信息)：**\n* 如果存在元信息，将其作为第一个处理单元。\n* **图片提示词 (Image Prompt)**：生成一个概括全诗核心意象的、史诗般的广阔场景 (epic, sweeping vista)。此场景可不含人物，聚焦于壮丽的自然或建筑风光。\n* **视频提示词 (Video Prompt)**：生成一个宏大的开场镜头指令，使用如 `a majestic, sweeping high-angle shot reveals the epic scene` 或 `a high-angle crane shot slowly glides over the vast landscape` 来建立场景。\n\n**3. 逐句细节提示词 (针对诗句)：**\n* 为每个独立诗句生成专用的图片和视频提示词。\n\n---\n\n### **提示词生成细则**\n\n**A. 图片提示词 (Image Prompt):**\n* **风格与内容**:\n    * 统一采用 `Disney 3D cartoon style` 艺术风格。\n    * 使用英文，长度控制在 30-35 个单词。\n    * 内容需融合诗句核心元素、情感氛围及光影，并体现唐代古典美学。\n* **默认角色 (重要！)**:\n    * **判断角色**: 必须根据诗句内容和意境，当场景中有人物角色时，判断最适合的角色，并选择以下其中一个作为开头：\n            * `classical Chinese poem, A CGI image of an Asian girl,` (年轻女性)\n            * `classical Chinese poem, A CGI image of an Asian boy,` (年轻男性)\n            * `classical Chinese poem, A CGI image of an Asian woman,` (成年女性)\n            * `classical Chinese poem, A CGI image of an Asian man,` (成年男性)\n            * `classical Chinese poem, A CGI image of an old woman,` (年长女性)\n            * `classical Chinese poem, A CGI image of an old man,` (年长男性)\n\n**B. 视频提示词 (Video Prompt) - 诗意运镜版:**\n* **生成逻辑**: 视频提示词必须是 **“核心动态 (Core Dynamic) + 诗意镜头 (Poetic Camera Movement)”** 的组合，创造出电影感。\n* **核心动态**: 描述人物的细微动作 (如 `her eyes slowly open`, `a single tear falls`) 或环境的关键动态 (如 `willow branches sway gently`, `lanterns flicker softly`)。\n* **诗意镜头**: 根据诗句中的特定汉字或意象，选择一种镜头移动来强化情感：\n    * **仰/俯 (Tilt)**: 当诗句含“望, 登, 高, 落, 低, 俯”或描绘“山, 月, 楼”时，使用 `camera tilts up/down`。\n        * *例 (举头望明月)*: `...as the camera tilts up to follow her gaze.`\n    * **平移 (Pan)**: 当诗句含“行, 去, 随, 过”或描绘“江, 河, 路”时，使用 `slow pan left/right`。\n        * *例 (一行白鹭上青天)*: `...slow pan right to follow their flight path.`\n    * **推/拉 (Zoom)**:\n        * 聚焦内心“情, 思, 愁”或细微事物“泪, 花”时，用 `slow zoom in` 增强情感。\n        * 表现“孤, 尽, 阔, 远”等孤独或宏大感时，用 `slow zoom out` 凸显广阔。\n        * *例 (孤舟蓑笠翁)*: `...slow zoom out to emphasize her solitude in the vastness.`\n* **最终组合**: 将两者融合成一个流畅的英文指令。\n    * *示例*: `willow branches sway gently, as the camera slowly pans right.`\n\n---\n\n### **最终输出格式 (JSON)**\n```\n[\n  {\n    \"verse\": \"标题和作者\",\n    \"prompt\": \"概括性图片提示词\",\n    \"prompt1\": \"宏大开场视频提示词\"\n  },\n  {\n    \"verse\": \"原诗句1\",\n    \"prompt\": \"图片提示词1\",\n    \"prompt1\": \"动态组合视频提示词1\"\n  },\n  {\n    \"verse\": \"原诗句2\",\n    \"prompt\": \"图片提示词2\",\n    \"prompt1\": \"动态组合视频提示词2\"\n  }\n]\n```"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 2,
+        "position": [
+          336,
+          288
+        ],
+        "id": "55f78008-649a-4574-9ca2-67ba811223e9",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "authentication": "basicAuth",
+          "formTitle": "诗词",
+          "formFields": {
+            "values": [
+              {
+                "fieldLabel": "content",
+                "fieldType": "textarea",
+                "placeholder": "content",
+                "requiredField": true
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.formTrigger",
+        "typeVersion": 2.2,
+        "position": [
+          160,
+          400
+        ],
+        "id": "d1b7a6df-b077-4114-bcbe-fa4e88fbb65a",
+        "name": "On form submission",
+        "webhookId": "893a87cd-7e4d-4518-adc5-a404eae88bc9",
+        "alwaysOutputData": true,
+        "credentials": {
+          "httpBasicAuth": {
+            "id": "DT5IayPUi9S6vTwX",
+            "name": "Unnamed credential"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsonSchemaExample": "[\n  {\n    \"verse\": \"string\",\n    \"prompt\": \"string\",\n    \"prompt1\": \"string\"\n  },\n  {\n    \"verse\": \"string\",\n    \"prompt\": \"string\",\n    \"prompt1\": \"string\"\n  }\n]",
+          "autoFix": true
+        },
+        "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+        "typeVersion": 1.3,
+        "position": [
+          512,
+          448
+        ],
+        "id": "9ebe3549-3551-4abe-9876-95496b4437ec",
+        "name": "Structured Output Parser"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "output",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          656,
+          272
+        ],
+        "id": "7bde5a44-afb8-4aaf-98cc-c510432a61d7",
+        "name": "Split Out"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "709b6a8e-f69a-4adc-942a-e091c4d52aab",
+                "name": "raw",
+                "value": "={{ $json.libUrl }}&{{ $('参数').item.json.Timestamp }}&{{ $('参数').item.json.SignatureNonce }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1120,
+          688
+        ],
+        "id": "265d293e-4e6d-4151-be9f-93edd8d2c830",
+        "name": "Edit Fields1"
+      },
+      {
+        "parameters": {
+          "action": "hmac",
+          "type": "=SHA1",
+          "value": "={{ $json.raw }}",
+          "secret": "={{ $('参数').item.json.libSecretKey }}",
+          "encoding": "base64"
+        },
+        "type": "n8n-nodes-base.crypto",
+        "typeVersion": 1,
+        "position": [
+          1280,
+          688
+        ],
+        "id": "32110b24-b4ca-46df-b2a9-c12dcf20c000",
+        "name": "签名-生图1"
+      },
+      {
+        "parameters": {
+          "jsCode": "// 获取CryptoJS节点输出的签名\nconst base64Signature = $input.first().json.data;\n\n// 转换为URL-safe Base64格式（不补全位数）\nconst urlSafeSignature = base64Signature\n    .replace(/\\+/g, '-')    // 将 + 替换为 -\n    .replace(/\\//g, '_')    // 将 / 替换为 _\n    .replace(/=+$/, '');    // 去掉末尾的 = 填充字符\n\nreturn {\n    json: {\n        ...($input.first().json),  // 保留原有数据\n        signature: urlSafeSignature  // 添加最终签名\n    }\n};\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1440,
+          688
+        ],
+        "id": "bc0f419f-272a-41f0-baf0-6cb3118b88d8",
+        "name": "URL 安全-生图"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          816,
+          448
+        ],
+        "id": "c0072d56-b992-4ca8-8705-37a07b76a617",
+        "name": "Loop Over Items"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "709b6a8e-f69a-4adc-942a-e091c4d52aab",
+                "name": "subStr",
+                "value": "={{ $('参数').item.json['Liblib 结果 url'] }}&{{ $('参数').item.json.Timestamp }}&{{ $('参数').item.json.SignatureNonce }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1968,
+          688
+        ],
+        "id": "ef825c06-78c8-489d-afa7-cfa8b2a7de8b",
+        "name": "Liblib拼接-结果"
+      },
+      {
+        "parameters": {
+          "operation": "write",
+          "fileName": "=F:/pic/{{$('参数').item.json.Timestamp}}.png",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1,
+        "position": [
+          3136,
+          688
+        ],
+        "id": "6e20dc4a-349d-463a-95d7-aa5482411842",
+        "name": "Read/Write Files from Disk"
+      },
+      {
+        "parameters": {
+          "fileSelector": "=F:/pic/{{$('参数').item.json.Timestamp}}.png",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1,
+        "position": [
+          3328,
+          688
+        ],
+        "id": "398f1c80-5039-418c-a1ee-a6bde302616d",
+        "name": "Read/Write Files from Disk1",
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "content": "### 此处是本地生图后传递给云端的识图模型进行分析，如果是线上生图，直接传递url即可",
+          "height": 296,
+          "width": 780
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          2896,
+          624
+        ],
+        "id": "79a3e038-ed61-4783-8049-de8294aad737",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://www.runninghub.cn/task/openapi/create",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Host",
+                "value": "www.runninghub.cn"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"apiKey\": \"xxx\",\n  \"workflowId\": \"1950137059535183873\",\n  \"nodeInfoList\": [\n    {\n      \"nodeId\": \"67\",\n      \"fieldName\": \"image\",\n      \"fieldValue\": \"{{ $('传图到runninghub').item.json.data.fileName }}\"\n    },\n    {\n      \"nodeId\": \"102\",\n      \"fieldName\": \"text\",\n      \"fieldValue\": \"{{ $('Split Out').item.json.prompt1 }}\"\n    }\n  ]\n}\n\n",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          -512,
+          384
+        ],
+        "id": "0ba90817-3a17-4fd5-8955-d7c836ce70a4",
+        "name": "start_task"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://www.runninghub.cn/task/openapi/status",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Host",
+                "value": "www.runninghub.cn"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "apiKey",
+                "value": "xxx"
+              },
+              {
+                "name": "taskId",
+                "value": "={{ $('start_task').item.json.data.taskId }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          -656,
+          528
+        ],
+        "id": "684c6e9c-4e8e-4371-a6b0-8d8b0532ca5e",
+        "name": "get_status"
+      },
+      {
+        "parameters": {
+          "amount": 20
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          -288,
+          544
+        ],
+        "id": "70479732-f41f-480f-b318-a68d36d3b274",
+        "name": "Wait1",
+        "webhookId": "1541a4ea-7025-4265-b80a-e0b6377be72c"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://www.runninghub.cn/task/openapi/outputs",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Host",
+                "value": "www.runninghub.cn"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "apiKey",
+                "value": "xxx"
+              },
+              {
+                "name": "taskId",
+                "value": "={{ $('start_task').item.json.data.taskId }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          0,
+          0
+        ],
+        "id": "31803064-090f-4097-b878-3c4019852ebd",
+        "name": "getResult"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://www.runninghub.cn/task/openapi/upload",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Host",
+                "value": "www.runninghub.cn"
+              }
+            ]
+          },
+          "sendBody": true,
+          "contentType": "multipart-form-data",
+          "bodyParameters": {
+            "parameters": [
+              {
+                "parameterType": "formBinaryData",
+                "name": "file",
+                "inputDataFieldName": "=data"
+              },
+              {
+                "name": "fileType",
+                "value": "image"
+              },
+              {
+                "name": "apiKey",
+                "value": "xxx"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          3504,
+          688
+        ],
+        "id": "4d12b7cb-c6eb-4aff-aafc-6e13b16298b6",
+        "name": "传图到runninghub"
+      },
+      {
+        "parameters": {
+          "url": "={{ $('getResult').item.json.data.first().fileUrl }}",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          160,
+          0
+        ],
+        "id": "ad3abc60-9bfe-4040-a783-ac8304c93d73",
+        "name": "下载视频"
+      },
+      {
+        "parameters": {
+          "operation": "write",
+          "fileName": "=F:/video/runninghub_{{Date.now()}}.mp4",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1,
+        "position": [
+          336,
+          0
+        ],
+        "id": "b5e36f88-d09e-4470-8351-b8960a2a7861",
+        "name": "Read/Write Files from Disk2"
+      },
+      {
+        "parameters": {
+          "fileSelector": "={{ $json.fileName }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.readWriteFile",
+        "typeVersion": 1,
+        "position": [
+          544,
+          -16
+        ],
+        "id": "693cf131-b536-4987-8818-f530f42454c1",
+        "name": "Read/Write Files from Disk3"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "444eb744-004c-4113-a01c-96b19afdbcce",
+                "name": "video_urls",
+                "value": "=F:/video/{{ $json.fileName }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          704,
+          -16
+        ],
+        "id": "a8ec123d-5f7c-4ef6-8692-520f0d63a50c",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          -32,
+          -304
+        ],
+        "id": "1d6988b0-7836-4154-9334-8754de6ba6fa",
+        "name": "No Operation, do nothing"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "8b9b2e43-3c1b-4438-adb5-5af65d928810",
+                "leftValue": "={{ $json.data }}",
+                "rightValue": "=SUCCESS",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              },
+              {
+                "id": "fe2857ec-c79c-4272-a2a8-78a540fbd7ee",
+                "leftValue": "={{ $json.data }}",
+                "rightValue": "=FAILED",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "or"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -496,
+          528
+        ],
+        "id": "27b37960-0085-4239-9fe4-cd87efbdeb8d",
+        "name": "运行是否完结"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "56d26ac0-67c7-4930-9951-beea5493e53e",
+                "leftValue": "={{ $json.data }}",
+                "rightValue": "=SUCCESS",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          -176,
+          16
+        ],
+        "id": "78be3211-655a-4469-bba2-9f725f20c729",
+        "name": "运行是否成功"
+      },
+      {
+        "parameters": {
+          "jsCode": "// 通过节点名称 \"Split Out\" 直接获取其输出的所有项目\n// 注意：这里的 \"Split Out\" 必须是节点的内部名称（Internal Name）\nconst sourceItems = $items(\"Split Out\");\n\n// 我们假设 \"Split Out\" 节点的输出中，你关心的是第一个项目 (index 0)\n// 如果它有多个输出项，你可能需要根据情况选择正确的项目\nconst verseText = sourceItems[0].json.verse;\n\n// --- 后续的计算逻辑保持不变 ---\n\n// 定义正则表达式，用于匹配所有中文字符\nconst regex = /[\\u4e00-\\u9fa5]/g;\n\n// 匹配所有汉字\nconst matchedChars = verseText.match(regex);\n\n// 计算汉字数量\nvar characterCount = matchedChars ? matchedChars.length : 0;\n\nif(characterCount>=7){\n  characterCount = 5;\n}else{\n  characterCount = 4;\n}\n\n// 返回最终结果\nreturn [{\n  json: {\n    char_count: characterCount\n  }\n}];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -704,
+          384
+        ],
+        "id": "70c34c3a-c961-40f5-8cb7-026bb459658e",
+        "name": "Code1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "9dfd2572-bc3c-4455-be5e-f38605b411b4",
+                "name": "libUrl",
+                "value": "/api/generate/webui/text2img",
+                "type": "string"
+              },
+              {
+                "id": "a41f08d2-e56d-4b24-b6c0-6fcc7f1cd5bc",
+                "name": "libAccessKey",
+                "value": "xxx",
+                "type": "string"
+              },
+              {
+                "id": "32dc1902-5517-48d4-b3f0-08f9ebaa83fb",
+                "name": "libSecretKey",
+                "value": "xxx",
+                "type": "string"
+              },
+              {
+                "id": "914ce5b7-61a9-4839-b1d8-843a9faca950",
+                "name": "主模型编号",
+                "value": "412b427ddb674b4dbab9e5abd5ae6057",
+                "type": "string"
+              },
+              {
+                "id": "253bc311-1cb9-47a7-8460-fbfe0a7b673e",
+                "name": "lora编号",
+                "value": "42929705b20c49d38fe559aafd50593a",
+                "type": "string"
+              },
+              {
+                "id": "ff76c20d-3aa3-4423-b7f4-f20660e2ec55",
+                "name": "SignatureNonce",
+                "value": "={{ Math.random().toString(36).slice(2) }}",
+                "type": "string"
+              },
+              {
+                "id": "5d898505-d002-4340-920e-4dd9aaa75e34",
+                "name": "Timestamp",
+                "value": "={{ Date.now().toString() }}",
+                "type": "string"
+              },
+              {
+                "id": "c783143e-088f-4143-9b2d-530ce4d1d1bf",
+                "name": "prompt",
+                "value": "={{ $json.prompt }}",
+                "type": "string"
+              },
+              {
+                "id": "fe525349-6457-4916-9681-64e487c286f4",
+                "name": "Liblib 结果 url",
+                "value": "/api/generate/webui/status",
+                "type": "string"
+              },
+              {
+                "id": "a0ebbb98-8bdf-4be2-8f36-7cc4a4854c08",
+                "name": "copyVoice",
+                "value": "F:/audio/女朗诵.WAV",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          960,
+          688
+        ],
+        "id": "39d65b3c-bf28-4df8-af63-9a25e3938794",
+        "name": "参数"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "=https://openapi.liblibai.cloud{{ $('参数').item.json.libUrl }}?AccessKey={{ $('参数').item.json.libAccessKey }}&Signature={{ $json.signature }}&Timestamp={{ $('参数').item.json.Timestamp }}&SignatureNonce={{ $('参数').item.json.SignatureNonce }}",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n    \"templateUuid\": \"e10adc3949ba59abbe56e057f20f883e\",\n    \"generateParams\": {\n        \"checkPointId\": \"{{ $('参数').item.json['主模型编号'] }}\",\n        \"prompt\": \"{{ $('参数').item.json.prompt }}\",\n        \"negativePrompt\": \"ng_deepnegative_v1_75t,(badhandv4:1.2),EasyNegative,(worst quality:2),\",\n        \"sampler\": 1,\n        \"steps\": 28,\n        \"cfgScale\": 3.5,\n        \"width\": 720,\n        \"height\": 1280,\n        \"imgCount\": 1,\n        \"randnSource\": 0,\n        \"seed\": -1,\n        \"restoreFaces\": 0,\n        \"additionalNetwork\": [\n            {\n                \"modelId\": \"{{ $('参数').item.json['lora编号'] }}\",\n                \"weight\": 1.2\n            }\n        ],\n        \"hiResFixInfo\": {\n            \"hiresSteps\": 30,\n            \"hiresDenoisingStrength\": 0.7,\n            \"upscaler\": 11,\n            \"resizedWidth\": 720,\n            \"resizedHeight\": 1280\n        }\n    }\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1616,
+          688
+        ],
+        "id": "bd051bcd-f38b-4f96-9a92-3d6f67b7541f",
+        "name": "lib生图"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "29897656-ff7e-4b3b-9da1-25c4667d28d8",
+                "leftValue": "={{ $json.msg }}",
+                "rightValue": "敏感",
+                "operator": {
+                  "type": "string",
+                  "operation": "contains"
+                }
+              },
+              {
+                "id": "ca38bf69-d531-4cce-a9f3-88bb4e83be16",
+                "leftValue": "={{ $json.msg }}",
+                "rightValue": "无效",
+                "operator": {
+                  "type": "string",
+                  "operation": "contains"
+                }
+              }
+            ],
+            "combinator": "or"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          2688,
+          688
+        ],
+        "id": "b82796a7-8843-407e-8efb-cf8172ddd86e",
+        "name": "敏感词"
+      },
+      {
+        "parameters": {
+          "amount": 8
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          1328,
+          176
+        ],
+        "id": "59629eab-2937-4a64-ba28-b120918cd275",
+        "name": "Wait2",
+        "webhookId": "302ef48e-2df5-4c03-a6cb-8cf3b684f331"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "cfe8f6da-3234-4b31-b860-38dd869535a9",
+                "leftValue": "={{ $json.message }}",
+                "rightValue": "success",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              },
+              {
+                "id": "9f025996-239d-44be-a174-2525f2183312",
+                "leftValue": "={{ $json.message }}",
+                "rightValue": "fail",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              },
+              {
+                "id": "871cfc87-5f9d-441c-83b5-68adca7bba12",
+                "leftValue": "={{ $json.message }}",
+                "rightValue": "done",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "or"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1680,
+          176
+        ],
+        "id": "da1bcfa0-acd6-4130-879e-067bd42d6ab1",
+        "name": "If1"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "http://127.0.0.1:8503/api/v1/videos",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "= {\n    \"video_subject\": \"\",\n    \"video_script\": {{ JSON.stringify($json.srt_content) }}, \n    \"video_terms\": \"\",\n    \"video_aspect\": \"9:16\",\n    \"video_concat_mode\": \"random\",\n    \"video_transition_mode\": \"Shuffle\",\n    \"video_clip_duration\": 3,\n    \"video_count\": 1,\n    \"alignment_mode\": true,\n    \"alignment_videos\": {{ JSON.stringify($('视频地址和文案').item.json.alignment_videos) }},\n    \"video_source\": \"local\",\n    \"video_materials\": null,\n    \"video_language\": \"\",\n    \"voice_name\": \"megatts3:default\",\n    \"voice_volume\": 1.0,\n    \"voice_rate\": 1.0,\n    \"megatts3_reference_audio\": \"{{ $('参数').first().json.copyVoice}}\",\n    \"megatts3_reference_npy\": \"\",\n    \"megatts3_infer_timestep\": 32,\n    \"megatts3_intelligibility_weight\": 1.4,\n    \"megatts3_similarity_weight\": 3.0,\n    \"bgm_type\": \"\",\n    \"bgm_file\": \"\",\n    \"bgm_volume\": 0.2,\n    \"subtitle_enabled\": true,\n    \"subtitle_position\": \"bottom\",\n    \"custom_position\": 70.0,\n    \"font_name\": \"MicrosoftYaHeiBold.ttc\",\n    \"text_fore_color\": \"#FFFFFF\",\n    \"text_background_color\": true,\n    \"font_size\": 89,\n    \"stroke_color\": \"#000000\",\n    \"stroke_width\": 1.5,\n    \"n_threads\": 2,\n    \"paragraph_number\": 1\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1120,
+          176
+        ],
+        "id": "1c2f5b28-a7cc-4bdc-a8e9-26e0a2e13e70",
+        "name": "本地视频合成服务"
+      },
+      {
+        "parameters": {
+          "url": "=http://127.0.0.1:8080/api/v1/tasks/{{$('本地视频合成服务').item.json.data.task_id}}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1504,
+          176
+        ],
+        "id": "332e7214-1c70-4d33-abaf-3d4b368fec87",
+        "name": "视频状态"
+      },
+      {
+        "parameters": {
+          "jsCode": "const splitOutData = $('Split Out').all();\nconst verses = splitOutData.map(item => item.json.verse);\n// 获取所有输入项的video_urls\nconst urls = $input.all().map(item => item.json.video_urls);\n// 创建alignment_videos数组\nconst alignment_videos = [];\n// 遍历所有urls\nurls.forEach(url => {\n  // 如果url存在且不为空\n  if (url) {\n    alignment_videos.push({\n      \"provider\": \"local\",\n      \"url\": url,\n      \"duration\": 0\n    });\n  }\n});\n// 用换行符连接verses\nconst srtString = verses.filter(item => item).join('\\n');\n// 返回结果\nreturn {\n  json: {\n    alignment_videos: alignment_videos,\n    srt_content: srtString\n  }\n};"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          944,
+          176
+        ],
+        "id": "9d98eb5b-b23d-4e4a-adb3-75be07ca793c",
+        "name": "视频地址和文案"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          1872,
+          160
+        ],
+        "id": "0fcbd3b5-56a3-4103-a612-d06fb4492f01",
+        "name": "No Operation, do nothing1"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+        "typeVersion": 1,
+        "position": [
+          304,
+          512
+        ],
+        "id": "efabad61-26c7-4efa-b605-9f45f46c6e50",
+        "name": "Google Gemini Chat Model",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "xCsMjyRDEtxm8igA",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+        "typeVersion": 1,
+        "position": [
+          528,
+          624
+        ],
+        "id": "557c2100-4aac-492f-bfc8-5ed1a8da78ee",
+        "name": "Google Gemini Chat Model1",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "xCsMjyRDEtxm8igA",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "content": "# 注意：\n### 此提示词非最佳实践，各位可以自行调整(发给AI描述需求一把就可以)\n",
+          "height": 560,
+          "width": 592
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          192,
+          192
+        ],
+        "id": "f4fd1d9a-8aa7-48ba-9009-d97804044f3e",
+        "name": "Sticky Note1"
+      }
+    ],
+    "connections": {
+      "签名-生图": {
+        "main": [
+          [
+            {
+              "node": "URL 安全-结果",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "URL 安全-结果": {
+        "main": [
+          [
+            {
+              "node": "Liblib 结果",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Liblib 结果": {
+        "main": [
+          [
+            {
+              "node": "敏感词",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "判断-Liblib": {
+        "main": [
+          [
+            {
+              "node": "下载图片",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "等待",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "等待": {
+        "main": [
+          [
+            {
+              "node": "Liblib拼接-结果",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "下载图片": {
+        "main": [
+          [
+            {
+              "node": "Read/Write Files from Disk",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent": {
+        "main": [
+          [
+            {
+              "node": "Split Out",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "On form submission": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Structured Output Parser": {
+        "ai_outputParser": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_outputParser",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields1": {
+        "main": [
+          [
+            {
+              "node": "签名-生图1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "签名-生图1": {
+        "main": [
+          [
+            {
+              "node": "URL 安全-生图",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "URL 安全-生图": {
+        "main": [
+          [
+            {
+              "node": "lib生图",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items": {
+        "main": [
+          [
+            {
+              "node": "视频地址和文案",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "参数",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Liblib拼接-结果": {
+        "main": [
+          [
+            {
+              "node": "签名-生图",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Read/Write Files from Disk": {
+        "main": [
+          [
+            {
+              "node": "Read/Write Files from Disk1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Read/Write Files from Disk1": {
+        "main": [
+          [
+            {
+              "node": "传图到runninghub",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "start_task": {
+        "main": [
+          [
+            {
+              "node": "Wait1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "get_status": {
+        "main": [
+          [
+            {
+              "node": "运行是否完结",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait1": {
+        "main": [
+          [
+            {
+              "node": "get_status",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "getResult": {
+        "main": [
+          [
+            {
+              "node": "下载视频",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "传图到runninghub": {
+        "main": [
+          [
+            {
+              "node": "Code1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "下载视频": {
+        "main": [
+          [
+            {
+              "node": "Read/Write Files from Disk2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Read/Write Files from Disk2": {
+        "main": [
+          [
+            {
+              "node": "Read/Write Files from Disk3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Read/Write Files from Disk3": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "运行是否完结": {
+        "main": [
+          [
+            {
+              "node": "运行是否成功",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Wait1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "运行是否成功": {
+        "main": [
+          [
+            {
+              "node": "getResult",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "No Operation, do nothing",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code1": {
+        "main": [
+          [
+            {
+              "node": "start_task",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "参数": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "lib生图": {
+        "main": [
+          [
+            {
+              "node": "等待",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "敏感词": {
+        "main": [
+          [
+            {
+              "node": "等待",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "判断-Liblib",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait2": {
+        "main": [
+          [
+            {
+              "node": "视频状态",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If1": {
+        "main": [
+          [
+            {
+              "node": "No Operation, do nothing1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Wait2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "本地视频合成服务": {
+        "main": [
+          [
+            {
+              "node": "Wait2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "视频状态": {
+        "main": [
+          [
+            {
+              "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "视频地址和文案": {
+        "main": [
+          [
+            {
+              "node": "本地视频合成服务",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Gemini Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Gemini Chat Model1": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Structured Output Parser",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "e0844488-04e7-4596-b9e2-cd3dae213317",
+  "connections": {
+    "签名-生图": {
+      "main": [
+        [
+          {
+            "node": "URL 安全-结果",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "URL 安全-结果": {
+      "main": [
+        [
+          {
+            "node": "Liblib 结果",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Liblib 结果": {
+      "main": [
+        [
+          {
+            "node": "敏感词",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "判断-Liblib": {
+      "main": [
+        [
+          {
+            "node": "下载图片",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "等待",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "等待": {
+      "main": [
+        [
+          {
+            "node": "Liblib拼接-结果",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "下载图片": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "签名-生图1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "签名-生图1": {
+      "main": [
+        [
+          {
+            "node": "URL 安全-生图",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "URL 安全-生图": {
+      "main": [
+        [
+          {
+            "node": "lib生图",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "视频地址和文案",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "参数",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Liblib拼接-结果": {
+      "main": [
+        [
+          {
+            "node": "签名-生图",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk1": {
+      "main": [
+        [
+          {
+            "node": "传图到runninghub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "start_task": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_status": {
+      "main": [
+        [
+          {
+            "node": "运行是否完结",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "get_status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getResult": {
+      "main": [
+        [
+          {
+            "node": "下载视频",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "传图到runninghub": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "下载视频": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk2": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "运行是否完结": {
+      "main": [
+        [
+          {
+            "node": "运行是否成功",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "运行是否成功": {
+      "main": [
+        [
+          {
+            "node": "getResult",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "start_task",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "参数": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "lib生图": {
+      "main": [
+        [
+          {
+            "node": "等待",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "敏感词": {
+      "main": [
+        [
+          {
+            "node": "等待",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "判断-Liblib",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "视频状态",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "本地视频合成服务": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "视频状态": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "视频地址和文案": {
+      "main": [
+        [
+          {
+            "node": "本地视频合成服务",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-14T16:57:40.192Z",
+  "id": "iz5KgaRrjNJv0Zps",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "诗词，无密钥版，可发线上",
+  "nodes": [
+    {
+      "parameters": {
+        "action": "hmac",
+        "type": "=SHA1",
+        "value": "={{ $json.subStr }}",
+        "secret": "={{ $('参数').item.json.libSecretKey }}",
+        "encoding": "base64"
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        2144,
+        688
+      ],
+      "id": "5f51c819-96cf-4232-a19e-fc6796b06399",
+      "name": "签名-生图"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 获取CryptoJS节点输出的签名\nconst base64Signature = $input.first().json.data;\n\n// 转换为URL-safe Base64格式（不补全位数）\nconst urlSafeSignature = base64Signature\n    .replace(/\\+/g, '-')    // 将 + 替换为 -\n    .replace(/\\//g, '_')    // 将 / 替换为 _\n    .replace(/=+$/, '');    // 去掉末尾的 = 填充字符\n\nreturn {\n    json: {\n        ...($input.first().json),  // 保留原有数据\n        signature: urlSafeSignature  // 添加最终签名\n    }\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2320,
+        688
+      ],
+      "id": "af46d9ee-78ab-4115-8f14-1973b64fd7a1",
+      "name": "URL 安全-结果"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://openapi.liblibai.cloud{{ $('参数').item.json[\"Liblib 结果 url\"] }}?AccessKey={{ $('参数').item.json.libAccessKey }}&Signature={{ $json.signature }}&Timestamp={{ $('参数').item.json.Timestamp }}&SignatureNonce={{ $('参数').item.json.SignatureNonce }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "generateUuid",
+              "value": "={{ $('lib生图').item.json.data.generateUuid }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2496,
+        688
+      ],
+      "id": "fbcd467c-4c17-4cf5-887c-1b03c0f1e3e2",
+      "name": "Liblib 结果"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "29897656-ff7e-4b3b-9da1-25c4667d28d8",
+              "leftValue": "={{ $('Liblib 结果').item.json.data.images[0].imageUrl }}",
+              "rightValue": "https",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2816,
+        976
+      ],
+      "id": "b7ebf3bb-2b0d-45f3-9ca3-3b8e1fcfc686",
+      "name": "判断-Liblib"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1808,
+        688
+      ],
+      "id": "0d695bdd-91fb-4129-8677-05b027573b56",
+      "name": "等待",
+      "webhookId": "016e8072-1857-41fe-8040-4955ecd77d60"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data.images[0].imageUrl }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2944,
+        688
+      ],
+      "id": "1fb5578a-03ae-409e-a8b6-87acca11a9c9",
+      "name": "下载图片"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.content }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=你是一位专业的古诗词文生图及视频提示词生成器。请严格遵循以下规则处理用户输入，确保所有输出内容都符合中国古代（特别是唐代）的背景。\n\n**核心规则：**\n* **严禁现代化元素**：所有生成的提示词中，绝对不能包含任何现代科技、建筑、服饰或物品（如无人机、电灯、现代道路等）。这是最高优先级规则。\n* **输出格式**：最终结果必须是严格的 JSON 数组格式。\n\n---\n\n### **处理流程**\n\n**1. 输入解析：**\n* **元信息**：识别由 `《》` 包裹的标题和 `[]` 包裹的年代作者。\n* **诗句**：其余内容按标点（`，。；`）和换行符拆分为独立诗句。\n\n**2. 整体意境提示词 (针对元信息)：**\n* 如果存在元信息，将其作为第一个处理单元。\n* **图片提示词 (Image Prompt)**：生成一个概括全诗核心意象的、史诗般的广阔场景 (epic, sweeping vista)。此场景可不含人物，聚焦于壮丽的自然或建筑风光。\n* **视频提示词 (Video Prompt)**：生成一个宏大的开场镜头指令，使用如 `a majestic, sweeping high-angle shot reveals the epic scene` 或 `a high-angle crane shot slowly glides over the vast landscape` 来建立场景。\n\n**3. 逐句细节提示词 (针对诗句)：**\n* 为每个独立诗句生成专用的图片和视频提示词。\n\n---\n\n### **提示词生成细则**\n\n**A. 图片提示词 (Image Prompt):**\n* **风格与内容**:\n    * 统一采用 `Disney 3D cartoon style` 艺术风格。\n    * 使用英文，长度控制在 30-35 个单词。\n    * 内容需融合诗句核心元素、情感氛围及光影，并体现唐代古典美学。\n* **默认角色 (重要！)**:\n    * **判断角色**: 必须根据诗句内容和意境，当场景中有人物角色时，判断最适合的角色，并选择以下其中一个作为开头：\n            * `classical Chinese poem, A CGI image of an Asian girl,` (年轻女性)\n            * `classical Chinese poem, A CGI image of an Asian boy,` (年轻男性)\n            * `classical Chinese poem, A CGI image of an Asian woman,` (成年女性)\n            * `classical Chinese poem, A CGI image of an Asian man,` (成年男性)\n            * `classical Chinese poem, A CGI image of an old woman,` (年长女性)\n            * `classical Chinese poem, A CGI image of an old man,` (年长男性)\n\n**B. 视频提示词 (Video Prompt) - 诗意运镜版:**\n* **生成逻辑**: 视频提示词必须是 **“核心动态 (Core Dynamic) + 诗意镜头 (Poetic Camera Movement)”** 的组合，创造出电影感。\n* **核心动态**: 描述人物的细微动作 (如 `her eyes slowly open`, `a single tear falls`) 或环境的关键动态 (如 `willow branches sway gently`, `lanterns flicker softly`)。\n* **诗意镜头**: 根据诗句中的特定汉字或意象，选择一种镜头移动来强化情感：\n    * **仰/俯 (Tilt)**: 当诗句含“望, 登, 高, 落, 低, 俯”或描绘“山, 月, 楼”时，使用 `camera tilts up/down`。\n        * *例 (举头望明月)*: `...as the camera tilts up to follow her gaze.`\n    * **平移 (Pan)**: 当诗句含“行, 去, 随, 过”或描绘“江, 河, 路”时，使用 `slow pan left/right`。\n        * *例 (一行白鹭上青天)*: `...slow pan right to follow their flight path.`\n    * **推/拉 (Zoom)**:\n        * 聚焦内心“情, 思, 愁”或细微事物“泪, 花”时，用 `slow zoom in` 增强情感。\n        * 表现“孤, 尽, 阔, 远”等孤独或宏大感时，用 `slow zoom out` 凸显广阔。\n        * *例 (孤舟蓑笠翁)*: `...slow zoom out to emphasize her solitude in the vastness.`\n* **最终组合**: 将两者融合成一个流畅的英文指令。\n    * *示例*: `willow branches sway gently, as the camera slowly pans right.`\n\n---\n\n### **最终输出格式 (JSON)**\n```\n[\n  {\n    \"verse\": \"标题和作者\",\n    \"prompt\": \"概括性图片提示词\",\n    \"prompt1\": \"宏大开场视频提示词\"\n  },\n  {\n    \"verse\": \"原诗句1\",\n    \"prompt\": \"图片提示词1\",\n    \"prompt1\": \"动态组合视频提示词1\"\n  },\n  {\n    \"verse\": \"原诗句2\",\n    \"prompt\": \"图片提示词2\",\n    \"prompt1\": \"动态组合视频提示词2\"\n  }\n]\n```"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        336,
+        288
+      ],
+      "id": "55f78008-649a-4574-9ca2-67ba811223e9",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "authentication": "basicAuth",
+        "formTitle": "诗词",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "content",
+              "fieldType": "textarea",
+              "placeholder": "content",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        400
+      ],
+      "id": "d1b7a6df-b077-4114-bcbe-fa4e88fbb65a",
+      "name": "On form submission",
+      "webhookId": "893a87cd-7e4d-4518-adc5-a404eae88bc9",
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "DT5IayPUi9S6vTwX",
+          "name": "Unnamed credential"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "[\n  {\n    \"verse\": \"string\",\n    \"prompt\": \"string\",\n    \"prompt1\": \"string\"\n  },\n  {\n    \"verse\": \"string\",\n    \"prompt\": \"string\",\n    \"prompt1\": \"string\"\n  }\n]",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        512,
+        448
+      ],
+      "id": "9ebe3549-3551-4abe-9876-95496b4437ec",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        656,
+        272
+      ],
+      "id": "7bde5a44-afb8-4aaf-98cc-c510432a61d7",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "709b6a8e-f69a-4adc-942a-e091c4d52aab",
+              "name": "raw",
+              "value": "={{ $json.libUrl }}&{{ $('参数').item.json.Timestamp }}&{{ $('参数').item.json.SignatureNonce }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1120,
+        688
+      ],
+      "id": "265d293e-4e6d-4151-be9f-93edd8d2c830",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "action": "hmac",
+        "type": "=SHA1",
+        "value": "={{ $json.raw }}",
+        "secret": "={{ $('参数').item.json.libSecretKey }}",
+        "encoding": "base64"
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        688
+      ],
+      "id": "32110b24-b4ca-46df-b2a9-c12dcf20c000",
+      "name": "签名-生图1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 获取CryptoJS节点输出的签名\nconst base64Signature = $input.first().json.data;\n\n// 转换为URL-safe Base64格式（不补全位数）\nconst urlSafeSignature = base64Signature\n    .replace(/\\+/g, '-')    // 将 + 替换为 -\n    .replace(/\\//g, '_')    // 将 / 替换为 _\n    .replace(/=+$/, '');    // 去掉末尾的 = 填充字符\n\nreturn {\n    json: {\n        ...($input.first().json),  // 保留原有数据\n        signature: urlSafeSignature  // 添加最终签名\n    }\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        688
+      ],
+      "id": "bc0f419f-272a-41f0-baf0-6cb3118b88d8",
+      "name": "URL 安全-生图"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        816,
+        448
+      ],
+      "id": "c0072d56-b992-4ca8-8705-37a07b76a617",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "709b6a8e-f69a-4adc-942a-e091c4d52aab",
+              "name": "subStr",
+              "value": "={{ $('参数').item.json['Liblib 结果 url'] }}&{{ $('参数').item.json.Timestamp }}&{{ $('参数').item.json.SignatureNonce }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1968,
+        688
+      ],
+      "id": "ef825c06-78c8-489d-afa7-cfa8b2a7de8b",
+      "name": "Liblib拼接-结果"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=F:/pic/{{$('参数').item.json.Timestamp}}.png",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        3136,
+        688
+      ],
+      "id": "6e20dc4a-349d-463a-95d7-aa5482411842",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "fileSelector": "=F:/pic/{{$('参数').item.json.Timestamp}}.png",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        3328,
+        688
+      ],
+      "id": "398f1c80-5039-418c-a1ee-a6bde302616d",
+      "name": "Read/Write Files from Disk1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "### 此处是本地生图后传递给云端的识图模型进行分析，如果是线上生图，直接传递url即可",
+        "height": 296,
+        "width": 780
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2896,
+        624
+      ],
+      "id": "79a3e038-ed61-4783-8049-de8294aad737",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.runninghub.cn/task/openapi/create",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Host",
+              "value": "www.runninghub.cn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"apiKey\": \"xxx\",\n  \"workflowId\": \"1950137059535183873\",\n  \"nodeInfoList\": [\n    {\n      \"nodeId\": \"67\",\n      \"fieldName\": \"image\",\n      \"fieldValue\": \"{{ $('传图到runninghub').item.json.data.fileName }}\"\n    },\n    {\n      \"nodeId\": \"102\",\n      \"fieldName\": \"text\",\n      \"fieldValue\": \"{{ $('Split Out').item.json.prompt1 }}\"\n    }\n  ]\n}\n\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -512,
+        384
+      ],
+      "id": "0ba90817-3a17-4fd5-8955-d7c836ce70a4",
+      "name": "start_task"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.runninghub.cn/task/openapi/status",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Host",
+              "value": "www.runninghub.cn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "apiKey",
+              "value": "xxx"
+            },
+            {
+              "name": "taskId",
+              "value": "={{ $('start_task').item.json.data.taskId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -656,
+        528
+      ],
+      "id": "684c6e9c-4e8e-4371-a6b0-8d8b0532ca5e",
+      "name": "get_status"
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -288,
+        544
+      ],
+      "id": "70479732-f41f-480f-b318-a68d36d3b274",
+      "name": "Wait1",
+      "webhookId": "1541a4ea-7025-4265-b80a-e0b6377be72c"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.runninghub.cn/task/openapi/outputs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Host",
+              "value": "www.runninghub.cn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "apiKey",
+              "value": "xxx"
+            },
+            {
+              "name": "taskId",
+              "value": "={{ $('start_task').item.json.data.taskId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "31803064-090f-4097-b878-3c4019852ebd",
+      "name": "getResult"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.runninghub.cn/task/openapi/upload",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Host",
+              "value": "www.runninghub.cn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "=data"
+            },
+            {
+              "name": "fileType",
+              "value": "image"
+            },
+            {
+              "name": "apiKey",
+              "value": "xxx"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3504,
+        688
+      ],
+      "id": "4d12b7cb-c6eb-4aff-aafc-6e13b16298b6",
+      "name": "传图到runninghub"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('getResult').item.json.data.first().fileUrl }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        160,
+        0
+      ],
+      "id": "ad3abc60-9bfe-4040-a783-ac8304c93d73",
+      "name": "下载视频"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=F:/video/runninghub_{{Date.now()}}.mp4",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        336,
+        0
+      ],
+      "id": "b5e36f88-d09e-4470-8351-b8960a2a7861",
+      "name": "Read/Write Files from Disk2"
+    },
+    {
+      "parameters": {
+        "fileSelector": "={{ $json.fileName }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        544,
+        -16
+      ],
+      "id": "693cf131-b536-4987-8818-f530f42454c1",
+      "name": "Read/Write Files from Disk3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "444eb744-004c-4113-a01c-96b19afdbcce",
+              "name": "video_urls",
+              "value": "=F:/video/{{ $json.fileName }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        704,
+        -16
+      ],
+      "id": "a8ec123d-5f7c-4ef6-8692-520f0d63a50c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        -304
+      ],
+      "id": "1d6988b0-7836-4154-9334-8754de6ba6fa",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8b9b2e43-3c1b-4438-adb5-5af65d928810",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "=SUCCESS",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "fe2857ec-c79c-4272-a2a8-78a540fbd7ee",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "=FAILED",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -496,
+        528
+      ],
+      "id": "27b37960-0085-4239-9fe4-cd87efbdeb8d",
+      "name": "运行是否完结"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "56d26ac0-67c7-4930-9951-beea5493e53e",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "=SUCCESS",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -176,
+        16
+      ],
+      "id": "78be3211-655a-4469-bba2-9f725f20c729",
+      "name": "运行是否成功"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 通过节点名称 \"Split Out\" 直接获取其输出的所有项目\n// 注意：这里的 \"Split Out\" 必须是节点的内部名称（Internal Name）\nconst sourceItems = $items(\"Split Out\");\n\n// 我们假设 \"Split Out\" 节点的输出中，你关心的是第一个项目 (index 0)\n// 如果它有多个输出项，你可能需要根据情况选择正确的项目\nconst verseText = sourceItems[0].json.verse;\n\n// --- 后续的计算逻辑保持不变 ---\n\n// 定义正则表达式，用于匹配所有中文字符\nconst regex = /[\\u4e00-\\u9fa5]/g;\n\n// 匹配所有汉字\nconst matchedChars = verseText.match(regex);\n\n// 计算汉字数量\nvar characterCount = matchedChars ? matchedChars.length : 0;\n\nif(characterCount>=7){\n  characterCount = 5;\n}else{\n  characterCount = 4;\n}\n\n// 返回最终结果\nreturn [{\n  json: {\n    char_count: characterCount\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -704,
+        384
+      ],
+      "id": "70c34c3a-c961-40f5-8cb7-026bb459658e",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9dfd2572-bc3c-4455-be5e-f38605b411b4",
+              "name": "libUrl",
+              "value": "/api/generate/webui/text2img",
+              "type": "string"
+            },
+            {
+              "id": "a41f08d2-e56d-4b24-b6c0-6fcc7f1cd5bc",
+              "name": "libAccessKey",
+              "value": "xxx",
+              "type": "string"
+            },
+            {
+              "id": "32dc1902-5517-48d4-b3f0-08f9ebaa83fb",
+              "name": "libSecretKey",
+              "value": "xxx",
+              "type": "string"
+            },
+            {
+              "id": "914ce5b7-61a9-4839-b1d8-843a9faca950",
+              "name": "主模型编号",
+              "value": "412b427ddb674b4dbab9e5abd5ae6057",
+              "type": "string"
+            },
+            {
+              "id": "253bc311-1cb9-47a7-8460-fbfe0a7b673e",
+              "name": "lora编号",
+              "value": "42929705b20c49d38fe559aafd50593a",
+              "type": "string"
+            },
+            {
+              "id": "ff76c20d-3aa3-4423-b7f4-f20660e2ec55",
+              "name": "SignatureNonce",
+              "value": "={{ Math.random().toString(36).slice(2) }}",
+              "type": "string"
+            },
+            {
+              "id": "5d898505-d002-4340-920e-4dd9aaa75e34",
+              "name": "Timestamp",
+              "value": "={{ Date.now().toString() }}",
+              "type": "string"
+            },
+            {
+              "id": "c783143e-088f-4143-9b2d-530ce4d1d1bf",
+              "name": "prompt",
+              "value": "={{ $json.prompt }}",
+              "type": "string"
+            },
+            {
+              "id": "fe525349-6457-4916-9681-64e487c286f4",
+              "name": "Liblib 结果 url",
+              "value": "/api/generate/webui/status",
+              "type": "string"
+            },
+            {
+              "id": "a0ebbb98-8bdf-4be2-8f36-7cc4a4854c08",
+              "name": "copyVoice",
+              "value": "F:/audio/女朗诵.WAV",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        960,
+        688
+      ],
+      "id": "39d65b3c-bf28-4df8-af63-9a25e3938794",
+      "name": "参数"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://openapi.liblibai.cloud{{ $('参数').item.json.libUrl }}?AccessKey={{ $('参数').item.json.libAccessKey }}&Signature={{ $json.signature }}&Timestamp={{ $('参数').item.json.Timestamp }}&SignatureNonce={{ $('参数').item.json.SignatureNonce }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"templateUuid\": \"e10adc3949ba59abbe56e057f20f883e\",\n    \"generateParams\": {\n        \"checkPointId\": \"{{ $('参数').item.json['主模型编号'] }}\",\n        \"prompt\": \"{{ $('参数').item.json.prompt }}\",\n        \"negativePrompt\": \"ng_deepnegative_v1_75t,(badhandv4:1.2),EasyNegative,(worst quality:2),\",\n        \"sampler\": 1,\n        \"steps\": 28,\n        \"cfgScale\": 3.5,\n        \"width\": 720,\n        \"height\": 1280,\n        \"imgCount\": 1,\n        \"randnSource\": 0,\n        \"seed\": -1,\n        \"restoreFaces\": 0,\n        \"additionalNetwork\": [\n            {\n                \"modelId\": \"{{ $('参数').item.json['lora编号'] }}\",\n                \"weight\": 1.2\n            }\n        ],\n        \"hiResFixInfo\": {\n            \"hiresSteps\": 30,\n            \"hiresDenoisingStrength\": 0.7,\n            \"upscaler\": 11,\n            \"resizedWidth\": 720,\n            \"resizedHeight\": 1280\n        }\n    }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1616,
+        688
+      ],
+      "id": "bd051bcd-f38b-4f96-9a92-3d6f67b7541f",
+      "name": "lib生图"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "29897656-ff7e-4b3b-9da1-25c4667d28d8",
+              "leftValue": "={{ $json.msg }}",
+              "rightValue": "敏感",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "ca38bf69-d531-4cce-a9f3-88bb4e83be16",
+              "leftValue": "={{ $json.msg }}",
+              "rightValue": "无效",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2688,
+        688
+      ],
+      "id": "b82796a7-8843-407e-8efb-cf8172ddd86e",
+      "name": "敏感词"
+    },
+    {
+      "parameters": {
+        "amount": 8
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1328,
+        176
+      ],
+      "id": "59629eab-2937-4a64-ba28-b120918cd275",
+      "name": "Wait2",
+      "webhookId": "302ef48e-2df5-4c03-a6cb-8cf3b684f331"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cfe8f6da-3234-4b31-b860-38dd869535a9",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "success",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "9f025996-239d-44be-a174-2525f2183312",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "fail",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "871cfc87-5f9d-441c-83b5-68adca7bba12",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "done",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1680,
+        176
+      ],
+      "id": "da1bcfa0-acd6-4130-879e-067bd42d6ab1",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8503/api/v1/videos",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "= {\n    \"video_subject\": \"\",\n    \"video_script\": {{ JSON.stringify($json.srt_content) }}, \n    \"video_terms\": \"\",\n    \"video_aspect\": \"9:16\",\n    \"video_concat_mode\": \"random\",\n    \"video_transition_mode\": \"Shuffle\",\n    \"video_clip_duration\": 3,\n    \"video_count\": 1,\n    \"alignment_mode\": true,\n    \"alignment_videos\": {{ JSON.stringify($('视频地址和文案').item.json.alignment_videos) }},\n    \"video_source\": \"local\",\n    \"video_materials\": null,\n    \"video_language\": \"\",\n    \"voice_name\": \"megatts3:default\",\n    \"voice_volume\": 1.0,\n    \"voice_rate\": 1.0,\n    \"megatts3_reference_audio\": \"{{ $('参数').first().json.copyVoice}}\",\n    \"megatts3_reference_npy\": \"\",\n    \"megatts3_infer_timestep\": 32,\n    \"megatts3_intelligibility_weight\": 1.4,\n    \"megatts3_similarity_weight\": 3.0,\n    \"bgm_type\": \"\",\n    \"bgm_file\": \"\",\n    \"bgm_volume\": 0.2,\n    \"subtitle_enabled\": true,\n    \"subtitle_position\": \"bottom\",\n    \"custom_position\": 70.0,\n    \"font_name\": \"MicrosoftYaHeiBold.ttc\",\n    \"text_fore_color\": \"#FFFFFF\",\n    \"text_background_color\": true,\n    \"font_size\": 89,\n    \"stroke_color\": \"#000000\",\n    \"stroke_width\": 1.5,\n    \"n_threads\": 2,\n    \"paragraph_number\": 1\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1120,
+        176
+      ],
+      "id": "1c2f5b28-a7cc-4bdc-a8e9-26e0a2e13e70",
+      "name": "本地视频合成服务"
+    },
+    {
+      "parameters": {
+        "url": "=http://127.0.0.1:8080/api/v1/tasks/{{$('本地视频合成服务').item.json.data.task_id}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1504,
+        176
+      ],
+      "id": "332e7214-1c70-4d33-abaf-3d4b368fec87",
+      "name": "视频状态"
+    },
+    {
+      "parameters": {
+        "jsCode": "const splitOutData = $('Split Out').all();\nconst verses = splitOutData.map(item => item.json.verse);\n// 获取所有输入项的video_urls\nconst urls = $input.all().map(item => item.json.video_urls);\n// 创建alignment_videos数组\nconst alignment_videos = [];\n// 遍历所有urls\nurls.forEach(url => {\n  // 如果url存在且不为空\n  if (url) {\n    alignment_videos.push({\n      \"provider\": \"local\",\n      \"url\": url,\n      \"duration\": 0\n    });\n  }\n});\n// 用换行符连接verses\nconst srtString = verses.filter(item => item).join('\\n');\n// 返回结果\nreturn {\n  json: {\n    alignment_videos: alignment_videos,\n    srt_content: srtString\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        944,
+        176
+      ],
+      "id": "9d98eb5b-b23d-4e4a-adb3-75be07ca793c",
+      "name": "视频地址和文案"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1872,
+        160
+      ],
+      "id": "0fcbd3b5-56a3-4103-a612-d06fb4492f01",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        304,
+        512
+      ],
+      "id": "efabad61-26c7-4efa-b605-9f45f46c6e50",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "xCsMjyRDEtxm8igA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        528,
+        624
+      ],
+      "id": "557c2100-4aac-492f-bfc8-5ed1a8da78ee",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "xCsMjyRDEtxm8igA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# 注意：\n### 此提示词非最佳实践，各位可以自行调整(发给AI描述需求一把就可以)\n",
+        "height": 560,
+        "width": 592
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        192,
+        192
+      ],
+      "id": "f4fd1d9a-8aa7-48ba-9009-d97804044f3e",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nbak",
+  "repo_owner": "wodaili-kingpwf",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-10-14T16:57:40.201Z",
+      "createdAt": "2025-10-14T16:57:40.201Z",
+      "role": "workflow:owner",
+      "workflowId": "iz5KgaRrjNJv0Zps",
+      "projectId": "bhYbeEidmtHtdTx7"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-10-14T19:43:56.000Z",
+  "versionId": "e0844488-04e7-4596-b9e2-cd3dae213317"
+}
