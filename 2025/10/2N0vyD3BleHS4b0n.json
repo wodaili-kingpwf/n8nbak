@@ -1,0 +1,2175 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "根据创意生成故事",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "故事脚本生成",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "计算提交任务参数-人物",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "配置字段": {
+      "main": [
+        [
+          {
+            "node": "视频资源配置",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "计算查询任务参数-人物",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "生成角色后整理字段",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "生成角色后整理字段": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "计算提交任务参数-分镜图片",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "计算提交任务参数-人物": {
+      "main": [
+        [
+          {
+            "node": "发起提交任务请求-人物",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "发起提交任务请求-人物": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "计算查询任务参数-人物": {
+      "main": [
+        [
+          {
+            "node": "发起查询任务请求-人物",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "发起查询任务请求-人物": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "计算提交任务参数-分镜图片": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "发起提交任务请求-分镜",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "发起提交任务请求-分镜": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "计算查询任务参数-分镜",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "计算查询任务参数-分镜": {
+      "main": [
+        [
+          {
+            "node": "发起查询任务请求-分镜",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "生成分镜图片后整理字段",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "生成分镜图片后整理字段": {
+      "main": [
+        [
+          {
+            "node": "Split Out3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "音色列表": {
+      "main": [
+        [
+          {
+            "node": "音色匹配",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "MiniMax生成音频",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MiniMax生成音频": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "生成临时音频文件名称",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "发起查询任务请求-分镜": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "分镜图片下载": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk1": {
+      "main": [
+        [
+          {
+            "node": "文件下载路径整理",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out3": {
+      "main": [
+        [
+          {
+            "node": "分镜图片下载",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "生成临时音频文件名称": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "ai生成带时间的视频脚本前数据整理",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ai生成带时间的视频脚本前数据整理": {
+      "main": [
+        [
+          {
+            "node": "计算分镜持续时间、音频播放时间等信息",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser3": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "计算分镜持续时间、音频播放时间等信息",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "文件下载路径整理": {
+      "main": [
+        [
+          {
+            "node": "音色列表",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser4": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "音频脚本生成",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "音频脚本生成": {
+      "main": [
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "音色匹配": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser5": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "音色匹配",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "计算分镜持续时间、音频播放时间等信息": {
+      "main": [
+        [
+          {
+            "node": "生成字幕文件",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "生成字幕文件": {
+      "main": [
+        [
+          {
+            "node": "生成字幕文件名",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "生成字幕文件",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "生成字幕文件名": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk2": {
+      "main": [
+        [
+          {
+            "node": "音视频合并前数据整理",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "视频比例计算": {
+      "main": [
+        [
+          {
+            "node": "根据创意生成故事",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "视频资源配置": {
+      "main": [
+        [
+          {
+            "node": "视频比例计算",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "故事脚本生成": {
+      "main": [
+        [
+          {
+            "node": "音频脚本生成",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "根据创意生成故事": {
+      "main": [
+        [
+          {
+            "node": "故事脚本生成",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "核心字段整理",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "配置字段",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "核心字段整理": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk3": {
+      "main": [
+        [
+          {
+            "node": "Send email1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "配置字段",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "故事脚本生成",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "计算分镜持续时间、音频播放时间等信息",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "生成字幕文件",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "根据创意生成故事",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "音频脚本生成",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "音色匹配",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-27T07:22:02.115Z",
+  "id": "2N0vyD3BleHS4b0n",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "视频生成",
+  "nodes": [
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"story\": \"\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        640,
+        1328
+      ],
+      "id": "95012fe8-86a0-4181-b519-832cba40e976",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"video_title\": \"\",\n\t\"characters\": [\n      {\n      \"character_name\": \"\",\n      \"description\": \"\",\n      \"image_prompt\": \"\"\n      }\n    ],\n  \"storyboard\": [\n    {\n      \"scene\": 1,\n      \"scene_description\": \"\",\n      \"image_prompt\": \"\",\n      \"narration\": \"第一段旁白或对话文本\"\n    }\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1024,
+        1360
+      ],
+      "id": "546431c9-5e63-4ad6-9b6f-c0f8437b8bb7",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "characters",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        464,
+        1616
+      ],
+      "id": "9961e6ac-31ac-4f94-a099-d4d596de1792",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        736,
+        1616
+      ],
+      "id": "464ddc63-8f4f-4f90-ace5-3c2950960f98",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7dbba42b-543f-4738-a8a8-7bed97dbeb95",
+              "name": "accessKeyId",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "a9f3aaf5-51bb-482e-ac69-f508a1a094ce",
+              "name": "secretKey",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "63e28f43-82ad-46aa-8ad3-199374339243",
+              "name": "audio_temp_path",
+              "value": "D:\\test\\",
+              "type": "string"
+            },
+            {
+              "id": "6525fbd3-d48f-465c-ab6d-ab2730d1adcb",
+              "name": "email",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        656,
+        848
+      ],
+      "id": "ae786adc-440d-48e2-ac90-0803e30a85be",
+      "name": "配置字段"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1456,
+        1632
+      ],
+      "id": "b7845e05-59ed-471e-91d9-75ea1efbac60",
+      "name": "Wait",
+      "webhookId": "61d93d87-c716-4765-8eca-1548a957b2b9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4b12a9e0-7be3-41d5-a640-2781780d13af",
+              "leftValue": "={{ $json.data.status }}",
+              "rightValue": "done",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2064,
+        1632
+      ],
+      "id": "7a60a240-ee2d-4d08-a25d-9d42893cca35",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fc22a473-c04b-4b51-8dc6-505c4ec66d08",
+              "name": "character_image_url",
+              "value": "={{ $json.data.image_urls[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "f5411344-c025-41f7-912f-715a29d71147",
+              "name": "character_name",
+              "value": "={{ $('Loop Over Items').item.json.character_name }}",
+              "type": "string"
+            },
+            {
+              "id": "45209262-1556-4d5a-846d-a4e465e75287",
+              "name": "character_description",
+              "value": "={{ $('Loop Over Items').item.json.description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2288,
+        1616
+      ],
+      "id": "c28581cb-5d66-4bf9-a31c-12c0f5476127",
+      "name": "生成角色后整理字段"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        464,
+        2032
+      ],
+      "id": "f2b906b9-6cca-4c60-98f1-6b4592eaed81",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import hashlib\nimport hmac\nimport json\nfrom datetime import datetime\n\n\ndef build_canonical_request(method, uri, query_string, headers, signed_headers, hashed_payload):\n    \"\"\"\n    生成规范化请求字符串 (Canonical Request)\n    \"\"\"\n    canonical_headers = '\\n'.join(\n        f\"{key.lower()}:{headers[key].strip()}\" for key in signed_headers\n    )\n\n    return '\\n'.join([\n        method.upper(),\n        uri,\n        query_string,\n        canonical_headers,\n        '',\n        ';'.join(signed_headers),\n        hashed_payload\n    ])\n\n\ndef build_string_to_sign(algorithm, timestamp, credential_scope, hashed_canonical_request):\n    \"\"\"\n    生成待签名字符串 (String to Sign)\n    \"\"\"\n    return '\\n'.join([\n        algorithm,\n        timestamp,\n        credential_scope,\n        hashed_canonical_request\n    ])\n\n\ndef derive_signing_key(secret_key, short_date, region, service):\n    \"\"\"\n    派生签名密钥\n    \"\"\"\n    k_date = hmac.new(secret_key.encode('utf-8'), short_date.encode('utf-8'), hashlib.sha256).digest()\n    k_region = hmac.new(k_date, region.encode('utf-8'), hashlib.sha256).digest()\n    k_service = hmac.new(k_region, service.encode('utf-8'), hashlib.sha256).digest()\n    k_signing = hmac.new(k_service, b'request', hashlib.sha256).digest()\n    return k_signing\n\n\ndef calculate_signature(string_to_sign, signing_key):\n    \"\"\"\n    计算签名 (Signature)\n    \"\"\"\n    return hmac.new(signing_key, string_to_sign.encode('utf-8'), hashlib.sha256).hexdigest()\n\n\ndef get_utc_timestamp():\n    \"\"\"\n    生成 UTC 时间戳字符串\n    :return: 格式为 YYYYMMDDTHHMMSSZ 的 UTC 时间字符串\n    \"\"\"\n    now = datetime.utcnow()\n    return now.strftime('%Y%m%dT%H%M%SZ')\n\n\ndef generate_authorization(config):\n    \"\"\"\n    生成完整的 Authorization 字符串\n    :param config: 配置参数字典\n        - accessKeyId: Access Key ID\n        - secretKey: Secret Access Key\n        - region: 区域，如 'cn-north-1'\n        - service: 服务名，如 'iam'\n        - method: HTTP 方法，如 'POST'\n        - uri: 请求 URI，如 '/'\n        - queryString: 查询字符串，如 'Action=ListUsers&Version=2018-01-01'\n        - headers: 请求头对象\n        - signedHeaders: 参与签名的 Header 名称数组\n        - body: 请求体内容\n    :return: 完整的 Authorization 字符串\n    \"\"\"\n    access_key_id = config['accessKeyId']\n    secret_key = config['secretKey']\n    region = config['region']\n    service = config['service']\n    method = config.get('method', 'POST')\n    uri = config.get('uri', '/')\n    query_string = config.get('queryString', '')\n    headers = config['headers']\n    signed_headers = config['signedHeaders']\n    body = config.get('body', '')\n\n    # 生成或使用提供的 x-date\n    x_date = headers.get('x-date') or get_utc_timestamp()\n    if 'x-date' not in headers:\n        headers['x-date'] = x_date\n    short_date = x_date[:8]  # YYYYMMDD\n\n    # 1. 计算 payload hash\n    hashed_payload = hashlib.sha256(body.encode('utf-8')).hexdigest()\n\n    # 确保 x-content-sha256 头存在\n    if 'x-content-sha256' in signed_headers:\n        headers['x-content-sha256'] = hashed_payload\n\n    # 2. 构建规范化请求\n    canonical_request = build_canonical_request(\n        method,\n        uri,\n        query_string,\n        headers,\n        signed_headers,\n        hashed_payload\n    )\n\n    # 3. 计算规范化请求的 hash\n    hashed_canonical_request = hashlib.sha256(canonical_request.encode('utf-8')).hexdigest()\n\n    # 4. 构建待签名字符串\n    algorithm = 'HMAC-SHA256'\n    credential_scope = f\"{short_date}/{region}/{service}/request\"\n    string_to_sign = build_string_to_sign(\n        algorithm,\n        x_date,\n        credential_scope,\n        hashed_canonical_request\n    )\n\n    # 5. 派生签名密钥\n    signing_key = derive_signing_key(secret_key, short_date, region, service)\n\n    # 6. 计算签名\n    signature = calculate_signature(string_to_sign, signing_key)\n\n    # 7. 构建 Authorization 字符串\n    authorization = f\"{algorithm} Credential={access_key_id}/{credential_scope}, SignedHeaders={';'.join(signed_headers)}, Signature={signature}\"\n\n    return authorization\n\n\ndef generate_request_headers(action, request_body):\n    \"\"\"\n    生成 API 请求头\n    :param action: API 动作名称\n    :param request_body: 请求体对象\n    :return: 包含请求头和请求体的字典\n    \"\"\"\n    body = json.dumps(request_body, separators=(',', ':'), ensure_ascii=False)\n\n    # 配置参数\n    config = {\n        'accessKeyId': _('配置字段').first().json.accessKeyId,\n        'secretKey': _('配置字段').first().json.secretKey,\n        'region': 'cn-north-1',\n        'service': 'cv',\n        'method': 'POST',\n        'uri': '/',\n        'queryString': f'Action={action}&Version=2022-08-31',\n        'headers': {\n            'content-type': 'application/json',\n            'host': 'visual.volcengineapi.com',\n            'x-content-sha256': ''  # 将自动填充\n        },\n        'signedHeaders': ['content-type', 'host', 'x-content-sha256', 'x-date'],\n        'body': body\n    }\n\n    # 生成 Authorization\n    authorization = generate_authorization(config)\n\n    return {\n        'Content-Type': 'application/json',\n        'X-Date': config['headers']['x-date'],\n        'X-Content-Sha256': config['headers']['x-content-sha256'],\n        'Authorization': authorization\n    }\n\n\ndef generate_submit_task_headers(prompt, image_urls):\n    \"\"\"\n    生成提交任务的请求头\n    \"\"\"\n    print(1111)\n    request_body = {\n        'req_key': 'jimeng_t2i_v40',\n        'prompt': prompt,\n        'image_urls': image_urls,\n        'width': _('视频比例计算').first().json.video_width,\n        'height': _('视频比例计算').first().json.video_height\n    }\n\n    print('@@@', request_body)\n\n    return generate_request_headers('CVSync2AsyncSubmitTask', request_body)\n\ndata = _input.first().json.data\nimage_urls = [character['character_image_url'] for character in data]\n\nprompt = ''\nfor index,character in enumerate(_('核心字段整理').first().json.characters): \n  prompt += f'第{index+1}张图片的人物是:{character['character_name']}\\n'\n\nprompt += f'请根据以下内容帮我生成{_('核心字段整理').first().json.storyboard.length}个分镜画面，要求人物特征保持一致\\n'\n\nfor index,story in enumerate(_('核心字段整理').first().json.storyboard): \n  prompt += f'{index+1}、{story['image_prompt']}\\n'\n\n\nresult_data = generate_submit_task_headers(prompt,image_urls)\n\nreturn {\n  \"X-Content-Sha256\": result_data['X-Content-Sha256'],\n  \"Authorization\": result_data['Authorization'],\n  \"X-Date\": result_data['X-Date'],\n  \"prompt\": prompt,\n  \"image_urls\": image_urls\n}\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        2032
+      ],
+      "id": "caec0a5f-3f20-4d4e-8b09-6dd0df7b210f",
+      "name": "计算提交任务参数-分镜图片"
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import hashlib\nimport hmac\nimport json\nfrom datetime import datetime\n\n\ndef build_canonical_request(method, uri, query_string, headers, signed_headers, hashed_payload):\n    \"\"\"\n    生成规范化请求字符串 (Canonical Request)\n    \"\"\"\n    canonical_headers = '\\n'.join(\n        f\"{key.lower()}:{headers[key].strip()}\" for key in signed_headers\n    )\n\n    return '\\n'.join([\n        method.upper(),\n        uri,\n        query_string,\n        canonical_headers,\n        '',\n        ';'.join(signed_headers),\n        hashed_payload\n    ])\n\n\ndef build_string_to_sign(algorithm, timestamp, credential_scope, hashed_canonical_request):\n    \"\"\"\n    生成待签名字符串 (String to Sign)\n    \"\"\"\n    return '\\n'.join([\n        algorithm,\n        timestamp,\n        credential_scope,\n        hashed_canonical_request\n    ])\n\n\ndef derive_signing_key(secret_key, short_date, region, service):\n    \"\"\"\n    派生签名密钥\n    \"\"\"\n    k_date = hmac.new(secret_key.encode('utf-8'), short_date.encode('utf-8'), hashlib.sha256).digest()\n    k_region = hmac.new(k_date, region.encode('utf-8'), hashlib.sha256).digest()\n    k_service = hmac.new(k_region, service.encode('utf-8'), hashlib.sha256).digest()\n    k_signing = hmac.new(k_service, b'request', hashlib.sha256).digest()\n    return k_signing\n\n\ndef calculate_signature(string_to_sign, signing_key):\n    \"\"\"\n    计算签名 (Signature)\n    \"\"\"\n    return hmac.new(signing_key, string_to_sign.encode('utf-8'), hashlib.sha256).hexdigest()\n\n\ndef get_utc_timestamp():\n    \"\"\"\n    生成 UTC 时间戳字符串\n    :return: 格式为 YYYYMMDDTHHMMSSZ 的 UTC 时间字符串\n    \"\"\"\n    now = datetime.utcnow()\n    return now.strftime('%Y%m%dT%H%M%SZ')\n\n\ndef generate_authorization(config):\n    \"\"\"\n    生成完整的 Authorization 字符串\n    :param config: 配置参数字典\n        - accessKeyId: Access Key ID\n        - secretKey: Secret Access Key\n        - region: 区域，如 'cn-north-1'\n        - service: 服务名，如 'iam'\n        - method: HTTP 方法，如 'POST'\n        - uri: 请求 URI，如 '/'\n        - queryString: 查询字符串，如 'Action=ListUsers&Version=2018-01-01'\n        - headers: 请求头对象\n        - signedHeaders: 参与签名的 Header 名称数组\n        - body: 请求体内容\n    :return: 完整的 Authorization 字符串\n    \"\"\"\n    access_key_id = config['accessKeyId']\n    secret_key = config['secretKey']\n    region = config['region']\n    service = config['service']\n    method = config.get('method', 'POST')\n    uri = config.get('uri', '/')\n    query_string = config.get('queryString', '')\n    headers = config['headers']\n    signed_headers = config['signedHeaders']\n    body = config.get('body', '')\n\n    # 生成或使用提供的 x-date\n    x_date = headers.get('x-date') or get_utc_timestamp()\n    if 'x-date' not in headers:\n        headers['x-date'] = x_date\n    short_date = x_date[:8]  # YYYYMMDD\n\n    # 1. 计算 payload hash\n    hashed_payload = hashlib.sha256(body.encode('utf-8')).hexdigest()\n\n    # 确保 x-content-sha256 头存在\n    if 'x-content-sha256' in signed_headers:\n        headers['x-content-sha256'] = hashed_payload\n\n    # 2. 构建规范化请求\n    canonical_request = build_canonical_request(\n        method,\n        uri,\n        query_string,\n        headers,\n        signed_headers,\n        hashed_payload\n    )\n\n    # 3. 计算规范化请求的 hash\n    hashed_canonical_request = hashlib.sha256(canonical_request.encode('utf-8')).hexdigest()\n\n    # 4. 构建待签名字符串\n    algorithm = 'HMAC-SHA256'\n    credential_scope = f\"{short_date}/{region}/{service}/request\"\n    string_to_sign = build_string_to_sign(\n        algorithm,\n        x_date,\n        credential_scope,\n        hashed_canonical_request\n    )\n\n    # 5. 派生签名密钥\n    signing_key = derive_signing_key(secret_key, short_date, region, service)\n\n    # 6. 计算签名\n    signature = calculate_signature(string_to_sign, signing_key)\n\n    # 7. 构建 Authorization 字符串\n    authorization = f\"{algorithm} Credential={access_key_id}/{credential_scope}, SignedHeaders={';'.join(signed_headers)}, Signature={signature}\"\n\n    return authorization\n\n\ndef generate_request_headers(action, request_body):\n    \"\"\"\n    生成 API 请求头\n    :param action: API 动作名称\n    :param request_body: 请求体对象\n    :return: 包含请求头和请求体的字典\n    \"\"\"\n    body = json.dumps(request_body, separators=(',', ':'), ensure_ascii=False)\n\n    # 配置参数\n    config = {\n        'accessKeyId': _('配置字段').first().json.accessKeyId,\n        'secretKey': _('配置字段').first().json.secretKey,\n        'region': 'cn-north-1',\n        'service': 'cv',\n        'method': 'POST',\n        'uri': '/',\n        'queryString': f'Action={action}&Version=2022-08-31',\n        'headers': {\n            'content-type': 'application/json',\n            'host': 'visual.volcengineapi.com',\n            'x-content-sha256': ''  # 将自动填充\n        },\n        'signedHeaders': ['content-type', 'host', 'x-content-sha256', 'x-date'],\n        'body': body\n    }\n\n    # 生成 Authorization\n    authorization = generate_authorization(config)\n\n    return {\n        'Content-Type': 'application/json',\n        'X-Date': config['headers']['x-date'],\n        'X-Content-Sha256': config['headers']['x-content-sha256'],\n        'Authorization': authorization\n    }\n\n\ndef generate_submit_task_headers(prompt):\n    \"\"\"\n    生成提交任务的请求头\n    \"\"\"\n    request_body = {\n        'req_key': 'jimeng_t2i_v40',\n        'prompt': prompt,\n        'width': _('视频比例计算').first().json.video_width,\n        'height': _('视频比例计算').first().json.video_height\n    }\n    print('===---', request_body)\n\n    return generate_request_headers('CVSync2AsyncSubmitTask', request_body)\n\nresult_data = generate_submit_task_headers(_input.first().json.image_prompt)\n\nreturn {\n  \"X-Content-Sha256\": result_data['X-Content-Sha256'],\n  \"Authorization\": result_data['Authorization'],\n  \"X-Date\": result_data['X-Date'],\n  \"prompt\": _input.first().json.image_prompt\n}\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        992,
+        1632
+      ],
+      "id": "0a59524c-0b34-4ec5-957f-bb068d8a59f6",
+      "name": "计算提交任务参数-人物"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://visual.volcengineapi.com",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "CVSync2AsyncSubmitTask"
+            },
+            {
+              "name": "Version",
+              "value": "2022-08-31"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "={\"X-Date\": \"{{ $json[\"X-Date\"] }}\",\"X-Content-Sha256\": \"{{ $json[\"X-Content-Sha256\"] }}\",\"Authorization\": \"{{ $json[\"Authorization\"] }}\"}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"req_key\":\"jimeng_t2i_v40\",\"prompt\":\"{{ $json.prompt }}\",\"width\":{{ $('视频比例计算').first().json.video_width }},\"height\":{{ $('视频比例计算').first().json.video_height }}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1232,
+        1632
+      ],
+      "id": "1c9ade7e-5d12-4f53-9d42-2b371dfc123f",
+      "name": "发起提交任务请求-人物",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import hashlib\nimport hmac\nimport json\nfrom datetime import datetime\n\n\ndef build_canonical_request(method, uri, query_string, headers, signed_headers, hashed_payload):\n    \"\"\"\n    生成规范化请求字符串 (Canonical Request)\n    \"\"\"\n    canonical_headers = '\\n'.join(\n        f\"{key.lower()}:{headers[key].strip()}\" for key in signed_headers\n    )\n\n    return '\\n'.join([\n        method.upper(),\n        uri,\n        query_string,\n        canonical_headers,\n        '',\n        ';'.join(signed_headers),\n        hashed_payload\n    ])\n\n\ndef build_string_to_sign(algorithm, timestamp, credential_scope, hashed_canonical_request):\n    \"\"\"\n    生成待签名字符串 (String to Sign)\n    \"\"\"\n    return '\\n'.join([\n        algorithm,\n        timestamp,\n        credential_scope,\n        hashed_canonical_request\n    ])\n\n\ndef derive_signing_key(secret_key, short_date, region, service):\n    \"\"\"\n    派生签名密钥\n    \"\"\"\n    k_date = hmac.new(secret_key.encode('utf-8'), short_date.encode('utf-8'), hashlib.sha256).digest()\n    k_region = hmac.new(k_date, region.encode('utf-8'), hashlib.sha256).digest()\n    k_service = hmac.new(k_region, service.encode('utf-8'), hashlib.sha256).digest()\n    k_signing = hmac.new(k_service, b'request', hashlib.sha256).digest()\n    return k_signing\n\n\ndef calculate_signature(string_to_sign, signing_key):\n    \"\"\"\n    计算签名 (Signature)\n    \"\"\"\n    return hmac.new(signing_key, string_to_sign.encode('utf-8'), hashlib.sha256).hexdigest()\n\n\ndef get_utc_timestamp():\n    \"\"\"\n    生成 UTC 时间戳字符串\n    :return: 格式为 YYYYMMDDTHHMMSSZ 的 UTC 时间字符串\n    \"\"\"\n    now = datetime.utcnow()\n    return now.strftime('%Y%m%dT%H%M%SZ')\n\n\ndef generate_authorization(config):\n    \"\"\"\n    生成完整的 Authorization 字符串\n    :param config: 配置参数字典\n        - accessKeyId: Access Key ID\n        - secretKey: Secret Access Key\n        - region: 区域，如 'cn-north-1'\n        - service: 服务名，如 'iam'\n        - method: HTTP 方法，如 'POST'\n        - uri: 请求 URI，如 '/'\n        - queryString: 查询字符串，如 'Action=ListUsers&Version=2018-01-01'\n        - headers: 请求头对象\n        - signedHeaders: 参与签名的 Header 名称数组\n        - body: 请求体内容\n    :return: 完整的 Authorization 字符串\n    \"\"\"\n    access_key_id = config['accessKeyId']\n    secret_key = config['secretKey']\n    region = config['region']\n    service = config['service']\n    method = config.get('method', 'POST')\n    uri = config.get('uri', '/')\n    query_string = config.get('queryString', '')\n    headers = config['headers']\n    signed_headers = config['signedHeaders']\n    body = config.get('body', '')\n\n    # 生成或使用提供的 x-date\n    x_date = headers.get('x-date') or get_utc_timestamp()\n    if 'x-date' not in headers:\n        headers['x-date'] = x_date\n    short_date = x_date[:8]  # YYYYMMDD\n\n    # 1. 计算 payload hash\n    hashed_payload = hashlib.sha256(body.encode('utf-8')).hexdigest()\n\n    # 确保 x-content-sha256 头存在\n    if 'x-content-sha256' in signed_headers:\n        headers['x-content-sha256'] = hashed_payload\n\n    # 2. 构建规范化请求\n    canonical_request = build_canonical_request(\n        method,\n        uri,\n        query_string,\n        headers,\n        signed_headers,\n        hashed_payload\n    )\n\n    # 3. 计算规范化请求的 hash\n    hashed_canonical_request = hashlib.sha256(canonical_request.encode('utf-8')).hexdigest()\n\n    # 4. 构建待签名字符串\n    algorithm = 'HMAC-SHA256'\n    credential_scope = f\"{short_date}/{region}/{service}/request\"\n    string_to_sign = build_string_to_sign(\n        algorithm,\n        x_date,\n        credential_scope,\n        hashed_canonical_request\n    )\n\n    # 5. 派生签名密钥\n    signing_key = derive_signing_key(secret_key, short_date, region, service)\n\n    # 6. 计算签名\n    signature = calculate_signature(string_to_sign, signing_key)\n\n    # 7. 构建 Authorization 字符串\n    authorization = f\"{algorithm} Credential={access_key_id}/{credential_scope}, SignedHeaders={';'.join(signed_headers)}, Signature={signature}\"\n\n    return authorization\n\n\ndef generate_request_headers(action, request_body):\n    \"\"\"\n    生成 API 请求头\n    :param action: API 动作名称\n    :param request_body: 请求体对象\n    :return: 包含请求头和请求体的字典\n    \"\"\"\n    body = json.dumps(request_body, separators=(',', ':'), ensure_ascii=False)\n\n    # 配置参数\n    config = {\n        'accessKeyId': _('配置字段').first().json.accessKeyId,\n        'secretKey': _('配置字段').first().json.secretKey,\n        'region': 'cn-north-1',\n        'service': 'cv',\n        'method': 'POST',\n        'uri': '/',\n        'queryString': f'Action={action}&Version=2022-08-31',\n        'headers': {\n            'content-type': 'application/json',\n            'host': 'visual.volcengineapi.com',\n            'x-content-sha256': ''  # 将自动填充\n        },\n        'signedHeaders': ['content-type', 'host', 'x-content-sha256', 'x-date'],\n        'body': body\n    }\n\n    # 生成 Authorization\n    authorization = generate_authorization(config)\n\n    return {\n        'Content-Type': 'application/json',\n        'X-Date': config['headers']['x-date'],\n        'X-Content-Sha256': config['headers']['x-content-sha256'],\n        'Authorization': authorization\n    }\n\ndef generate_query_result_headers(task_id):\n    \"\"\"\n    生成查询任务结果的请求头\n    \"\"\"\n    request_body = {\n        'req_key': 'jimeng_t2i_v40',\n        'task_id': task_id,\n        'req_json': json.dumps({\n            'return_url': True\n        })\n    }\n\n    return generate_request_headers('CVSync2AsyncGetResult', request_body)\n\ntask_id = _('发起提交任务请求-人物').first().json.data.task_id\nresult_headers = generate_query_result_headers(task_id)\n\nreturn {\n  \"X-Date\": result_headers['X-Date'],\n  \"Authorization\": result_headers['Authorization'],\n  \"X-Content-Sha256\": result_headers[\"X-Content-Sha256\"],\n  \"task_id\": task_id\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1648,
+        1632
+      ],
+      "id": "1fbd2b45-7bfa-4602-a5fe-100ae0c2b7ac",
+      "name": "计算查询任务参数-人物"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://visual.volcengineapi.com",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "CVSync2AsyncGetResult"
+            },
+            {
+              "name": "Version",
+              "value": "2022-08-31"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "={\"X-Date\": \"{{ $json[\"X-Date\"] }}\",\"X-Content-Sha256\": \"{{ $json[\"X-Content-Sha256\"] }}\",\"Authorization\": \"{{ $json[\"Authorization\"] }}\"}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"req_key\":\"jimeng_t2i_v40\",\"task_id\":\"{{ $json.task_id }}\",\"req_json\":\"{\\\"return_url\\\": true}\"}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1856,
+        1632
+      ],
+      "id": "f899aec5-c9d4-4c70-829a-76fa2c4d60e7",
+      "name": "发起查询任务请求-人物",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://visual.volcengineapi.com",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "CVSync2AsyncSubmitTask"
+            },
+            {
+              "name": "Version",
+              "value": "2022-08-31"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "={\"X-Date\": \"{{ $('计算提交任务参数-分镜图片').item.json[\"X-Date\"] }}\",\"X-Content-Sha256\": \"{{ $('计算提交任务参数-分镜图片').item.json[\"X-Content-Sha256\"] }}\",\"Authorization\": \"{{ $('计算提交任务参数-分镜图片').item.json.Authorization }}\"}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1152,
+        2032
+      ],
+      "id": "2bf2932b-d163-4769-a70a-02dc86b83a89",
+      "name": "发起提交任务请求-分镜",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "jsCode": "const width = $('视频比例计算').first().json.video_width;\nconst height = $('视频比例计算').first().json.video_height;\nconst json = {\"req_key\":\"jimeng_t2i_v40\",\"prompt\":$input.first().json.prompt,\"image_urls\":$input.first().json.image_urls,\"width\":width,\"height\":height}\n\nreturn json;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        944,
+        2032
+      ],
+      "id": "5416e942-61de-4ac8-8980-70fe9961f10d",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "amount": 60
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1344,
+        2032
+      ],
+      "id": "9f140d6c-628c-4f55-921b-31efbcc9f328",
+      "name": "Wait1",
+      "webhookId": "f27302c0-afa6-4314-b64b-820ef79b0ae8"
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import hashlib\nimport hmac\nimport json\nfrom datetime import datetime\n\n\ndef build_canonical_request(method, uri, query_string, headers, signed_headers, hashed_payload):\n    \"\"\"\n    生成规范化请求字符串 (Canonical Request)\n    \"\"\"\n    canonical_headers = '\\n'.join(\n        f\"{key.lower()}:{headers[key].strip()}\" for key in signed_headers\n    )\n\n    return '\\n'.join([\n        method.upper(),\n        uri,\n        query_string,\n        canonical_headers,\n        '',\n        ';'.join(signed_headers),\n        hashed_payload\n    ])\n\n\ndef build_string_to_sign(algorithm, timestamp, credential_scope, hashed_canonical_request):\n    \"\"\"\n    生成待签名字符串 (String to Sign)\n    \"\"\"\n    return '\\n'.join([\n        algorithm,\n        timestamp,\n        credential_scope,\n        hashed_canonical_request\n    ])\n\n\ndef derive_signing_key(secret_key, short_date, region, service):\n    \"\"\"\n    派生签名密钥\n    \"\"\"\n    k_date = hmac.new(secret_key.encode('utf-8'), short_date.encode('utf-8'), hashlib.sha256).digest()\n    k_region = hmac.new(k_date, region.encode('utf-8'), hashlib.sha256).digest()\n    k_service = hmac.new(k_region, service.encode('utf-8'), hashlib.sha256).digest()\n    k_signing = hmac.new(k_service, b'request', hashlib.sha256).digest()\n    return k_signing\n\n\ndef calculate_signature(string_to_sign, signing_key):\n    \"\"\"\n    计算签名 (Signature)\n    \"\"\"\n    return hmac.new(signing_key, string_to_sign.encode('utf-8'), hashlib.sha256).hexdigest()\n\n\ndef get_utc_timestamp():\n    \"\"\"\n    生成 UTC 时间戳字符串\n    :return: 格式为 YYYYMMDDTHHMMSSZ 的 UTC 时间字符串\n    \"\"\"\n    now = datetime.utcnow()\n    return now.strftime('%Y%m%dT%H%M%SZ')\n\n\ndef generate_authorization(config):\n    \"\"\"\n    生成完整的 Authorization 字符串\n    :param config: 配置参数字典\n        - accessKeyId: Access Key ID\n        - secretKey: Secret Access Key\n        - region: 区域，如 'cn-north-1'\n        - service: 服务名，如 'iam'\n        - method: HTTP 方法，如 'POST'\n        - uri: 请求 URI，如 '/'\n        - queryString: 查询字符串，如 'Action=ListUsers&Version=2018-01-01'\n        - headers: 请求头对象\n        - signedHeaders: 参与签名的 Header 名称数组\n        - body: 请求体内容\n    :return: 完整的 Authorization 字符串\n    \"\"\"\n    access_key_id = config['accessKeyId']\n    secret_key = config['secretKey']\n    region = config['region']\n    service = config['service']\n    method = config.get('method', 'POST')\n    uri = config.get('uri', '/')\n    query_string = config.get('queryString', '')\n    headers = config['headers']\n    signed_headers = config['signedHeaders']\n    body = config.get('body', '')\n\n    # 生成或使用提供的 x-date\n    x_date = headers.get('x-date') or get_utc_timestamp()\n    if 'x-date' not in headers:\n        headers['x-date'] = x_date\n    short_date = x_date[:8]  # YYYYMMDD\n\n    # 1. 计算 payload hash\n    hashed_payload = hashlib.sha256(body.encode('utf-8')).hexdigest()\n\n    # 确保 x-content-sha256 头存在\n    if 'x-content-sha256' in signed_headers:\n        headers['x-content-sha256'] = hashed_payload\n\n    # 2. 构建规范化请求\n    canonical_request = build_canonical_request(\n        method,\n        uri,\n        query_string,\n        headers,\n        signed_headers,\n        hashed_payload\n    )\n\n    # 3. 计算规范化请求的 hash\n    hashed_canonical_request = hashlib.sha256(canonical_request.encode('utf-8')).hexdigest()\n\n    # 4. 构建待签名字符串\n    algorithm = 'HMAC-SHA256'\n    credential_scope = f\"{short_date}/{region}/{service}/request\"\n    string_to_sign = build_string_to_sign(\n        algorithm,\n        x_date,\n        credential_scope,\n        hashed_canonical_request\n    )\n\n    # 5. 派生签名密钥\n    signing_key = derive_signing_key(secret_key, short_date, region, service)\n\n    # 6. 计算签名\n    signature = calculate_signature(string_to_sign, signing_key)\n\n    # 7. 构建 Authorization 字符串\n    authorization = f\"{algorithm} Credential={access_key_id}/{credential_scope}, SignedHeaders={';'.join(signed_headers)}, Signature={signature}\"\n\n    return authorization\n\n\ndef generate_request_headers(action, request_body):\n    \"\"\"\n    生成 API 请求头\n    :param action: API 动作名称\n    :param request_body: 请求体对象\n    :return: 包含请求头和请求体的字典\n    \"\"\"\n    body = json.dumps(request_body, separators=(',', ':'), ensure_ascii=False)\n\n    # 配置参数\n    config = {\n        'accessKeyId': _('配置字段').first().json.accessKeyId,\n        'secretKey': _('配置字段').first().json.secretKey,\n        'region': 'cn-north-1',\n        'service': 'cv',\n        'method': 'POST',\n        'uri': '/',\n        'queryString': f'Action={action}&Version=2022-08-31',\n        'headers': {\n            'content-type': 'application/json',\n            'host': 'visual.volcengineapi.com',\n            'x-content-sha256': ''  # 将自动填充\n        },\n        'signedHeaders': ['content-type', 'host', 'x-content-sha256', 'x-date'],\n        'body': body\n    }\n\n    # 生成 Authorization\n    authorization = generate_authorization(config)\n\n    return {\n        'Content-Type': 'application/json',\n        'X-Date': config['headers']['x-date'],\n        'X-Content-Sha256': config['headers']['x-content-sha256'],\n        'Authorization': authorization\n    }\n\ndef generate_query_result_headers(task_id):\n    \"\"\"\n    生成查询任务结果的请求头\n    \"\"\"\n    request_body = {\n        'req_key': 'jimeng_t2i_v40',\n        'task_id': task_id,\n        'req_json': json.dumps({\n            'return_url': True\n        })\n    }\n\n    return generate_request_headers('CVSync2AsyncGetResult', request_body)\n\ntask_id = _('发起提交任务请求-分镜').first().json.data.task_id\nresult_headers = generate_query_result_headers(task_id)\n\nreturn {\n  \"X-Date\": result_headers['X-Date'],\n  \"Authorization\": result_headers['Authorization'],\n  \"X-Content-Sha256\": result_headers[\"X-Content-Sha256\"],\n  \"task_id\": task_id\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1568,
+        2032
+      ],
+      "id": "eae6613f-63bb-4f63-ba94-be0264d31d98",
+      "name": "计算查询任务参数-分镜"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4b12a9e0-7be3-41d5-a640-2781780d13af",
+              "leftValue": "={{ $json.data.status }}",
+              "rightValue": "done",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2016,
+        2032
+      ],
+      "id": "54c41c47-d061-4772-9f24-a2ff27cfdbd8",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7030a2cd-d79a-476b-8194-7aaf579b7a8c",
+              "name": "image_urls",
+              "value": "={{ $json.data.image_urls }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2224,
+        2016
+      ],
+      "id": "3223e72f-b765-447e-bfa1-41b4c057f4aa",
+      "name": "生成分镜图片后整理字段"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"timbre_list\":[\n    {\n        \"voice_id\": \"male-qn-qingse\",\n        \"voice_description\": \"青涩青年音色\"\n    },\n    {\n        \"voice_id\": \"male-qn-jingying\",\n        \"voice_description\": \"精英青年音色\"\n    },\n    {\n        \"voice_id\": \"male-qn-badao\",\n        \"voice_description\": \"霸道青年音色\"\n    },\n    {\n        \"voice_id\": \"male-qn-daxuesheng\",\n        \"voice_description\": \"青年大学生音色\"\n    },\n    {\n        \"voice_id\": \"female-shaonv\",\n        \"voice_description\": \"少女音色\"\n    },\n    {\n        \"voice_id\": \"female-yujie\",\n        \"voice_description\": \"御姐音色\"\n    },\n    {\n        \"voice_id\": \"female-chengshu\",\n        \"voice_description\": \"成熟女性音色\"\n    },\n    {\n        \"voice_id\": \"female-tianmei\",\n        \"voice_description\": \"甜美女性音色\"\n    },\n    {\n        \"voice_id\": \"clever_boy\",\n        \"voice_description\": \"聪明男童\"\n    },\n    {\n        \"voice_id\": \"cute_boy\",\n        \"voice_description\": \"可爱男童\"\n    },\n    {\n        \"voice_id\": \"lovely_girl\",\n        \"voice_description\": \"萌萌女童\"\n    },\n    {\n        \"voice_id\": \"cartoon_pig\",\n        \"voice_description\": \"卡通猪小琪\"\n    },\n    {\n        \"voice_id\": \"bingjiao_didi\",\n        \"voice_description\": \"病娇弟弟\"\n    },\n    {\n        \"voice_id\": \"junlang_nanyou\",\n        \"voice_description\": \"俊朗男友\"\n    },\n    {\n        \"voice_id\": \"chunzhen_xuedi\",\n        \"voice_description\": \"纯真学弟\"\n    },\n    {\n        \"voice_id\": \"lengdan_xiongzhang\",\n        \"voice_description\": \"冷淡学长\"\n    },\n    {\n        \"voice_id\": \"badao_shaoye\",\n        \"voice_description\": \"霸道少爷\"\n    },\n    {\n        \"voice_id\": \"tianxin_xiaoling\",\n        \"voice_description\": \"甜心小玲\"\n    },\n    {\n        \"voice_id\": \"qiaopi_mengmei\",\n        \"voice_description\": \"俏皮萌妹\"\n    },\n    {\n        \"voice_id\": \"wumei_yujie\",\n        \"voice_description\": \"妩媚御姐\"\n    },\n    {\n        \"voice_id\": \"diadia_xuemei\",\n        \"voice_description\": \"嗲嗲学妹\"\n    },\n    {\n        \"voice_id\": \"danya_xuejie\",\n        \"voice_description\": \"淡雅学姐\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Reliable_Executive\",\n        \"voice_description\": \"沉稳高管\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_News_Anchor\",\n        \"voice_description\": \"新闻女声\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Mature_Woman\",\n        \"voice_description\": \"傲娇御姐\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Unrestrained_Young_Man\",\n        \"voice_description\": \"不羁青年\"\n    },\n    {\n        \"voice_id\": \"Arrogant_Miss\",\n        \"voice_description\": \"嚣张小姐\"\n    },\n    {\n        \"voice_id\": \"Robot_Armor\",\n        \"voice_description\": \"机械战甲\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Kind-hearted_Antie\",\n        \"voice_description\": \"热心大婶\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_HK_Flight_Attendant\",\n        \"voice_description\": \"港普空姐\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Humorous_Elder\",\n        \"voice_description\": \"搞笑大爷\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Gentleman\",\n        \"voice_description\": \"温润男声\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Warm_Bestie\",\n        \"voice_description\": \"温暖闺蜜\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Male_Announcer\",\n        \"voice_description\": \"播报男声\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Sweet_Lady\",\n        \"voice_description\": \"甜美女声\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Southern_Young_Man\",\n        \"voice_description\": \"南方小哥\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Wise_Women\",\n        \"voice_description\": \"阅历姐姐\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Gentle_Youth\",\n        \"voice_description\": \"温润青年\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Warm_Girl\",\n        \"voice_description\": \"温暖少女\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Kind-hearted_Elder\",\n        \"voice_description\": \"花甲奶奶\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Cute_Spirit\",\n        \"voice_description\": \"憨憨萌兽\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Radio_Host\",\n        \"voice_description\": \"电台男主播\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Lyrical_Voice\",\n        \"voice_description\": \"抒情男声\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Straightforward_Boy\",\n        \"voice_description\": \"率真弟弟\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Sincere_Adult\",\n        \"voice_description\": \"真诚青年\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Gentle_Senior\",\n        \"voice_description\": \"温柔学姐\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Stubborn_Friend\",\n        \"voice_description\": \"嘴硬竹马\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Crisp_Girl\",\n        \"voice_description\": \"清脆少女\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Pure-hearted_Boy\",\n        \"voice_description\": \"清澈邻家弟弟\"\n    },\n    {\n        \"voice_id\": \"Chinese (Mandarin)_Soft_Girl\",\n        \"voice_description\": \"软软女孩\"\n    },\n    {\n        \"voice_id\": \"Cantonese_ProfessionalHost（F)\",\n        \"voice_description\": \"专业女主持\"\n    },\n    {\n        \"voice_id\": \"Cantonese_GentleLady\",\n        \"voice_description\": \"温柔女声\"\n    },\n    {\n        \"voice_id\": \"Cantonese_ProfessionalHost（M)\",\n        \"voice_description\": \"专业男主持\"\n    },\n    {\n        \"voice_id\": \"Cantonese_PlayfulMan\",\n        \"voice_description\": \"活泼男声\"\n    },\n    {\n        \"voice_id\": \"Cantonese_CuteGirl\",\n        \"voice_description\": \"可爱女孩\"\n    },\n    {\n        \"voice_id\": \"Cantonese_KindWoman\",\n        \"voice_description\": \"善良女声\"\n    }\n]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        2352
+      ],
+      "id": "7b8c37c9-c8b4-41e4-9581-3025fe295ec5",
+      "name": "音色列表"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "voice_timbre_list",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1264,
+        2352
+      ],
+      "id": "783e2034-1202-4b06-b698-e2f6a6d73cc2",
+      "name": "Split Out2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1520,
+        2352
+      ],
+      "id": "4348b1ba-19f1-4d1f-b0a8-2af389d3bc2f",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.minimaxi.com/v1/t2a_v2",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpBearerAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"model\": \"speech-2.5-hd-preview\",\n    \"text\": \"{{ $json.text }}\",\n    \"voice_setting\":{\n        \"voice_id\": \"{{ $json.voice_id }}\"\n    }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1792,
+        2368
+      ],
+      "id": "ac76a34e-cc1b-4da4-878b-a464d13dd77c",
+      "name": "MiniMax生成音频",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2048,
+        2368
+      ],
+      "id": "701f94bf-9f23-4461-86c8-aa9005a2d661",
+      "name": "Wait2",
+      "webhookId": "4421b112-2f2c-4bd5-98bc-ec53959b4c96"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('配置字段').first().json.audio_temp_path }}{{ $json.fileName }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        2368
+      ],
+      "id": "ae125de3-c0b0-47c6-a490-7b961e72952e",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://visual.volcengineapi.com",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "CVSync2AsyncGetResult"
+            },
+            {
+              "name": "Version",
+              "value": "2022-08-31"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "={\"X-Date\": \"{{ $json[\"X-Date\"] }}\",\"X-Content-Sha256\": \"{{ $json[\"X-Content-Sha256\"] }}\",\"Authorization\": \"{{ $json[\"Authorization\"] }}\"}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"req_key\":\"jimeng_t2i_v40\",\"task_id\":\"{{ $json.task_id }}\",\"req_json\":\"{\\\"return_url\\\": true}\"}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1776,
+        2032
+      ],
+      "id": "e976933c-9a7d-467c-8463-5ce22917c740",
+      "name": "发起查询任务请求-分镜",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.image_urls }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2624,
+        2016
+      ],
+      "id": "1bce5b04-1661-4af4-893c-e9f7641fd28f",
+      "name": "分镜图片下载",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('配置字段').first().json.audio_temp_path }}{{ $binary.data.fileName.split(\".\")[0] }}.jpg",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        2816,
+        2016
+      ],
+      "id": "2ce4b9ab-e717-47a7-bda5-a6804bc41669",
+      "name": "Read/Write Files from Disk1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "image_urls",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2432,
+        2016
+      ],
+      "id": "41a9455d-9969-4add-8b47-ca11ac36b731",
+      "name": "Split Out3"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// 获取前一个节点传入的 hex 字符串\nconst hexString = $json.data.audio;\n\n// --- 动态生成文件名(包含毫秒和随机数) ---\nconst now = new Date();\nconst timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}-${String(now.getSeconds()).padStart(2, '0')}-${String(now.getMilliseconds()).padStart(3, '0')}`;\nconst random = Math.floor(Math.random() * 1000);\nconst fileName = `audio_${timestamp}_${random}.mp3`;\n\n// --- 创建二进制数据 ---\nconst buffer = Buffer.from(hexString, 'hex');\n\nreturn {\n  json: {\n    fileName: fileName\n  },\n  binary: {\n    data: {\n      data: buffer.toString('base64'),\n      mimeType: 'audio/mpeg',\n      fileName: fileName\n    }\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2272,
+        2368
+      ],
+      "id": "672cf2fd-4970-4c59-9a8c-757a83cf7c94",
+      "name": "生成临时音频文件名称"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        448,
+        2832
+      ],
+      "id": "fae33f4e-96f7-4e64-8839-cf09c6bfdf6a",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a5c778dc-2b36-46f6-99af-881ae690b2ce",
+              "name": "filePath",
+              "value": "={{ $json.fileName }}",
+              "type": "string"
+            },
+            {
+              "id": "24a00bbe-6235-4e95-9f21-47c59c869124",
+              "name": "audio_length",
+              "value": "={{ $('MiniMax生成音频').item.json.extra_info.audio_length }}",
+              "type": "string"
+            },
+            {
+              "id": "37cc6464-dda2-4fc3-83b2-ed55f3b42d05",
+              "name": "text",
+              "value": "={{ $('Split Out2').item.json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2768,
+        2368
+      ],
+      "id": "53b8c52a-9f1e-4167-bfa7-de2863940032",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const storyboard = $('核心字段整理').first().json.storyboard.map(item => {\n  return {\n    \"scene\": item.scene,\n    \"scene_description\": item.scene_description\n  }\n})\n\nconst voice_list = $input.first().json.data.map(item => {\n  return {\n    \"text\": item.text,\n    \"audio_length\": item.audio_length\n  }\n})\n\nreturn {\n  \"data\": {\n    storyboard,\n    voice_list\n  }\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        2832
+      ],
+      "id": "c5f1279e-a6a3-4553-90b3-9e51c99ab377",
+      "name": "ai生成带时间的视频脚本前数据整理"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\"video_durations\": [\n{\n\"scene\": \"1\",\n\"scene_duration\": 6000\n}\n],\n\"audio_times\": [\n{\n\"text\": \"\",\n\"audio_starttime\": 1000\n}\n],\n  \"video_total_duration\": \"\",\n\"last_audio_endtime\": \"\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1120,
+        3040
+      ],
+      "id": "2e4bd92f-1054-40ce-9ec2-b9d1ec264480",
+      "name": "Structured Output Parser3"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3008,
+        2016
+      ],
+      "id": "e06b9634-1fe0-4954-b541-e11d2e6af0f4",
+      "name": "文件下载路径整理"
+    },
+    {
+      "parameters": {
+        "jsCode": "const audio_list = $('计算分镜持续时间、音频播放时间等信息').first().json.output.audio_times.map((item, index) => {\n  const filePath = $('Aggregate2').first().json.data[index].filePath\n  return {\n    ...item,\n    audio_filePath: filePath\n  }\n})\nconst scence_list = $('计算分镜持续时间、音频播放时间等信息').first().json.output.video_durations.map((item, index) => {\n  return {\n    \"image_filepath\": $('文件下载路径整理').first().json.data[index].fileName,\n    \"scene_duration\": item.scene_duration\n  }\n})\nreturn {\n  \"data\": {\n    \"scence_list\": scence_list,\n    \"audio_list\": audio_list,\n    \"subtitle_filename\": $input.first().json.fileName\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2192,
+        2832
+      ],
+      "id": "8d72f23d-fa09-4c4e-9999-292abedde2d7",
+      "name": "音视频合并前数据整理"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\n  \"characters_timbre\": [\n    {\n      \"timbre_name\": \"\",\n      \"timbre_des\": \"\",\n      \"timbre_id\": 0\n    }\n  ],\n  \"voice_scripts\": [\n    {\n      \"text\": \"\",\n      \"timbre_id\": 0\n    }\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1520,
+        1376
+      ],
+      "id": "314a2118-c7e8-4963-a906-cd5e6f3b85e8",
+      "name": "Structured Output Parser4"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=你是一位经验丰富的AI视频制作人。你的任务是根据我给出的'故事脚本'和'角色设定'，为视频中的每个角色生成音色描述，以及生成语音脚本\n\n[故事脚本]\n{{ JSON.stringify($json.output.storyboard.map(item => {\n  return {\n    \"scene\": item.scene,\n    \"scene_description\": item.scene_description,\n    \"narration\": item.narration\n  }\n}))}}\n\n[角色设定]\n{{ JSON.stringify($json.output.characters.map(item => {\n  return {\n    \"character_name\": item.character_name,\n    \"description\": item.description\n  }\n})) }}\n\n[任务指令]\n请严格按照以下步骤和要求，将所有输出整合到一个JSON对象中。\n\n1.  **角色音色 (characters_timbre)**:\n     *   根据角色设定和故事背景，为整个故事制定的音频制定音色建议，比如故事中涉及到多个角色，则需要为每个角色设计符合角色年龄、性别、性格特点的音色描述，如果故事有旁白，则需要也为旁白设定一个音色描述。每个音色要设定一个id，从数组0开始递增即可。作为字段characters_timbre\n2.  **语音脚本 (voice_scripts)**:\n    *   将所有分镜的`narration`部分串联起来，分析后生成语音脚本，按'独立的每句话'为维度拆分，如果是角色说话而不是旁白，要过滤掉'他说'等词汇\n    *   每句语音需要根据角色，关联上一步的角色音色\n    *   作为字段vioce_scripts，以数组形式输出\n\n[输出格式]\n请将你的所有工作成果，严格按照下面的JSON结构进行组织和返回。除了这个JSON对象，不要有任何额外的解释、介绍或总结。\n\n{\n  \"characters_timbre\": [\n    {\n      \"timbre_name\": \"旁白\"\n      \"timbre_des\": \"\",\n      \"timbre_id\": 0\n    }\n  ],\n  \"voice_scripts\": [\n    {\n      \"text\": \"第一段旁白或对话文本\",\n      \"timbre_id\": 0\n    },\n    {\n      \"text\": \"第二段旁白或对话文本\",\n      \"timbre_id\": 0\n    }\n  ]\n}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1232,
+        1136
+      ],
+      "id": "fb36c90b-79af-488c-a92e-5d02850168ae",
+      "name": "音频脚本生成",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=你是一位角色配音挑选专家，你的任务是根据我给出的'音色列表'和'角色描述'，为每个角色选择一个最匹配的音色，以json格式返回。\n- ** trimbre_id字段取值为'角色描述中的'中的trimbre_id值；\n- ** voice_id的取值逻辑为：根据'角色描述'中每个元素的timbre_des字段，和'音色列表'中的音色描述voice_description字段进行匹配，挑选最适合的音色，然后将'音色列表中的voice_id作为voice_id **\n- ** 音色要和角色形象匹配，例如性别、年龄、特质等，如果实在找不到完全匹配的，可以使用近似的音色，一定要为每个角色找到一个音色 **\n- 数组中每个元素要和'角色描述'一一对应。\n\n以下是'角色描述'：\n{{ JSON.stringify($('核心字段整理').first().json.characters_timbre) }}\n\n以下是'音色列表'：\n{{ JSON.stringify( $json.timbre_list ) }}\n\n你的返回数据格式示例为：\n[\n{\n\"voice_id\": \"\",\n\"timbre_id\": 0\n}\n]\n\n\n",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        656,
+        2352
+      ],
+      "id": "81cf439f-43db-42f1-b1e1-b6c13e635d1f",
+      "name": "音色匹配",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\"data\":[\n{\n\"voice_id\": \"\",\n\"timbre_id\": 0\n}\n]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        832,
+        2560
+      ],
+      "id": "b7b8b27a-93d5-413d-bf88-58bcc4964c4f",
+      "name": "Structured Output Parser5"
+    },
+    {
+      "parameters": {
+        "jsCode": "const voice_timbre_list = $('核心字段整理').first().json.voice_scripts.map(item => {\n  const voice_timbre = $input.first().json.output.data.find(d => d.timbre_id ===item.timbre_id)\n  return {\n    ...item,\n    \"voice_id\": voice_timbre.voice_id \n  }\n})\n\nreturn {\n  \"voice_timbre_list\": voice_timbre_list\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        2352
+      ],
+      "id": "f314f188-d38d-4e02-87c8-76e0e0e62e74",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=你是一个短视频脚本编排专家，你的任务是根据我给出的'故事分镜描述'、'分镜音频文件描述列表'等信息，综合分析计算每个分镜的持续时间、音频开始播放时间。具体要求如下：\n- 计算每段音频的开始播放时间点（单位为毫秒）：我会给你一份'故事分镜描述'，它是一个数组，每个元素代表一个分镜，其中scene_description是每个分镜的描述。我还会给你一份'分镜音频文件描述列表'，其中每个元素代表一个已生成好的音频文件，text是每个音频文件的内容，audio_length是每个音频文件的音频时长（单位毫秒），作为字段audio_starttime。\n你要先分析音频的text和分镜的text，将哪些音频是属于哪些分镜的信息总结出来，然后根据音频时长，编排出每个音频文件的开始播放时间点，单位为毫秒，每个音频之间你可以自行判断预留0-500毫秒，以让音频整体更自然。\n- 根据总结的音频播放时间点，综合计算每个分镜的持续时间，作为字段scene_duration，\n**所有音频的播放时间不能有重叠，即每段音频的开始时间+它的音频时长，不能和另一短视频的开始时间有交集**\n**必须确保每个分镜画面的开始时间和属于它的音频开始时间能对应上**\n**并且必须保证整个视频的播放时长：即所有图片的持续时间相加的和，必须大于最后一段音频的开始时间+音频长度，也就是说必须保证所有音频都能播放完整。**\n- 为保证上一条的要求，你需要计算并输出video_total_duration（video_durations中所有scene_duration相加的综合）以及last_audio_endtime（最后一条音频的audio_starttime+audio_length）\n\n'故事分镜描述'如下：\n{{ JSON.stringify($json.data.storyboard) }}\n\n'分镜音频文件描述列表'如下：\n{{ JSON.stringify($json.data.voice_list) }}\n\n你的输出必须是json格式，不要包含说明性内容，直接返回json格式的数据，格式示例如下：\n{\n\"video_durations\": [\n{\n\"scene\": \"1\",\n\"scene_duration\": 6000\n}\n],\n\"audio_times\": [\n{\n\"text\": \"\",\n\"audio_starttime\": 1000\n}\n],\n\"video_total_duration\": \"\",\n\"last_audio_endtime\": \"\"\n}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        960,
+        2832
+      ],
+      "id": "2d58dfe3-3648-4f7f-b092-47fbb0df8cea",
+      "name": "计算分镜持续时间、音频播放时间等信息",
+      "retryOnFail": true,
+      "maxTries": 5
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=你是一个字幕编排专家，你的任务是根据我给出的'音频播放信息数组'，根据每个元素的audio_starttime（音频开始播放时间点，单位为毫秒）和text（音频文本），生成srt格式的字幕文本，后续我会将这个字幕文本作为字幕文件，你要保证这个字幕文本的可用性，以json格式返回。\n一段字幕文本过长时(超过40个字符)，要注意换行处理\n\n'音频播放信息数组'如下：\n{{ JSON.stringify($json.output.audio_times) }}\n\n返回格式示例：\n{\n\"subtitle_text\": \"\"\n}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1312,
+        2832
+      ],
+      "id": "d8a6011f-d89d-4f75-be52-3006bf27bbbb",
+      "name": "生成字幕文件",
+      "retryOnFail": true,
+      "maxTries": 5
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"subtitle_text\": \"\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1488,
+        3056
+      ],
+      "id": "3cd9bdc8-c2e2-4537-84d7-eca16ca86ef0",
+      "name": "Structured Output Parser2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get SRT subtitle text from previous node\nconst subtitle_text = $input.first().json.output.subtitle_text\n\n// Generate dynamic filename with timestamp and random number\nconst now = new Date();\nconst timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}-${String(now.getSeconds()).padStart(2, '0')}-${String(now.getMilliseconds()).padStart(3, '0')}`;\nconst random = Math.floor(Math.random() * 1000);\nconst fileName = `subtitle_${timestamp}_${random}.srt`;\n\n// Create binary data from UTF-8 text\nconst buffer = Buffer.from(subtitle_text, 'utf-8');\n\nreturn {\n  json: {\n    fileName: fileName\n  },\n  binary: {\n    data: {\n      data: buffer.toString('base64'),\n      mimeType: 'application/x-subrip',\n      fileName: fileName\n    }\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1664,
+        2832
+      ],
+      "id": "9f290b0c-a51f-45ed-a3cc-fdfd8ce6a91b",
+      "name": "生成字幕文件名"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('配置字段').first().json.audio_temp_path }}{{ $json.fileName }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1936,
+        2832
+      ],
+      "id": "f6872373-9852-4364-8bb7-d52371a520b3",
+      "name": "Read/Write Files from Disk2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const video_ratio = $input.first().json.video_ratio\nlet width = 0;\nlet height = 0;\nif (video_ratio === '1:1') {\n  width = 2048;\n  height = 2048;\n} else if (video_ratio === '4:3') {\n  width = 2304;\n  height = 1728;\n} else if (video_ratio === '3:4') {\n  width = 1728;\n  height = 2304;\n} else if (video_ratio === '3:2') {\n  width = 2496;\n  height = 1664;\n} else if (video_ratio === '2:3') {\n  width = 1664;\n  height = 2496;\n} else if (video_ratio === '16:9') {\n  width = 2560;\n  height = 1440;\n} else if (video_ratio === '9:16') {\n  width = 1440;\n  height = 2560;\n} else if (video_ratio === '21:9') {\n  width = 3024;\n  height = 1296;\n} else if (video_ratio === '9:21') {\n  width = 1296;\n  height = 3024;\n}\n\nreturn {\n  \"video_width\": width,\n  \"video_height\": height,\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        848
+      ],
+      "id": "1a4eda1b-5bbb-4820-a7a7-d0ec37914fc7",
+      "name": "视频比例计算"
+    },
+    {
+      "parameters": {},
+      "type": "CUSTOM.imageVideoComposer",
+      "typeVersion": 1,
+      "position": [
+        2416,
+        2832
+      ],
+      "id": "3f0f15d3-d26e-4058-8fdb-70599c050cff",
+      "name": "Image Video Composer"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "784dcabb-50c3-4a99-af57-2607a661577f",
+              "name": "video_ratio",
+              "value": "2:3",
+              "type": "string"
+            },
+            {
+              "id": "78128af3-1068-44f5-99b8-fd63034c3b61",
+              "name": "video_style",
+              "value": "童话故事风格",
+              "type": "string"
+            },
+            {
+              "id": "13abc2af-b39d-4ac3-9ebc-f0b4c2e6284f",
+              "name": "character_artistic_style",
+              "value": "吉卜力风格，明快温馨",
+              "type": "string"
+            },
+            {
+              "id": "d7106a98-d4b4-4a9c-8eb6-d8569eb58477",
+              "name": "story_artistic_style",
+              "value": "吉卜力风格，明快温馨",
+              "type": "string"
+            },
+            {
+              "id": "ec8634fd-c1dd-4f61-b2e1-cd000a944942",
+              "name": "max_image_count",
+              "value": "8",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        832,
+        848
+      ],
+      "id": "23b15e60-af69-4a61-82b5-95388a7c2f9c",
+      "name": "视频资源配置"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=你是一位经验丰富的创意总监和AI视频制作人。你的任务是根据下面提供的故事脚本，为一部{{ $('视频资源配置').first().json.video_style }}风格的动画短片制定一个完整的生产计划，并为图像生成API优化所有图像提示词。\n你可以对故事进行扩展，目的是让故事更引人入胜。\n\n[输入的故事脚本]\n{{ $json.output.story }}\n\n[任务指令]\n请严格按照以下步骤和要求，将所有输出整合到一个JSON对象中。\n\n1.  **角色设计 (Characters)**:\n    *   从故事中识别出不超过2位主要角色。\n    *   为每位角色写一句简短的外貌和性格描述。\n    *   为每位角色生成一个用于AI绘画的、详细的**英文**角色正面全身像（Full body portrait）Prompt。\n    *   **Prompt要求**:\n        *   **内容**: 用自然语言描述角色外观。\n        *   **风格**: 包含核心风格关键词 `{{ $('视频资源配置').first().json.character_artistic_style }}`。\n\n2.  **分镜脚本 (Storyboard)**:\n    *   将整个故事拆分为最多{{ $('视频资源配置').first().json.max_image_count }}个连贯的场景（分镜）。\n    *   每个场景应该尽可能不同，让故事更丰富。\n    *   为每个场景撰写：\n        *   `scene_description`: 对这个场景画面的简短中文描述。\n        *   `image_prompt`: 一个为生图API高度优化的、详细的**英文**图片生成Prompt。\n        *   `narration`: 这个场景对应的旁白或对话文本。\n    *   **关于 `image_prompt` 的特别生成指令**:\n        *   **结构分离**: Prompt必须由两部分组成——第一部分是**“画面内容描述”**，第二部分是**“美学风格词”**。\n        *   **第一部分 (内容)**: 使用一个连贯、完整的自然语言长句，生动地描述画面的核心内容，包括**主体、行为和环境**。例如：\"A joyful young girl with a backpack is running through a field of sunflowers under a bright blue sky\"。\n        *   **第二部分 (美学)**: 紧跟在内容描述之后，用一系列逗号分隔的短词语或短语来定义画面的美学，包括**风格、色彩、光影、构图**等。必须包含以下核心风格词：`{{ $('视频资源配置').first().json.story_artistic_style }}`。\n        *   **完整示例**: `\"A joyful young girl with a backpack is running through a field of sunflowers under a bright blue sky, {{ $('视频资源配置').first().json.story_artistic_style }}\"`\n\n[输出格式]\n请将你的所有工作成果，严格按照下面的JSON结构进行组织和返回。除了这个JSON对象，不要有任何额外的解释、介绍或总结。\n\n{\n  \"video_title\": \"\",\n  \"characters\": [\n    {\n      \"character_name\": \"\",\n      \"description\": \"\",\n      \"image_prompt\": \"\"\n    }\n  ],\n  \"storyboard\": [\n    {\n      \"scene\": 1,\n      \"scene_description\": \"\",\n      \"image_prompt\": \"\",\n      \"narration\": \"\"\n    }\n  ]\n}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        848,
+        1136
+      ],
+      "id": "f023df95-9be0-424f-86f6-db3de3fc6260",
+      "name": "故事脚本生成",
+      "retryOnFail": true,
+      "maxTries": 5
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=你是一位才华横溢的编剧，擅长创作触动人心的故事。\n\n你的任务是创作一个情节生动、充满画面感、适合作为动画视频的短篇故事。故事风格为{{ $('视频资源配置').first().json.video_style }}，要用具有文学性和感染力的语言进行叙述。\n故事中出场的主要人物不能超过2个人。\n\n**核心要求：**\n你必须将最终生成的故事，以一个严格的JSON格式输出。\nJSON对象应该只包含一个键：`\"story\"`。\n在JSON对象前后，不要包含任何解释、说明或markdown格式（例如 ```json）。你的整个回答必须是纯粹的JSON内容。\n输出的文本必须使用中文\n\n**输出示例：**\n{\"story\": \"\"}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        512,
+        1136
+      ],
+      "id": "d499e032-95a1-469f-960c-7c8a4574adc4",
+      "name": "根据创意生成故事",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "fromEmail": "={{ $('配置字段').first().json.email }}",
+        "toEmail": "={{ $('配置字段').first().json.email }}",
+        "subject": "Hi，故事已经生成好了，请确认是否继续生成",
+        "message": "=故事标题：{{ $('故事脚本生成').item.json.output.video_title }}\n\n角色：{{ JSON.stringify($('故事脚本生成').item.json.output.characters.map(item => {\nreturn {\n\"角色名\": item.character_name,\n\"角色描述\": item.description\n}\n})) }}\n\n故事：\n{{ JSON.stringify($('故事脚本生成').item.json.output.storyboard.map((item, index) => {\nreturn {\n\"场景\": item.scene,\n\"场景描述\": item.scene_description\n}\n})) }}\n-----------------------\n音频：\n{{ JSON.stringify($json.output.voice_scripts.map((item, index) => item.text)) }}",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double",
+            "approveLabel": "批准",
+            "disapproveLabel": "重新生成"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1600,
+        1136
+      ],
+      "id": "3b06997d-6291-4312-a45b-de5a23e97f10",
+      "name": "Send email",
+      "webhookId": "653eadc6-ec82-4c17-ac2c-5943ed217573",
+      "credentials": {
+        "smtp": {
+          "id": "kWZcOWhk0DiwTFcj",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "64613f7c-08e0-436d-bf36-c9515776ac52",
+              "leftValue": "={{ $json.data.approved }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1824,
+        1136
+      ],
+      "id": "156fd478-cb14-4e33-9900-1a9b51c7bc4b",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('配置字段').first().json.email }}",
+        "toEmail": "={{ $('配置字段').first().json.email }}",
+        "subject": "Hi，视频已经生成好啦，请查阅",
+        "emailFormat": "text",
+        "options": {
+          "attachments": "data"
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        2848,
+        2832
+      ],
+      "id": "13b5c9db-d677-4af1-98bd-e6201d4ee304",
+      "name": "Send email1",
+      "webhookId": "6cfdbfa9-a024-4495-8d36-2c88909ca48e",
+      "credentials": {
+        "smtp": {
+          "id": "kWZcOWhk0DiwTFcj",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "316cf641-6702-40f5-8a0f-c433e4e66159",
+              "name": "characters",
+              "value": "={{ $('故事脚本生成').item.json.output.characters }}",
+              "type": "array"
+            },
+            {
+              "id": "a750780e-c326-4a75-8708-c52d29524356",
+              "name": "storyboard",
+              "value": "={{ $('故事脚本生成').item.json.output.storyboard }}",
+              "type": "array"
+            },
+            {
+              "id": "ea4b2f9d-fe92-46e8-ad2c-92b3e914ff88",
+              "name": "characters_timbre",
+              "value": "={{ $('音频脚本生成').item.json.output.characters_timbre }}",
+              "type": "array"
+            },
+            {
+              "id": "4f320f17-b95c-46d4-99ad-8e85cb8b9ffd",
+              "name": "voice_scripts",
+              "value": "={{ $('音频脚本生成').item.json.output.voice_scripts }}",
+              "type": "array"
+            },
+            {
+              "id": "630a9408-8ad4-4ff2-b769-1c41fb542212",
+              "name": "video_title",
+              "value": "={{ $('故事脚本生成').item.json.output.video_title }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2064,
+        1120
+      ],
+      "id": "baeb8aa1-47ea-4d8d-8470-0916e3ac10c3",
+      "name": "核心字段整理"
+    },
+    {
+      "parameters": {
+        "fileSelector": "={{ $json.outputPath }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        2624,
+        2832
+      ],
+      "id": "6fa4cad7-e768-41b8-8939-c1ba5adc2f6c",
+      "name": "Read/Write Files from Disk3"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 4
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        400,
+        848
+      ],
+      "id": "4a459a6d-5bc1-4dd0-a324-58f3a76750c9",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        848,
+        1360
+      ],
+      "id": "248de238-ce74-4f6b-8d4d-c0a8073bd9b6",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "xCsMjyRDEtxm8igA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        928,
+        3040
+      ],
+      "id": "6faa9803-e2ba-4809-b392-779c2eceb4f5",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "xCsMjyRDEtxm8igA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1296,
+        3056
+      ],
+      "id": "37ae6468-2f47-4f49-9e54-d3b4d3e1e79f",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "xCsMjyRDEtxm8igA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        480,
+        1344
+      ],
+      "id": "a1b63b8b-6f41-4e3d-964a-8108a66c5fbe",
+      "name": "Google Gemini Chat Model3",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "xCsMjyRDEtxm8igA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1216,
+        1344
+      ],
+      "id": "9c0f39d0-1ce7-43f7-85cb-c7973ff70229",
+      "name": "Google Gemini Chat Model4",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "xCsMjyRDEtxm8igA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "配置模块：\n",
+        "height": 80,
+        "width": 150
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        160,
+        864
+      ],
+      "typeVersion": 1,
+      "id": "23387805-b78b-484c-8fc9-169d153ca0a8",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "主要脚本生成模块",
+        "height": 80,
+        "width": 176
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        144,
+        1136
+      ],
+      "typeVersion": 1,
+      "id": "52d8b71a-13dc-4ef3-879f-d83a8f5835d1",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "生成角色形象图片",
+        "height": 80,
+        "width": 224
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        128,
+        1616
+      ],
+      "typeVersion": 1,
+      "id": "8168abfd-dc19-49f9-a3aa-dec7eec4f01e",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "生成分镜图片",
+        "height": 80,
+        "width": 224
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        128,
+        2048
+      ],
+      "typeVersion": 1,
+      "id": "336d08ad-d38f-4de0-b9a9-74e15bc6fb0d",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "生成音频文件，需配置minimax Authentication",
+        "height": 80,
+        "width": 176
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        128,
+        2352
+      ],
+      "typeVersion": 1,
+      "id": "8733034d-1790-4e0b-861d-8a258e9104ca",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "生成字幕文件，合成视频\n最后一步（Image Video Composer）是自定义节点，用于音视频合成，安装方式：\n1.在n8n安装目录下的custom文件夹内（如果没有custom文件夹则新建一个），执行以下命令安装音频拼接自定义节点：\nnpm init -y\nnpm install n8n-nodes-media-composition\n\nn8n的安装目录一般为：\nwindows：C:\\Users\\用户名\\.n8n\nmac：~/.n8n\n\n2.确保本地安装了ffmpeg且在终端中ffmpeg命令有效\nwindows下ffmpeg安装方法：\n1）.打开官网：www.ffmpeg.org\n2）.点击Download\n3）.点击蓝色windows图标，然后点击下方的Windows builds by Btbn链接\n4）点击ffmpeg-master-latest-win64-gpl-shared.zip\n5）下载好并解压缩，点击进入bin文件夹，复制整个路径，例如D:\\ffmpeg-master-latest-win64-gpl-shared\\bin\n6）到桌面\"此电脑\"右键，选择'属性'，找到并点击\"高级系统设置\"。\n或者在桌面右键，弹出窗口中选择'个性化'，在弹出的设置页面左上角搜索'查看高级系统设置'\n7）在弹出窗口底部找到'环境变量'按钮，点击，在'系统变量'里找到'path'，双击编辑，将第'5)'步复制的路径粘贴进去，点击确定，注意一定要点击确定而不是直接关闭。\n8）Win+R，在弹出窗口输入cmd，输入回车打开终端，输入ffmpeg并回车，看到有大片信息输出说明安装成功。",
+        "height": 784,
+        "width": 432
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "975a9ccd-53bb-4dcc-b603-026271bcbda0",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "accessKeyId：即梦字段\nsecretKey：即梦字段\naudio_temp_path：音频临时文件存储路径\nemail：邮件确认地址，如不需要可以不配置\n",
+        "height": 144
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        496,
+        672
+      ],
+      "typeVersion": 1,
+      "id": "7dee78c4-1c74-4114-9562-45ff735c5dc0",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "video_style：故事风格，如：童话故事风格等\nstory_artistic_style：图片艺术风格，如吉卜力等\nvideo_ratio：视频比例，可选值：\n2:3\n3:2\n3:4\n4:3\n9:16\n16:9\n21:9\n9:21",
+        "height": 256,
+        "width": 256
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        816,
+        544
+      ],
+      "typeVersion": 1,
+      "id": "5f0acf50-80d7-4e44-b2a5-2166b11472e4",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        608,
+        2560
+      ],
+      "id": "cc6529b6-6493-4887-b57d-4fcc30678f1f",
+      "name": "Google Gemini Chat Model5",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "xCsMjyRDEtxm8igA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "\n欢迎加入我的知识星球，我会持续分享AI相关资讯、使用技巧、工作流等\n\n加入星球后权益：\n1.免费帮助部署工作流\n2.免费咨询AI相关问题\n3.学习更多实用AI使用技巧\n\n加入方式：打开图片扫码领取限量优惠券加入 ↓↓↓\nhttps://zsxq.tos-cn-beijing.volces.com/youhui.jpeg",
+        "height": 368,
+        "width": 560
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        512,
+        64
+      ],
+      "typeVersion": 1,
+      "id": "8cd3c690-48ce-4490-8444-72e35a189c7c",
+      "name": "Sticky Note8"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nbak",
+  "repo_owner": "wodaili-kingpwf",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-10-27T07:22:02.119Z",
+      "createdAt": "2025-10-27T07:22:02.119Z",
+      "role": "workflow:owner",
+      "workflowId": "2N0vyD3BleHS4b0n",
+      "projectId": "bhYbeEidmtHtdTx7"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-10-28T00:39:01.000Z",
+  "versionId": "b74dd7b3-5644-4a2c-87eb-dde74e2c0036"
+}
