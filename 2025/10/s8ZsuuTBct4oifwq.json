@@ -1,0 +1,1277 @@
+{
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
+  "connections": {
+    "Simple Memory": {
+      "ai_memory": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Generate Image Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set AI Input": {
+      "main": [
+        []
+      ]
+    },
+    "Format Post Output": {
+      "main": [
+        [
+          {
+            "node": "Set Ai input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Image": {
+      "ai_tool": [
+        [
+          {
+            "node": "Photoshop Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Edit Image Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Image Request": {
+      "main": [
+        [
+          {
+            "node": "New Image Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format as API Parameters": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Photoshop Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image": {
+      "ai_tool": [
+        [
+          {
+            "node": "Photoshop Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "New Image Data": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image Request": {
+      "main": [
+        [
+          {
+            "node": "New Image Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lark Trigger": {
+      "main": [
+        [
+          {
+            "node": "ParseContent message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ParseContent message": {
+      "main": [
+        [
+          {
+            "node": "Format Post Output",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set Ai input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "GetContentResource message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "UploadImage message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UploadImage message": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Photoshop Agent": {
+      "main": [
+        [
+          {
+            "node": "Send message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetContentResource message": {
+      "main": [
+        [
+          {
+            "node": "Format as API Parameters",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Ai input": {
+      "main": [
+        [
+          {
+            "node": "Photoshop Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Photoshop Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-10-28T13:39:44.520Z",
+  "id": "s8ZsuuTBct4oifwq",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Photoshop Agent ai",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=## USER_REQUEST\n{{ $json.userMessage }}\n\n## MESSAGE_DATA\n{{ JSON.stringify($json.message) }}\n\n## IMAGE_KEYS\n{{ $json.imageKeys }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=## Role\nYou are a personal assistant agent. Your job is to use the tools you have access to help the user with their request. \n\n## Objective\nYour goal is to collect all the information required to prepare a series of actions. \n\n## Process\n\nBased on USER_REQUEST, define the image generate/edit prompt for tool to use. And based on IMAGE_KEYS, define which tool should be called.\n\nIf IMAGE_KEYS is empty, you should call generate image tool to generate a brand new image for user.\n\nIf IMAGE_KEYS is not empty, you should call edit image tool and pass IMAGE_KEYS as array format to the tool and other parameters to fulfill what the tool requires from MESSAGE_DATA.\n\nBased on the response from the tools, define the response data with response format. \n\n## Response format\n\nAttribute 1: chatId, required\nExtra the it from MESSAGE_DATA\n\nAttribute 2: imageKeies, required\nGenerate it based on the response from the tools\n\nAttribute 3: description, required\nGenerate it based on the response from the tools\n\n### Example responses\n{\n\t\"chatId\": \"oc_cwefwe2323f223440b55a8a612f76869fd\",\n\t\"imageKeies\": [{\"tag\": \"img\",\"image_key\": \"img_v3_02wefwe4232ff-705b-49d9-8399-9d4c1079cf8g\"}],\n    \"description\": \"Absolutely! Here is your cute Ghibli-style cat, filled with magical charm and detailed scenery.\"\n}\n\n\n## Important\n1. IMAGE_KEYS should always keep array format, like this [a, b, c, ...]\n2. The image generate/edit prompt should be accurate based on USER_REQUEST, do not lost any things from it.",
+          "returnIntermediateSteps": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2240,
+        336
+      ],
+      "id": "c0de0ac6-4720-45c2-8fd7-f3dc096eb300",
+      "name": "Photoshop Agent",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Brain",
+        "height": 224,
+        "width": 480,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        576
+      ],
+      "id": "7da777e6-f51c-466c-8e01-5965aac95e10",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Tools",
+        "height": 224,
+        "width": 432,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2096,
+        576
+      ],
+      "id": "7260354c-028d-426a-ad2f-bfa01d2a1c5a",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Text/Image Input",
+        "height": 336,
+        "width": 832,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1248,
+        208
+      ],
+      "id": "f8549376-48f5-4405-b0a2-16832028b643",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Photoshop Agent",
+        "height": 336,
+        "width": 432,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2096,
+        208
+      ],
+      "id": "0a45fa49-d00e-44b1-b10f-f9b0248c7193",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.sessionId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        464,
+        528
+      ],
+      "id": "6eff5543-0380-48e7-aca0-fe739917f3e0",
+      "name": "Simple Memory",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "# 🛠️ 搭建步骤  \n**作者:** [骑摩托马斯](https://aiwiththomas.flowus.cn/)\n\n按照以下步骤来确保 Photoshop Agent 可以正常运行:\n\n### ✅ 第一步：安装社区版的飞书插件\n飞书相关的 nodes 不在 n8n 官方列表里，因此需要添加社区开发的 [n8n-nodes-feishu-lark](https://github.com/zhgqthomas/n8n-nodes-feishu-lark) 插件。n8n 安装社区插件的教程可以参考[官方文档](https://docs.n8n.io/integrations/community-nodes/installation/gui-install/)。\n\n### ✅ 第二步：配置飞书 Credentials\n飞书相关的凭证的获取，可以参考飞书[官方文档](https://open.feishu.cn/document/server-docs/api-call-guide/calling-process/get-access-token)。\n\n### ✅ 第三步: 配置大模型 \n可以根据个人喜好来配置大模型，OpenAI 或者 Deepseek 都可以。或者使用第三方的统一大模型集成接口。当前工作流使用的是[云雾API](https://yunwu.ai/register?aff=3bMG)\n\n### ✅ 第四步: 配置 Gemini Nano Banana API KEY\n当前工作流使用的依旧是[云雾API](https://yunwu.ai/register?aff=3bMG),提供的 Nano Banana 能力\n\n",
+        "height": 880,
+        "width": 704
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        576,
+        512
+      ],
+      "id": "ee87555c-e4a1-4c15-aa18-92a4d0279105",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "id",
+          "value": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        560,
+        288
+      ],
+      "id": "9d43800e-2e9c-476c-aa00-0a4226fcc30b",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "tSJxOS7BGnKGUrYE",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "type"
+            },
+            {
+              "name": "prompt"
+            },
+            {
+              "name": "imageKeys",
+              "type": "array"
+            },
+            {
+              "name": "messageId"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1296,
+        1136
+      ],
+      "id": "766ca944-6cf5-45cb-9d32-f54dc30d5c65",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.type }}",
+                    "rightValue": "edit",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "4c70dea7-ae65-44d0-8aa9-978ee9445086"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "edit"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a5568e44-b136-47b3-8a37-e691ff90d309",
+                    "leftValue": "={{ $json.type }}",
+                    "rightValue": "generate",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "generate"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1536,
+        1136
+      ],
+      "id": "dedd1f36-d1e5-494a-a55a-f0b855d2cd46",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1d9a68ea-4828-4df9-bac9-93d4dbb1d8ee",
+              "name": "userMessage",
+              "value": "={{ $json.message.content.text || $json.user_request }}",
+              "type": "string"
+            },
+            {
+              "id": "5432f8a8-6e56-480f-914c-3785d9a4fafa",
+              "name": "sessionId",
+              "value": "={{ $json.message.chat_id }}",
+              "type": "string"
+            },
+            {
+              "id": "681e4b77-5f01-4f24-a42c-0603442de0a0",
+              "name": "imageKeys",
+              "value": "={{ $json.image_keys || '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        960,
+        144
+      ],
+      "id": "5a8bb426-04f7-4c93-b189-16e3264f3cd5",
+      "name": "Set AI Input"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a606c986-52b2-49bc-aaa3-f2b98227edfb",
+              "name": "contentText",
+              "value": "={{ ($json.message.rich_content.title + ' ' + $json.message.rich_content.content.find(item => item.tag === 'text')?.elements.map(el => el.text).join(' ') || '').trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "706e3393-9a00-4240-8f11-6d164afbde3f",
+              "name": "contentImages",
+              "value": "={{ $json.message.rich_content.content.find(item => item.tag === 'img')?.elements.map(el => el.image_key) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1744,
+        272
+      ],
+      "id": "d420d152-558c-443f-b754-db24665e4859",
+      "name": "Format Post Output"
+    },
+    {
+      "parameters": {
+        "description": "Use this tool to generate a brand new image. You must pass over an image generation prompt, an image prompt, and the image ID. ",
+        "workflowId": {
+          "__rl": true,
+          "value": "UV3V9KQqk57q2SZ3",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/UV3V9KQqk57q2SZ3",
+          "cachedResultName": "Photoshop Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "type": "generate",
+            "prompt": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('prompt', `The image generation prompt. This should be optimized for AI image generation. This prompt should not contain \\\\n or \"\".`, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "type",
+              "displayName": "type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "prompt",
+              "displayName": "prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "imageKeys",
+              "displayName": "imageKeys",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        2272,
+        624
+      ],
+      "id": "2f8581e6-5b14-4e62-aa8b-1ab97992744d",
+      "name": "Generate Image"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "imageKeys",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "messageId",
+        "options": {
+          "destinationFieldName": "image_key"
+        }
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1776,
+        992
+      ],
+      "id": "33b6e144-fc70-4bfd-a425-14b0ed63aa55",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2736,
+        1104
+      ],
+      "id": "2c42aa57-da6c-4e50-abec-e348d0cc1ce4",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "images",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        992
+      ],
+      "id": "31196ce5-2a8a-4479-9bcc-c549e77d1ac4",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://yunwu.ai/v1beta/models/gemini-2.5-flash-image-preview:generateContent",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"{{ $json.prompt }}\"\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"responseModalities\": [\n      \"TEXT\",\n      \"IMAGE\"\n    ]\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1776,
+        1456
+      ],
+      "id": "3e5144e6-aec8-4cea-84e8-e28ca449457a",
+      "name": "Generate Image Request"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"inline_data\": {\n    \"mime_type\": \"{{ $json.mimeType }}\",\n    \"data\": \"{{ $json.data }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2272,
+        992
+      ],
+      "id": "b75856c4-bedd-4eae-8f8b-5919854dec6e",
+      "name": "Format as API Parameters"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "data",
+        "binaryPropertyName": "=data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2416,
+        1568
+      ],
+      "id": "e0c19eb5-aa72-41b0-8d28-3f24e70dfadf",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"chatId\": \"oc_cwefwe2323f223440b55a8a612f76869fd\",\n\t\"imageKeies\": [{\"tag\": \"img\",\"image_key\": \"img_v3_02wefwe4232ff-705b-49d9-8399-9d4c1079cf8g\"}],\n    \"description\": \"Absolutely! Here is your cute Ghibli-style cat, filled with magical charm and detailed scenery.\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        2624,
+        656
+      ],
+      "id": "6a8f92ff-8036-4ba1-9bf3-caebe3f1212c",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool to combine images. You must pass over an image generation prompt, the image keys that will be download from the lark server based on it.",
+        "workflowId": {
+          "__rl": true,
+          "value": "UV3V9KQqk57q2SZ3",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/UV3V9KQqk57q2SZ3",
+          "cachedResultName": "Photoshop Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "type": "edit",
+            "prompt": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('prompt', `The image generation prompt. This should be optimized for AI image generation. This prompt should not contain \\\\n or \"\".`, 'string') }}",
+            "imageKeys": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('imageKeys', `Example: \n\"[\"img_v3_02q2_948a5819-8195-41f4-ae1d-0e3d4d4c871g\",\"img_v3_02q2_4ca0e91f-866f-4d6d-a9c3-337c88f4f75g\"]\"`, 'string') }}",
+            "messageId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('messageId', `message id from MESSAGE_DATA`, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "type",
+              "displayName": "type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "prompt",
+              "displayName": "prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "imageKeys",
+              "displayName": "imageKeys",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "array",
+              "removed": false
+            },
+            {
+              "id": "messageId",
+              "displayName": "messageId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        2400,
+        640
+      ],
+      "id": "d4ef6aeb-81d6-48cd-b8ed-0062e7c47b9d",
+      "name": "Edit Image"
+    },
+    {
+      "parameters": {
+        "content": "## Output",
+        "height": 224
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2544,
+        576
+      ],
+      "typeVersion": 1,
+      "id": "a1f89a17-436a-4c67-946a-22f234e64b6a",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3326f7b2-9529-4fcd-99eb-68d7876475d9",
+              "name": "data",
+              "value": "={{ ($json.candidates[0].content.parts[1] || $json.candidates[0].content.parts[0]).inlineData.data }}",
+              "type": "string"
+            },
+            {
+              "id": "fdfacda9-c8f0-44f1-980f-03af7cc76f64",
+              "name": "description",
+              "value": "={{ $json.candidates[0].content.parts[0].text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2224,
+        1456
+      ],
+      "id": "f283d347-b6f0-4c00-8cd2-668d9509d488",
+      "name": "New Image Data"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7b7df5bf-b15f-42ec-ae30-801027054176",
+              "name": "response",
+              "value": "={\"imageKey\": \"{{ $json.image_key }}\", \"description\": \"{{ $json.description }}\"}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3024,
+        1472
+      ],
+      "id": "fa522389-8eeb-4078-acd0-5ba91e43970c",
+      "name": "Response"
+    },
+    {
+      "parameters": {
+        "content": "## Edit Image Process",
+        "height": 336,
+        "width": 1440
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1712,
+        928
+      ],
+      "typeVersion": 1,
+      "id": "2b370b6b-eafd-4bae-8e25-d6260eea8cd9",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "## Generate Image Process",
+        "height": 448,
+        "width": 448,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1712,
+        1280
+      ],
+      "typeVersion": 1,
+      "id": "f13c41c7-b224-4f11-bdea-74d1e7b1506b",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "## New Image Handle Process",
+        "height": 448,
+        "width": 976,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2176,
+        1280
+      ],
+      "typeVersion": 1,
+      "id": "7fec5458-79f0-46f0-9f6e-3a2a035ea890",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2832,
+        1472
+      ],
+      "id": "557d5e30-824a-4c60-8981-1f2179277394",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://yunwu.ai/v1beta/models/gemini-2.5-flash-image-preview:generateContent",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ (() => {return {\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [{text: $json.prompt}, ...$json.images]\n    }\n  ],\n  \"generationConfig\": {\n    \"responseModalities\": [\n      \"TEXT\",\n      \"IMAGE\"\n    ]\n  }\n} })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3008,
+        1104
+      ],
+      "id": "458a0a93-cf97-4b34-9dbb-c20e4f3db408",
+      "name": "Edit Image Request"
+    },
+    {
+      "parameters": {
+        "events": [
+          "any_event"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-feishu-lark.larkTrigger",
+      "typeVersion": 1,
+      "position": [
+        1312,
+        352
+      ],
+      "id": "2ab52181-9338-4d74-a671-aa39f168b4cd",
+      "name": "Lark Trigger",
+      "credentials": {
+        "larkApi": {
+          "id": "Sy7X9vjg5USGm1WQ",
+          "name": "Lark Tenant Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "parseContent",
+        "messageTypes": [
+          "text",
+          "post"
+        ]
+      },
+      "type": "n8n-nodes-feishu-lark.lark",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        352
+      ],
+      "id": "85d36f50-1775-45db-be91-3920257378a2",
+      "name": "ParseContent message",
+      "webhookId": "6913b5c9-1def-4c20-a8fd-2cefbc0335f4"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "receive_id": {
+          "__rl": true,
+          "value": "{{$('set AI Input').item.json.chatId}}",
+          "mode": "id"
+        },
+        "msg_type": "post",
+        "content": "={{ (() => {return {\n\t\"zh_cn\": {\n\t\t\"content\": [\n            [...$json.output.imageKeies],\n\t\t\t[\t\n\t\t\t\t{\n\t\t\t\t\t\"tag\": \"text\",\n\t\t\t\t\t\"text\": $json.output.description\n\t\t\t\t}\n\t\t\t]\n\t\t]\n\t}\n} })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-feishu-lark.lark",
+      "typeVersion": 1,
+      "position": [
+        2736,
+        320
+      ],
+      "id": "c8d63cd7-9ae8-4f06-ac70-bd411fd68999",
+      "name": "Send message",
+      "webhookId": "ff885871-9f7e-4b7f-8f5f-ecb8f4f37324",
+      "credentials": {
+        "larkApi": {
+          "id": "Sy7X9vjg5USGm1WQ",
+          "name": "Lark Tenant Token account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-feishu-lark.lark",
+      "typeVersion": 1,
+      "position": [
+        2640,
+        1568
+      ],
+      "id": "d5a784f9-9211-4b69-a41c-ecade4dbf2c7",
+      "name": "UploadImage message",
+      "webhookId": "57597332-904d-4822-9b33-01e82b94c7ff",
+      "retryOnFail": true,
+      "credentials": {
+        "larkApi": {
+          "id": "Sy7X9vjg5USGm1WQ",
+          "name": "Lark Tenant Token account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-feishu-lark.lark",
+      "typeVersion": 1,
+      "position": [
+        2032,
+        992
+      ],
+      "id": "d5aae4c7-7c10-4e81-99a9-9e8121957801",
+      "name": "GetContentResource message",
+      "webhookId": "530b855e-210b-4df6-9268-826cbf60d3ad",
+      "credentials": {
+        "larkApi": {
+          "id": "Sy7X9vjg5USGm1WQ",
+          "name": "Lark Tenant Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d9a538ea-1a61-4ec7-bad0-c3ca11d450ce",
+              "name": "userMessage",
+              "value": "={{ $json.contentText || $json.message?.content.text }}",
+              "type": "string"
+            },
+            {
+              "id": "6b3f63e2-ddb5-4958-871a-7c6174df1001",
+              "name": "imageKeys",
+              "value": "={{ $json.contentImages||[] }}",
+              "type": "array"
+            },
+            {
+              "id": "d53e94f8-0806-4d2d-b810-ab285272762d",
+              "name": "chatId",
+              "value": "={{$json.message?.chat_id}}",
+              "type": "string"
+            },
+            {
+              "id": "d64d2bc5-0dda-4f3b-98f5-7988c981f362",
+              "name": "messageId",
+              "value": "={{$json.message?.message_id}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1968,
+        368
+      ],
+      "id": "df3f2cfa-a17e-4dde-95af-60872a2a752a",
+      "name": "Set Ai input"
+    },
+    {
+      "parameters": {
+        "model": "=deepseek-chat",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        752,
+        320
+      ],
+      "id": "59a0cd5e-40d2-4ca0-93e7-9bc54f9f5965",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "67LLJe53T38aEcOy",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "=deepseek-r1:7b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        1808,
+        672
+      ],
+      "id": "dccc0a00-80bc-4971-8445-50009bcde2da",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "V8pLsOpn6bIsCN6f",
+          "name": "Ollama 11"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "id",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        464,
+        720
+      ],
+      "id": "12aa8b00-4769-4c61-b34d-16d076054c73",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "tSJxOS7BGnKGUrYE",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "receive_id_type": "chat_id",
+        "receive_id": {
+          "__rl": true,
+          "value": "={{ $json.output.chatId }}",
+          "mode": "id"
+        },
+        "msg_type": "post",
+        "content": "={{ (() => {return {\n\t\"zh_cn\": {\n\t\t\"content\": [\n            [...$json.output.imageKeies],\n\t\t\t[\t\n\t\t\t\t{\n\t\t\t\t\t\"tag\": \"text\",\n\t\t\t\t\t\"text\": $json.output.description\n\t\t\t\t}\n\t\t\t]\n\t\t]\n\t}\n} })() }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-feishu-lark.lark",
+      "typeVersion": 1,
+      "position": [
+        3088,
+        496
+      ],
+      "id": "9f5badbb-67b6-4d4f-a38d-012627185c8b",
+      "name": "Send message1",
+      "webhookId": "ff885871-9f7e-4b7f-8f5f-ecb8f4f37324",
+      "credentials": {
+        "larkApi": {
+          "id": "Sy7X9vjg5USGm1WQ",
+          "name": "Lark Tenant Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nbak",
+  "repo_owner": "wodaili-kingpwf",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-10-28T13:39:44.523Z",
+      "createdAt": "2025-10-28T13:39:44.523Z",
+      "role": "workflow:owner",
+      "workflowId": "s8ZsuuTBct4oifwq",
+      "projectId": "bhYbeEidmtHtdTx7"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-11-03T12:50:18.000Z",
+  "versionId": "93e1e451-1f50-4617-ac16-9bd4921598cc"
+}
