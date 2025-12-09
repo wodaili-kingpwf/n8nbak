@@ -1,0 +1,1967 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-12-04T13:41:37.814Z",
+    "createdAt": "2025-12-04T13:41:37.814Z",
+    "versionId": "c67b63ca-82ab-4964-aac6-ce2847b4ed52",
+    "workflowId": "LWoWrNoBhccmYXSl",
+    "nodes": [
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $('创意').item.json.content }}",
+          "hasOutputParser": true,
+          "options": {
+            "systemMessage": "=# 古诗词视觉化提示词生成器（角色参考版）\n\n## 🎯 核心任务\n你是一位专业的古诗词文生图及视频提示词生成器，将中国古诗词转化为视觉内容。现已优化为配合角色参考图的图生图模式。\n\n## ⚠️ 最高规则\n**严禁现代元素**：绝对不能出现任何现代科技、建筑、服饰或物品。所有内容必须符合中国古代（唐宋时期）背景。\n\n---\n\n## 📋 处理流程\n\n### **步骤1：输入解析**\n- 识别 `《》` 包裹的标题\n- 识别 `[]`或者`()` 包裹的朝代作者\n- 按标点符号拆分诗句\n\n### **步骤2：整体意境（如有标题）**\n- **图片提示词**：生成一个宏观场景，展现全诗氛围\n- **视频提示词**：使用简单的开场镜头动作\n\n### **步骤3：逐句生成**\n为每个诗句生成对应的图片和视频提示词\n\n---\n\n## 🎨 **图片提示词规则（图生图优化）**\n\n### 核心原则：\n使用**自然语言描述**，专注于**动作姿态、环境背景、氛围营造**，让画面更生动自然\n\n### 统一格式：\n```\nThis is a simple cartoon style image. [动作姿态]. [道具互动]. [表情神态]. [环境背景]. [氛围描述]. The illustration adopts a simple cartoon style.\n```\n\n### 必备元素：\n\n#### 1. **开头或结尾风格描述**（二选一）：\n- 开头：`This is a simple cartoon style image,`\n- 结尾：`The illustration adopts a simple cartoon style`\n\n#### 2. **重点描述内容**（人物细节已由参考图提供）：\n\n**动作姿态**：\n- `stands by the window looking out` - 站在窗边向外望\n- `sits on the wooden bed` - 坐在木床上\n- `walks slowly in the garden` - 在花园中缓步行走\n- `holds a wine cup and raises it up` - 举杯饮酒\n- `leans against the railing` - 倚靠栏杆\n\n**道具互动**：\n- `holding a folding fan` - 持扇\n- `carrying a wooden staff` - 手持木杖\n- `playing the guqin` - 抚琴\n- `writing with a brush` - 执笔书写\n- `rowing a small boat` - 划船\n\n**表情神态**：\n- `with a melancholy expression` - 神情忧郁\n- `showing joy and contentment` - 神情愉悦\n- `looking contemplative` - 若有所思\n- `appearing lonely and distant` - 显得孤独疏远\n\n**环境背景**：\n- `in a moonlit garden with bamboo shadows` - 月下竹影花园\n- `by a flowing river with willow trees` - 垂柳河畔\n- `in a traditional Chinese pavilion` - 古式亭台\n- `among falling cherry blossoms` - 樱花飞舞中\n- `on a mountain path with pine trees` - 松林山径\n\n**氛围描述**：\n- `peaceful night atmosphere` - 宁静夜晚氛围\n- `melancholic autumn mood` - 萧瑟秋意\n- `joyful spring ambiance` - 明媚春光\n- `serene morning light` - 安详晨光\n\n### 优秀示例：\n```\nThis is a simple cartoon style image. The character stands by the window looking out at the moon. She holds a round fan gently in her right hand. Her expression shows deep longing. The background features traditional Chinese architecture under soft moonlight with bamboo shadows dancing in the breeze.\n```\n\n**要求**：30-50个英文单词，专注于动作、环境、氛围\n\n---\n\n## 🎬 **视频提示词规则（保持不变）**\n\n### 核心原则：\n**简单、清晰、避免歧义**，使用AI能正确理解的基础运镜语言\n\n### 基础运镜词汇库：\n\n#### 1. **镜头移动（Movement）**\n- `camera moves up` - 镜头上移\n- `camera moves down` - 镜头下移  \n- `camera moves left` - 镜头左移\n- `camera moves right` - 镜头右移\n- `camera moves forward` - 镜头前推\n- `camera moves backward` - 镜头后拉\n\n#### 2. **镜头旋转（Rotation）**\n- `camera slowly turns left` - 镜头缓慢左转\n- `camera slowly turns right` - 镜头缓慢右转\n- `camera looks up` - 镜头仰视\n- `camera looks down` - 镜头俯视\n\n#### 3. **焦距变化（Focus）**\n- `slowly zoom in` - 缓慢拉近\n- `slowly zoom out` - 缓慢拉远\n- `focus on the face` - 聚焦面部\n- `wide view of scene` - 广角全景\n\n#### 4. **镜头速度（Speed）**\n- `very slow` - 非常缓慢\n- `gentle` - 轻柔\n- `smooth` - 平滑\n- `gradual` - 渐进\n\n### 运镜匹配建议：\n\n| 诗句类型 | 推荐运镜 | 示例 |\n|---------|---------|------|\n| 望月、登高 | 镜头上移 | `camera moves up slowly to show the moon` |\n| 送别、远去 | 镜头后拉 | `camera moves backward showing the distance` |\n| 思念、回忆 | 缓慢推近 | `slowly zoom in on her face` |\n| 江河、行路 | 镜头横移 | `camera moves right following the river` |\n| 落花、飘雪 | 镜头下移 | `camera moves down with falling petals` |\n| 孤独、寂寞 | 缓慢拉远 | `slowly zoom out to show loneliness` |\n\n### 视频提示词组合模板：\n```\n[主体动作], [简单运镜]\n```\n\n示例：\n- `character looks up at the moon, camera moves up slowly`\n- `character waves goodbye, camera moves backward gradually`\n- `petals fall around character, camera moves down following them`\n\n---\n\n## 📊 输出格式\n\n```json\n[\n  {\n    \"verse\": \"标题和作者\",\n    \"prompt\": \"整体意境图片提示词（专注场景氛围）\",\n    \"prompt1\": \"简单的开场视频运镜\"\n  },\n  {\n    \"verse\": \"诗句原文\",\n    \"prompt\": \"图片提示词（专注动作、环境、氛围）\",\n    \"prompt1\": \"动作描述, 简单运镜指令\"\n  }\n]\n```\n\n---\n\n## ✅ 注意事项\n\n### 图片提示词优化重点：\n1. **去除人物外貌描述**：不再描述面容、发型、服饰细节\n2. **强化动作描述**：重点描述人物的具体动作和姿态\n3. **丰富环境细节**：增加背景环境的具体描述\n4. **突出氛围营造**：通过光影、色彩、意境词汇营造诗意\n\n### 必须做到：\n1. 人物由参考图提供，提示词专注于**动作+环境+氛围**\n2. 使用**最简单直接**的运镜描述\n3. 避免使用专业影视术语\n4. 每个运镜指令不超过10个单词\n\n### 绝对避免：\n1. ❌ 不要描述人物长相、发型、服饰颜色等细节\n2. ❌ 不要用专业影视术语\n3. ❌ 不要用过于复杂的组合运镜\n4. ❌ 不要解释任何问题，直接按要求输出json\n\n---\n\n## 🌟 实际应用示例\n\n**输入**：《静夜思》[唐·李白]  \n床前明月光，疑是地上霜。  \n举头望明月，低头思故乡。\n\n**输出**：\n```json\n[\n  {\n    \"verse\": \"《静夜思》[唐·李白]\",\n    \"prompt\": \"This is a simple cartoon style image. A traditional Chinese bedroom at night with moonlight streaming through wooden lattice windows. The room features elegant furniture and silk curtains. Soft silver moonbeams create peaceful shadows across the floor. Serene night atmosphere with gentle breeze.\",\n    \"prompt1\": \"full room view at night, camera moves forward slowly\"\n  },\n  {\n    \"verse\": \"床前明月光，疑是地上霜\",\n    \"prompt\": \"The character sits on a traditional wooden bed looking down at the floor. Bright moonlight streams through the window creating a silver pool of light on the ground. The room has a contemplative atmosphere. The illustration adopts a simple cartoon style with soft lighting.\",\n    \"prompt1\": \"moonlight shines on floor, camera moves down gently\"\n  },\n  {\n    \"verse\": \"举头望明月\",\n    \"prompt\": \"This is a simple cartoon style image. The character slowly raises their head to look up at the bright full moon through the window. The moonlight illuminates the room with soft silver glow. Expression shows wonder and contemplation in the peaceful night scene.\",\n    \"prompt1\": \"character looks up slowly, camera moves up following gaze\"\n  },\n  {\n    \"verse\": \"低头思故乡\",\n    \"prompt\": \"The character lowers their head in deep thought with hands clasped together. The moonlit room creates a nostalgic and melancholic atmosphere. Shadows dance softly around the traditional furniture. The illustration adopts a simple cartoon style emphasizing the contemplative mood.\",\n    \"prompt1\": \"character lowers head slowly, camera moves down gently\"\n  }\n]\n```"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 2,
+        "position": [
+          -768,
+          496
+        ],
+        "id": "99fc43a5-477d-45a6-a2cf-1ed3618ffd94",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "jsonSchemaExample": "[\n  {\n    \"verse\": \"string\",\n    \"prompt\": \"string\",\n    \"prompt1\": \"string\"\n  },\n  {\n    \"verse\": \"string\",\n    \"prompt\": \"string\",\n    \"prompt1\": \"string\"\n  }\n]",
+          "autoFix": true
+        },
+        "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+        "typeVersion": 1.3,
+        "position": [
+          -672,
+          736
+        ],
+        "id": "db85f5cc-11e3-44b3-9dff-02d1531ca2b4",
+        "name": "Structured Output Parser"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "output",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          -464,
+          496
+        ],
+        "id": "d1acaa3f-40bc-4757-beca-fce42e5926bc",
+        "name": "Split Out"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          -224,
+          496
+        ],
+        "id": "45146a5b-9c1c-4aaf-a682-917d86d9779c",
+        "name": "Loop Over Items"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "ff76c20d-3aa3-4423-b7f4-f20660e2ec55",
+                "name": "SignatureNonce",
+                "value": "={{ Math.random().toString(36).slice(2) }}",
+                "type": "string"
+              },
+              {
+                "id": "5d898505-d002-4340-920e-4dd9aaa75e34",
+                "name": "Timestamp",
+                "value": "={{ Date.now().toString() }}",
+                "type": "string"
+              },
+              {
+                "id": "c783143e-088f-4143-9b2d-530ce4d1d1bf",
+                "name": "prompt",
+                "value": "={{ $json.prompt }}",
+                "type": "string"
+              },
+              {
+                "id": "a0ebbb98-8bdf-4be2-8f36-7cc4a4854c08",
+                "name": "copyVoice",
+                "value": "F:/女朗诵.WAV",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          112,
+          512
+        ],
+        "id": "0e2debd0-f262-414c-9d88-5fa78e006169",
+        "name": "参数"
+      },
+      {
+        "parameters": {
+          "amount": 15
+        },
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          512,
+          112
+        ],
+        "id": "74de7252-0702-48d1-88e0-e5dd58ac9074",
+        "name": "Wait2",
+        "webhookId": "61524f60-28d4-4f62-b7c4-b90e9772240c"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "cfe8f6da-3234-4b31-b860-38dd869535a9",
+                "leftValue": "={{ $json.message }}",
+                "rightValue": "success",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              },
+              {
+                "id": "9f025996-239d-44be-a174-2525f2183312",
+                "leftValue": "={{ $json.message }}",
+                "rightValue": "fail",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              },
+              {
+                "id": "871cfc87-5f9d-441c-83b5-68adca7bba12",
+                "leftValue": "={{ $json.message }}",
+                "rightValue": "done",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "or"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          928,
+          112
+        ],
+        "id": "0c8f776e-df91-46cb-bbc1-e81c7556fc4d",
+        "name": "If1"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "http://127.0.0.1:8080/api/v1/videos",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "= {\n    \"video_subject\": \"\",\n    \"video_script\": {{ JSON.stringify($json.srt_content) }}, \n    \"video_terms\": \"\",\n    \"video_aspect\": \"9:16\",\n    \"video_concat_mode\": \"random\",\n    \"video_transition_mode\": \"Shuffle\",\n    \"video_clip_duration\": 3,\n    \"video_count\": 1,\n    \"alignment_mode\": true,\n    \"alignment_videos\": {{ JSON.stringify($('视频地址和文案').item.json.alignment_videos) }},\n    \"alignment_trim_to_audio\":true,\n    \"video_language\": \"\",\n    \"voice_name\": \"megatts3:default\",\n    \"voice_volume\": 1.5,\n    \"voice_rate\": 2.0,\n    \"megatts3_reference_audio\": \"{{ $('参数').first().json.copyVoice}}\",\n    \"megatts3_reference_npy\": \"\",\n    \"megatts3_infer_timestep\": 32,\n    \"megatts3_intelligibility_weight\": 1.4,\n    \"megatts3_similarity_weight\": 3.0,\n    \"bgm_type\": \"\",\n    \"bgm_file\": \"\",\n    \"bgm_volume\": 0.2,\n    \"subtitle_enabled\": true,\n    \"subtitle_position\": \"custom\",\n    \"custom_position\": 60.0,\n    \"font_name\": \"MicrosoftYaHeiBold.ttc\",\n    \"text_fore_color\": \"#FFFFFF\",\n    \"text_background_color\": true,\n    \"font_size\": 89,\n    \"stroke_color\": \"#000000\",\n    \"stroke_width\": 1.5,\n    \"n_threads\": 2,\n    \"paragraph_number\": 1,\n    \"cleanup_intermediate_files\": true\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          320,
+          112
+        ],
+        "id": "fae7481f-2878-4390-9a0c-61b1dd39ed4e",
+        "name": "本地视频合成服务"
+      },
+      {
+        "parameters": {
+          "url": "=http://127.0.0.1:8080/api/v1/tasks/{{$('本地视频合成服务').item.json.data.task_id}}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          720,
+          112
+        ],
+        "id": "70d80fb6-ae76-4e30-8161-32f6f0266ae5",
+        "name": "视频状态"
+      },
+      {
+        "parameters": {
+          "jsCode": "const splitOutData = $('Split Out').all();\nconst verses = splitOutData.map(item => item.json.verse);\n// 获取所有输入项的video_urls\nconst urls = $input.all().map(item => item.json.video_urls);\n// 创建alignment_videos数组\nconst alignment_videos = [];\n// 遍历所有urls\nurls.forEach(url => {\n  // 如果url存在且不为空\n  if (url) {\n    alignment_videos.push({\n      \"provider\": \"local\",\n      \"url\": url,\n      \"duration\": 0\n    });\n  }\n});\n// 用换行符连接verses\nconst srtString = verses.filter(item => item).join('\\n');\n// 返回结果\nreturn {\n  json: {\n    alignment_videos: alignment_videos,\n    srt_content: srtString\n  }\n};"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          144,
+          112
+        ],
+        "id": "fce2a591-04f0-4b5c-9b19-f6127c778e8b",
+        "name": "视频地址和文案"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "c8519ea8-a060-4113-bfc3-68abc06aeaa6",
+                "name": "api_pic",
+                "value": "={\n  \"2\": {\n    \"inputs\": {\n      \"max_shift\": 1.15,\n      \"base_shift\": 0.5,\n      \"width\": [\n        \"10\",\n        1\n      ],\n      \"height\": [\n        \"10\",\n        2\n      ],\n      \"model\": [\n        \"469\",\n        0\n      ]\n    },\n    \"class_type\": \"ModelSamplingFlux\",\n    \"_meta\": {\n      \"title\": \"ModelSamplingFlux\"\n    }\n  },\n  \"4\": {\n    \"inputs\": {\n      \"clip_name1\": \"t5xxl_fp16.safetensors\",\n      \"clip_name2\": \"clip_l.safetensors\",\n      \"type\": \"flux\",\n      \"device\": \"default\"\n    },\n    \"class_type\": \"DualCLIPLoader\",\n    \"_meta\": {\n      \"title\": \"DualCLIPLoader\"\n    }\n  },\n  \"6\": {\n    \"inputs\": {\n      \"vae_name\": \"ae.safetensors\"\n    },\n    \"class_type\": \"VAELoader\",\n    \"_meta\": {\n      \"title\": \"Load VAE\"\n    }\n  },\n  \"8\": {\n    \"inputs\": {\n      \"image\": \"{{$('ref_pic').item.json.ref_pic}}\"\n    },\n    \"class_type\": \"LoadImage\",\n    \"_meta\": {\n      \"title\": \"Load Image\"\n    }\n  },\n  \"10\": {\n    \"inputs\": {\n      \"width\": 720,\n      \"height\": 1280,\n      \"interpolation\": \"lanczos\",\n      \"method\": \"keep proportion\",\n      \"condition\": \"always\",\n      \"multiple_of\": 2,\n      \"image\": [\n        \"8\",\n        0\n      ]\n    },\n    \"class_type\": \"ImageResize+\",\n    \"_meta\": {\n      \"title\": \"🔧 Image Resize\"\n    }\n  },\n  \"11\": {\n    \"inputs\": {\n      \"images\": [\n        \"10\",\n        0\n      ]\n    },\n    \"class_type\": \"PreviewImage\",\n    \"_meta\": {\n      \"title\": \"Preview Image\"\n    }\n  },\n  \"14\": {\n    \"inputs\": {\n      \"noise\": [\n        \"15\",\n        0\n      ],\n      \"guider\": [\n        \"18\",\n        0\n      ],\n      \"sampler\": [\n        \"19\",\n        0\n      ],\n      \"sigmas\": [\n        \"20\",\n        0\n      ],\n      \"latent_image\": [\n        \"467\",\n        0\n      ]\n    },\n    \"class_type\": \"SamplerCustomAdvanced\",\n    \"_meta\": {\n      \"title\": \"SamplerCustomAdvanced\"\n    }\n  },\n  \"15\": {\n    \"inputs\": {\n      \"noise_seed\": 282057202217683\n    },\n    \"class_type\": \"RandomNoise\",\n    \"_meta\": {\n      \"title\": \"RandomNoise\"\n    }\n  },\n  \"17\": {\n    \"inputs\": {\n      \"text\": [\n        \"443\",\n        0\n      ],\n      \"speak_and_recognation\": {\n        \"__value__\": [\n          false,\n          true\n        ]\n      },\n      \"clip\": [\n        \"4\",\n        0\n      ]\n    },\n    \"class_type\": \"CLIPTextEncode\",\n    \"_meta\": {\n      \"title\": \"CLIP Text Encode (Prompt)\"\n    }\n  },\n  \"18\": {\n    \"inputs\": {\n      \"model\": [\n        \"36\",\n        0\n      ],\n      \"conditioning\": [\n        \"32\",\n        0\n      ]\n    },\n    \"class_type\": \"BasicGuider\",\n    \"_meta\": {\n      \"title\": \"BasicGuider\"\n    }\n  },\n  \"19\": {\n    \"inputs\": {\n      \"sampler_name\": \"euler\"\n    },\n    \"class_type\": \"KSamplerSelect\",\n    \"_meta\": {\n      \"title\": \"KSamplerSelect\"\n    }\n  },\n  \"20\": {\n    \"inputs\": {\n      \"scheduler\": \"simple\",\n      \"steps\": 20,\n      \"denoise\": 1,\n      \"model\": [\n        \"36\",\n        0\n      ]\n    },\n    \"class_type\": \"BasicScheduler\",\n    \"_meta\": {\n      \"title\": \"BasicScheduler\"\n    }\n  },\n  \"22\": {\n    \"inputs\": {\n      \"pixels\": [\n        \"10\",\n        0\n      ],\n      \"vae\": [\n        \"6\",\n        0\n      ]\n    },\n    \"class_type\": \"VAEEncode\",\n    \"_meta\": {\n      \"title\": \"VAE Encode\"\n    }\n  },\n  \"31\": {\n    \"inputs\": {\n      \"samples\": [\n        \"14\",\n        0\n      ],\n      \"vae\": [\n        \"6\",\n        0\n      ]\n    },\n    \"class_type\": \"VAEDecode\",\n    \"_meta\": {\n      \"title\": \"VAE Decode\"\n    }\n  },\n  \"32\": {\n    \"inputs\": {\n      \"conditioning\": [\n        \"33\",\n        0\n      ],\n      \"latent\": [\n        \"22\",\n        0\n      ]\n    },\n    \"class_type\": \"ReferenceLatent\",\n    \"_meta\": {\n      \"title\": \"ReferenceLatent\"\n    }\n  },\n  \"33\": {\n    \"inputs\": {\n      \"guidance\": 2.5,\n      \"conditioning\": [\n        \"17\",\n        0\n      ]\n    },\n    \"class_type\": \"FluxGuidance\",\n    \"_meta\": {\n      \"title\": \"FluxGuidance\"\n    }\n  },\n  \"34\": {\n    \"inputs\": {\n      \"filename_prefix\": \"ComfyUI\",\n      \"images\": [\n        \"31\",\n        0\n      ]\n    },\n    \"class_type\": \"SaveImage\",\n    \"_meta\": {\n      \"title\": \"Save Image\"\n    }\n  },\n  \"35\": {\n    \"inputs\": {\n      \"rgthree_comparer\": {\n        \"images\": [\n          {\n            \"name\": \"A\",\n            \"selected\": true,\n            \"url\": \"/api/view?filename=rgthree.compare._temp_edqau_00001_.png&type=temp&subfolder=&rand=0.056082422654154085\"\n          },\n          {\n            \"name\": \"B\",\n            \"selected\": true,\n            \"url\": \"/api/view?filename=rgthree.compare._temp_edqau_00002_.png&type=temp&subfolder=&rand=0.3059814553162392\"\n          }\n        ]\n      },\n      \"image_a\": [\n        \"10\",\n        0\n      ],\n      \"image_b\": [\n        \"31\",\n        0\n      ]\n    },\n    \"class_type\": \"Image Comparer (rgthree)\",\n    \"_meta\": {\n      \"title\": \"Image Comparer (rgthree)\"\n    }\n  },\n  \"36\": {\n    \"inputs\": {\n      \"anything\": [\n        \"2\",\n        0\n      ]\n    },\n    \"class_type\": \"easy cleanGpuUsed\",\n    \"_meta\": {\n      \"title\": \"Clean VRAM Used\"\n    }\n  },\n  \"51\": {\n    \"inputs\": {\n      \"text\": \"1024\",\n      \"anything\": [\n        \"10\",\n        1\n      ]\n    },\n    \"class_type\": \"easy showAnything\",\n    \"_meta\": {\n      \"title\": \"Show Any\"\n    }\n  },\n  \"443\": {\n    \"inputs\": {\n      \"text\": \"{{ $json.prompt }}\",\n      \"speak_and_recognation\": {\n        \"__value__\": [\n          false,\n          true\n        ]\n      }\n    },\n    \"class_type\": \"CR Text\",\n    \"_meta\": {\n      \"title\": \"🔤 CR Text\"\n    }\n  },\n  \"464\": {\n    \"inputs\": {\n      \"text\": [\n        \"443\",\n        0\n      ]\n    },\n    \"class_type\": \"ViewText\",\n    \"_meta\": {\n      \"title\": \"View Text\"\n    }\n  },\n  \"467\": {\n    \"inputs\": {\n      \"width\": 512,\n      \"height\": 512,\n      \"batch_size\": 1\n    },\n    \"class_type\": \"EmptyLatentImage\",\n    \"_meta\": {\n      \"title\": \"Empty Latent Image\"\n    }\n  },\n  \"469\": {\n    \"inputs\": {\n      \"unet_name\": \"FLUX_flux1-dev-kontext_fp8_scaled.safetensors\",\n      \"weight_dtype\": \"fp8_e4m3fn_fast\"\n    },\n    \"class_type\": \"UNETLoader\",\n    \"_meta\": {\n      \"title\": \"Load Diffusion Model\"\n    }\n  }\n}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          304,
+          512
+        ],
+        "id": "9c9f8701-d1f6-424c-bc44-107cad5a5e05",
+        "name": "comfyui_pic_api"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "d26298fb-e4a1-447f-9ee4-ed459963298b",
+                "leftValue": "={{ $('轮询图片').item.json }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "object",
+                  "operation": "empty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1312,
+          512
+        ],
+        "id": "242b3cff-5389-45a2-8c0d-235f41dc9b86",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "http://127.0.0.1:8188/prompt",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"prompt\":{{ $json.toJsonString() }}\n}",
+          "options": {}
+        },
+        "id": "50e6d98d-dba4-4f1d-9061-8fe8db33f2fb",
+        "name": "执行生图",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          752,
+          512
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "d26298fb-e4a1-447f-9ee4-ed459963298b",
+                "leftValue": "={{ $('轮询视频').item.json }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "object",
+                  "operation": "empty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1104,
+          928
+        ],
+        "id": "5fdcb8a1-d2a9-4ae3-95f0-bb27a1b86078",
+        "name": "If2"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "http://127.0.0.1:8188/prompt",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"prompt\":{{ $json.toJsonString()}}\n}",
+          "options": {}
+        },
+        "id": "19576262-ec88-490e-9cb7-34884703c827",
+        "name": "执行图生视频",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          512,
+          928
+        ]
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b6cb63fe-22e7-4eaf-8c07-edaeec8099cb",
+                "name": "api_video",
+                "value": "={\n  \"8\": {\n    \"inputs\": {\n      \"samples\": [\n        \"380\",\n        0\n      ],\n      \"vae\": [\n        \"291\",\n        0\n      ]\n    },\n    \"class_type\": \"VAEDecode\",\n    \"_meta\": {\n      \"title\": \"VAE Decode\"\n    }\n  },\n  \"289\": {\n    \"inputs\": {\n      \"unet_name\": \"WAN\\\\wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors\",\n      \"weight_dtype\": \"fp8_e4m3fn_fast\"\n    },\n    \"class_type\": \"UNETLoader\",\n    \"_meta\": {\n      \"title\": \"Load Diffusion Model\"\n    }\n  },\n  \"290\": {\n    \"inputs\": {\n      \"clip_name\": \"WAN\\\\umt5_xxl_fp8_e4m3fn_scaled.safetensors\",\n      \"type\": \"wan\",\n      \"device\": \"default\"\n    },\n    \"class_type\": \"CLIPLoader\",\n    \"_meta\": {\n      \"title\": \"Load CLIP\"\n    }\n  },\n  \"291\": {\n    \"inputs\": {\n      \"vae_name\": \"WAN\\\\wan_2.1_vae.safetensors\"\n    },\n    \"class_type\": \"VAELoader\",\n    \"_meta\": {\n      \"title\": \"Load VAE\"\n    }\n  },\n  \"293\": {\n    \"inputs\":{\n\"image\":\"F:/ComfyUI/ComfyUI/comfyui_torch2.7cu12.8/ComfyUI/output/{{$json.values().first().outputs['34'].images.first().filename}}\"\n    },\n    \"class_type\": \"LoadImage\",\n    \"_meta\": {\n      \"title\": \"Load Image\"\n    }\n  },\n  \"294\": {\n    \"inputs\": {\n      \"crop\": \"none\",\n      \"clip_vision\": [\n        \"299\",\n        0\n      ],\n      \"image\": [\n        \"301\",\n        0\n      ]\n    },\n    \"class_type\": \"CLIPVisionEncode\",\n    \"_meta\": {\n      \"title\": \"CLIP Vision Encode\"\n    }\n  },\n  \"295\": {\n    \"inputs\": {\n      \"width\": [\n        \"301\",\n        3\n      ],\n      \"height\": [\n        \"301\",\n        4\n      ],\n      \"length\": [\n        \"315\",\n        0\n      ],\n      \"batch_size\": 1,\n      \"positive\": [\n        \"373\",\n        0\n      ],\n      \"negative\": [\n        \"374\",\n        0\n      ],\n      \"vae\": [\n        \"291\",\n        0\n      ],\n      \"clip_vision_output\": [\n        \"294\",\n        0\n      ],\n      \"start_image\": [\n        \"301\",\n        0\n      ]\n    },\n    \"class_type\": \"WanImageToVideo\",\n    \"_meta\": {\n      \"title\": \"WanImageToVideo\"\n    }\n  },\n  \"298\": {\n    \"inputs\": {\n      \"frame_rate\": 16,\n      \"loop_count\": 0,\n      \"filename_prefix\": \"Video-wan2.2\",\n      \"format\": \"video/h264-mp4\",\n      \"pix_fmt\": \"yuv420p\",\n      \"crf\": 19,\n      \"save_metadata\": true,\n      \"trim_to_audio\": false,\n      \"pingpong\": false,\n      \"save_output\": true,\n      \"images\": [\n        \"8\",\n        0\n      ]\n    },\n    \"class_type\": \"VHS_VideoCombine\",\n    \"_meta\": {\n      \"title\": \"Video Combine 🎥🅥🅗🅢\"\n    }\n  },\n  \"299\": {\n    \"inputs\": {\n      \"clip_name\": \"WAN\\\\clip_vision_h.safetensors\"\n    },\n    \"class_type\": \"CLIPVisionLoader\",\n    \"_meta\": {\n      \"title\": \"Load CLIP Vision\"\n    }\n  },\n  \"300\": {\n    \"inputs\": {\n      \"shift\": 8.000000000000002,\n      \"model\": [\n        \"303\",\n        0\n      ]\n    },\n    \"class_type\": \"ModelSamplingSD3\",\n    \"_meta\": {\n      \"title\": \"ModelSamplingSD3\"\n    }\n  },\n  \"301\": {\n    \"inputs\": {\n      \"aspect_ratio\": \"original\",\n      \"proportional_width\": 1,\n      \"proportional_height\": 1,\n      \"fit\": \"crop\",\n      \"method\": \"lanczos\",\n      \"round_to_multiple\": \"64\",\n      \"scale_to_side\": \"longest\",\n      \"scale_to_length\": [\n        \"310\",\n        0\n      ],\n      \"background_color\": \"#000000\",\n      \"image\": [\n        \"293\",\n        0\n      ]\n    },\n    \"class_type\": \"LayerUtility: ImageScaleByAspectRatio V2\",\n    \"_meta\": {\n      \"title\": \"LayerUtility: ImageScaleByAspectRatio V2\"\n    }\n  },\n  \"303\": {\n    \"inputs\": {\n      \"sage_attention\": \"auto\",\n      \"model\": [\n        \"390\",\n        0\n      ]\n    },\n    \"class_type\": \"PathchSageAttentionKJ\",\n    \"_meta\": {\n      \"title\": \"Patch Sage Attention KJ\"\n    }\n  },\n  \"310\": {\n    \"inputs\": {\n      \"value\": 512\n    },\n    \"class_type\": \"easy int\",\n    \"_meta\": {\n      \"title\": \"Int\"\n    }\n  },\n  \"314\": {\n    \"inputs\": {\n      \"Value\": 1\n    },\n    \"class_type\": \"DF_Integer\",\n    \"_meta\": {\n      \"title\": \"时长\"\n    }\n  },\n  \"315\": {\n    \"inputs\": {\n      \"value\": \"a*16+1\",\n      \"a\": [\n        \"314\",\n        0\n      ]\n    },\n    \"class_type\": \"SimpleMath+\",\n    \"_meta\": {\n      \"title\": \"🔧 Simple Math\"\n    }\n  },\n  \"373\": {\n    \"inputs\": {\n      \"text\": [\n        \"377\",\n        0\n      ],\n      \"speak_and_recognation\": {\n        \"__value__\": [\n          false,\n          true\n        ]\n      },\n      \"clip\": [\n        \"290\",\n        0\n      ]\n    },\n    \"class_type\": \"CLIPTextEncode\",\n    \"_meta\": {\n      \"title\": \"CLIP Text Encode (Prompt)\"\n    }\n  },\n  \"374\": {\n    \"inputs\": {\n      \"text\": \"色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走\",\n      \"speak_and_recognation\": {\n        \"__value__\": [\n          false,\n          true\n        ]\n      },\n      \"clip\": [\n        \"290\",\n        0\n      ]\n    },\n    \"class_type\": \"CLIPTextEncode\",\n    \"_meta\": {\n      \"title\": \"CLIP Text Encode (Prompt)\"\n    }\n  },\n  \"377\": {\n    \"inputs\": {\n      \"anything\": [\n        \"403\",\n        0\n      ]\n    },\n    \"class_type\": \"easy cleanGpuUsed\",\n    \"_meta\": {\n      \"title\": \"Clean VRAM Used\"\n    }\n  },\n  \"378\": {\n    \"inputs\": {\n      \"add_noise\": \"enable\",\n      \"noise_seed\": 498170892593793,\n      \"steps\": 8,\n      \"cfg\": 1,\n      \"sampler_name\": \"euler\",\n      \"scheduler\": \"simple\",\n      \"start_at_step\": 0,\n      \"end_at_step\": 4,\n      \"return_with_leftover_noise\": \"enable\",\n      \"model\": [\n        \"300\",\n        0\n      ],\n      \"positive\": [\n        \"295\",\n        0\n      ],\n      \"negative\": [\n        \"295\",\n        1\n      ],\n      \"latent_image\": [\n        \"295\",\n        2\n      ]\n    },\n    \"class_type\": \"KSamplerAdvanced\",\n    \"_meta\": {\n      \"title\": \"KSampler (Advanced)\"\n    }\n  },\n  \"380\": {\n    \"inputs\": {\n      \"add_noise\": \"disable\",\n      \"noise_seed\": 126,\n      \"steps\": 8,\n      \"cfg\": 1,\n      \"sampler_name\": \"euler\",\n      \"scheduler\": \"simple\",\n      \"start_at_step\": 4,\n      \"end_at_step\": 10000,\n      \"return_with_leftover_noise\": \"disable\",\n      \"model\": [\n        \"382\",\n        0\n      ],\n      \"positive\": [\n        \"295\",\n        0\n      ],\n      \"negative\": [\n        \"295\",\n        1\n      ],\n      \"latent_image\": [\n        \"378\",\n        0\n      ]\n    },\n    \"class_type\": \"KSamplerAdvanced\",\n    \"_meta\": {\n      \"title\": \"KSampler (Advanced)\"\n    }\n  },\n  \"381\": {\n    \"inputs\": {\n      \"unet_name\": \"WAN\\\\wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors\",\n      \"weight_dtype\": \"fp8_e4m3fn_fast\"\n    },\n    \"class_type\": \"UNETLoader\",\n    \"_meta\": {\n      \"title\": \"Load Diffusion Model\"\n    }\n  },\n  \"382\": {\n    \"inputs\": {\n      \"shift\": 8.000000000000002,\n      \"model\": [\n        \"388\",\n        0\n      ]\n    },\n    \"class_type\": \"ModelSamplingSD3\",\n    \"_meta\": {\n      \"title\": \"ModelSamplingSD3\"\n    }\n  },\n  \"388\": {\n    \"inputs\": {\n      \"sage_attention\": \"auto\",\n      \"model\": [\n        \"391\",\n        0\n      ]\n    },\n    \"class_type\": \"PathchSageAttentionKJ\",\n    \"_meta\": {\n      \"title\": \"Patch Sage Attention KJ\"\n    }\n  },\n  \"390\": {\n    \"inputs\": {\n      \"lora_name\": \"WAN\\\\Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors\",\n      \"strength_model\": 1,\n      \"model\": [\n        \"289\",\n        0\n      ]\n    },\n    \"class_type\": \"LoraLoaderModelOnly\",\n    \"_meta\": {\n      \"title\": \"LoraLoaderModelOnly\"\n    }\n  },\n  \"391\": {\n    \"inputs\": {\n      \"lora_name\": \"WAN\\\\Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors\",\n      \"strength_model\": 1,\n      \"model\": [\n        \"381\",\n        0\n      ]\n    },\n    \"class_type\": \"LoraLoaderModelOnly\",\n    \"_meta\": {\n      \"title\": \"LoraLoaderModelOnly\"\n    }\n  },\n  \"393\": {\n    \"inputs\": {\n      \"purge_cache\": true,\n      \"purge_models\": true,\n      \"anything\": [\n        \"378\",\n        0\n      ]\n    },\n    \"class_type\": \"LayerUtility: PurgeVRAM V2\",\n    \"_meta\": {\n      \"title\": \"LayerUtility: Purge VRAM V2\"\n    }\n  },\n  \"394\": {\n    \"inputs\": {\n      \"purge_cache\": true,\n      \"purge_models\": true,\n      \"anything\": [\n        \"380\",\n        0\n      ]\n    },\n    \"class_type\": \"LayerUtility: PurgeVRAM V2\",\n    \"_meta\": {\n      \"title\": \"LayerUtility: Purge VRAM V2\"\n    }\n  },\n  \"402\": {\n    \"inputs\": {\n      \"text\": [\n        \"377\",\n        0\n      ]\n    },\n    \"class_type\": \"ShowText|pysssss\",\n    \"_meta\": {\n      \"title\": \"Show Text 🐍\"\n    }\n  },\n  \"403\": {\n    \"inputs\": {\n      \"text\": \"{{$('参数').first().json.prompt1}}\",\n      \"speak_and_recognation\": {\n        \"__value__\": [\n          false,\n          true\n        ]\n      }\n    },\n    \"class_type\": \"JjkText\",\n    \"_meta\": {\n      \"title\": \"Text\"\n    }\n  }\n}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          112,
+          928
+        ],
+        "id": "c21520cb-7456-4eae-a525-a4fbfb51d1fd",
+        "name": "comfyui_api_video"
+      },
+      {
+        "parameters": {},
+        "id": "4dcd69ca-4655-44e1-bdef-0c6ab02b5696",
+        "name": "wait",
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          944,
+          512
+        ],
+        "webhookId": "0cb3a35d-0b84-437d-9b5b-ae2f928385a0"
+      },
+      {
+        "parameters": {
+          "url": "=http://127.0.0.1:8188/history/{{ $('执行图生视频').item.json.prompt_id }}",
+          "options": {}
+        },
+        "id": "adab20a8-ff9f-45e2-81ed-7a30293c1a65",
+        "name": "轮询视频",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          960,
+          928
+        ]
+      },
+      {
+        "parameters": {
+          "amount": 30
+        },
+        "id": "f96b84a7-a7ce-47b3-9db6-de85d0cf1baa",
+        "name": "wait1",
+        "type": "n8n-nodes-base.wait",
+        "typeVersion": 1.1,
+        "position": [
+          752,
+          928
+        ],
+        "webhookId": "0cb3a35d-0b84-437d-9b5b-ae2f928385a0"
+      },
+      {
+        "parameters": {
+          "url": "=http://127.0.0.1:8188/history/{{ $('执行生图').item.json.prompt_id }}",
+          "options": {}
+        },
+        "id": "f6bc732f-7190-4cff-befa-0d7cca8c7f18",
+        "name": "轮询图片",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1136,
+          512
+        ]
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "444eb744-004c-4113-a01c-96b19afdbcce",
+                "name": "video_urls",
+                "value": "={{  $json.values().first().outputs[\"298\"].gifs[0].fullpath }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1328,
+          944
+        ],
+        "id": "8e16ad3c-4c52-41f6-bbe3-b0903dea9f44",
+        "name": "Edit Fields1"
+      },
+      {
+        "parameters": {
+          "model": "deepseek-reasoner",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+        "typeVersion": 1,
+        "position": [
+          -912,
+          720
+        ],
+        "id": "91ca38fb-7c47-45da-b10a-043ad31443ea",
+        "name": "DeepSeek Chat Model",
+        "credentials": {
+          "deepSeekApi": {
+            "id": "6brcltcleUmFsWlE",
+            "name": "DeepSeek account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+        "typeVersion": 1,
+        "position": [
+          -672,
+          896
+        ],
+        "id": "da2c12d0-ff78-427a-a3d2-012be298dccf",
+        "name": "DeepSeek Chat Model1",
+        "credentials": {
+          "deepSeekApi": {
+            "id": "6brcltcleUmFsWlE",
+            "name": "DeepSeek account"
+          }
+        }
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.noOp",
+        "typeVersion": 1,
+        "position": [
+          1136,
+          96
+        ],
+        "id": "665a75a5-2e31-4aba-a439-b76db8d5ba73",
+        "name": "No Operation, do nothing"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b163a83e-ab10-4041-8356-61d785960491",
+                "name": "ref_pic",
+                "value": "F:/pic/202940977-024bcd59babf0fb978ba4a286a888f0fd8550ceb9865a55e92fece02c37500a0.jpg",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -944,
+          496
+        ],
+        "id": "a6849bb0-d2d4-4e56-ad79-dac7c15cdb86",
+        "name": "ref_pic"
+      },
+      {
+        "parameters": {
+          "formTitle": "诗词",
+          "formFields": {
+            "values": [
+              {
+                "fieldLabel": "content",
+                "fieldType": "textarea",
+                "placeholder": "适当的标点符号，有助于语音推理的断句",
+                "requiredField": true
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.formTrigger",
+        "typeVersion": 2.2,
+        "position": [
+          -1136,
+          496
+        ],
+        "id": "c00c4c02-3055-44fa-ac09-0bff82ee5c57",
+        "name": "创意",
+        "webhookId": "3590788a-195a-4c19-802e-c94774553b46"
+      },
+      {
+        "parameters": {
+          "jsCode": "let jsonString = $input.first().json.api_video;\n\n// 反斜杠转义问题\njsonString = jsonString.replace(/\\\\/g, '\\\\\\\\');\n\nreturn JSON.parse(jsonString);"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          288,
+          928
+        ],
+        "id": "b64c89de-f0a6-49ad-b5eb-b600acfcba62",
+        "name": "Code"
+      },
+      {
+        "parameters": {
+          "jsCode": "let jsonString = $input.first().json.api_pic;\n\n// 反斜杠转义问题\njsonString = jsonString.replace(/\\\\/g, '\\\\\\\\');\n\nreturn JSON.parse(jsonString);"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          528,
+          512
+        ],
+        "id": "f9594f09-dfd0-4c4b-bd69-de064db97b10",
+        "name": "Code1"
+      },
+      {
+        "parameters": {
+          "content": "# LLM推理提示词 ",
+          "height": 656,
+          "width": 1024,
+          "color": 4
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -1312,
+          432
+        ],
+        "id": "441ac512-083c-4358-937d-90863a571a0b",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "content": "# 调用comfyui生图\n",
+          "height": 352,
+          "width": 1568
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          0,
+          416
+        ],
+        "id": "b004a191-5eb3-4056-a5a9-1b50d8f6cee8",
+        "name": "Sticky Note1"
+      },
+      {
+        "parameters": {
+          "content": "# 调用comfyui生视频\n",
+          "height": 352,
+          "width": 1568
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          0,
+          848
+        ],
+        "id": "8ce154b1-5730-4b7d-ab51-14bc6fd1e85e",
+        "name": "Sticky Note2"
+      },
+      {
+        "parameters": {
+          "content": "# 音频推理+合成视频\n",
+          "height": 352,
+          "width": 1568
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "cc14b329-bc16-445f-942f-6c6d94f43f62",
+        "name": "Sticky Note3"
+      }
+    ],
+    "connections": {
+      "AI Agent": {
+        "main": [
+          [
+            {
+              "node": "Split Out",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Structured Output Parser": {
+        "ai_outputParser": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_outputParser",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items": {
+        "main": [
+          [
+            {
+              "node": "视频地址和文案",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "参数",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "参数": {
+        "main": [
+          [
+            {
+              "node": "comfyui_pic_api",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Wait2": {
+        "main": [
+          [
+            {
+              "node": "视频状态",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If1": {
+        "main": [
+          [
+            {
+              "node": "No Operation, do nothing",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Wait2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "本地视频合成服务": {
+        "main": [
+          [
+            {
+              "node": "Wait2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "视频状态": {
+        "main": [
+          [
+            {
+              "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "视频地址和文案": {
+        "main": [
+          [
+            {
+              "node": "本地视频合成服务",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "comfyui_pic_api": {
+        "main": [
+          [
+            {
+              "node": "Code1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "wait",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "comfyui_api_video",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "执行生图": {
+        "main": [
+          [
+            {
+              "node": "wait",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If2": {
+        "main": [
+          [
+            {
+              "node": "wait1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "执行图生视频": {
+        "main": [
+          [
+            {
+              "node": "wait1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "comfyui_api_video": {
+        "main": [
+          [
+            {
+              "node": "Code",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "wait": {
+        "main": [
+          [
+            {
+              "node": "轮询图片",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "轮询视频": {
+        "main": [
+          [
+            {
+              "node": "If2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "wait1": {
+        "main": [
+          [
+            {
+              "node": "轮询视频",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "轮询图片": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields1": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "DeepSeek Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "DeepSeek Chat Model1": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Structured Output Parser",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "ref_pic": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "创意": {
+        "main": [
+          [
+            {
+              "node": "ref_pic",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code": {
+        "main": [
+          [
+            {
+              "node": "执行图生视频",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code1": {
+        "main": [
+          [
+            {
+              "node": "执行生图",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "c67b63ca-82ab-4964-aac6-ce2847b4ed52",
+  "connections": {
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "视频地址和文案",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "参数",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "参数": {
+      "main": [
+        [
+          {
+            "node": "comfyui_pic_api",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "视频状态",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "本地视频合成服务": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "视频状态": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "视频地址和文案": {
+      "main": [
+        [
+          {
+            "node": "本地视频合成服务",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "comfyui_pic_api": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "comfyui_api_video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "执行生图": {
+      "main": [
+        [
+          {
+            "node": "wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "执行图生视频": {
+      "main": [
+        [
+          {
+            "node": "wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "comfyui_api_video": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wait": {
+      "main": [
+        [
+          {
+            "node": "轮询图片",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "轮询视频": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wait1": {
+      "main": [
+        [
+          {
+            "node": "轮询视频",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "轮询图片": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ref_pic": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "创意": {
+      "main": [
+        [
+          {
+            "node": "ref_pic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "执行图生视频",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "执行生图",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-14T16:57:53.676Z",
+  "id": "LWoWrNoBhccmYXSl",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "古诗词，本地comfyui2",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('创意').item.json.content }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=# 古诗词视觉化提示词生成器（角色参考版）\n\n## 🎯 核心任务\n你是一位专业的古诗词文生图及视频提示词生成器，将中国古诗词转化为视觉内容。现已优化为配合角色参考图的图生图模式。\n\n## ⚠️ 最高规则\n**严禁现代元素**：绝对不能出现任何现代科技、建筑、服饰或物品。所有内容必须符合中国古代（唐宋时期）背景。\n\n---\n\n## 📋 处理流程\n\n### **步骤1：输入解析**\n- 识别 `《》` 包裹的标题\n- 识别 `[]`或者`()` 包裹的朝代作者\n- 按标点符号拆分诗句\n\n### **步骤2：整体意境（如有标题）**\n- **图片提示词**：生成一个宏观场景，展现全诗氛围\n- **视频提示词**：使用简单的开场镜头动作\n\n### **步骤3：逐句生成**\n为每个诗句生成对应的图片和视频提示词\n\n---\n\n## 🎨 **图片提示词规则（图生图优化）**\n\n### 核心原则：\n使用**自然语言描述**，专注于**动作姿态、环境背景、氛围营造**，让画面更生动自然\n\n### 统一格式：\n```\nThis is a simple cartoon style image. [动作姿态]. [道具互动]. [表情神态]. [环境背景]. [氛围描述]. The illustration adopts a simple cartoon style.\n```\n\n### 必备元素：\n\n#### 1. **开头或结尾风格描述**（二选一）：\n- 开头：`This is a simple cartoon style image,`\n- 结尾：`The illustration adopts a simple cartoon style`\n\n#### 2. **重点描述内容**（人物细节已由参考图提供）：\n\n**动作姿态**：\n- `stands by the window looking out` - 站在窗边向外望\n- `sits on the wooden bed` - 坐在木床上\n- `walks slowly in the garden` - 在花园中缓步行走\n- `holds a wine cup and raises it up` - 举杯饮酒\n- `leans against the railing` - 倚靠栏杆\n\n**道具互动**：\n- `holding a folding fan` - 持扇\n- `carrying a wooden staff` - 手持木杖\n- `playing the guqin` - 抚琴\n- `writing with a brush` - 执笔书写\n- `rowing a small boat` - 划船\n\n**表情神态**：\n- `with a melancholy expression` - 神情忧郁\n- `showing joy and contentment` - 神情愉悦\n- `looking contemplative` - 若有所思\n- `appearing lonely and distant` - 显得孤独疏远\n\n**环境背景**：\n- `in a moonlit garden with bamboo shadows` - 月下竹影花园\n- `by a flowing river with willow trees` - 垂柳河畔\n- `in a traditional Chinese pavilion` - 古式亭台\n- `among falling cherry blossoms` - 樱花飞舞中\n- `on a mountain path with pine trees` - 松林山径\n\n**氛围描述**：\n- `peaceful night atmosphere` - 宁静夜晚氛围\n- `melancholic autumn mood` - 萧瑟秋意\n- `joyful spring ambiance` - 明媚春光\n- `serene morning light` - 安详晨光\n\n### 优秀示例：\n```\nThis is a simple cartoon style image. The character stands by the window looking out at the moon. She holds a round fan gently in her right hand. Her expression shows deep longing. The background features traditional Chinese architecture under soft moonlight with bamboo shadows dancing in the breeze.\n```\n\n**要求**：30-50个英文单词，专注于动作、环境、氛围\n\n---\n\n## 🎬 **视频提示词规则（保持不变）**\n\n### 核心原则：\n**简单、清晰、避免歧义**，使用AI能正确理解的基础运镜语言\n\n### 基础运镜词汇库：\n\n#### 1. **镜头移动（Movement）**\n- `camera moves up` - 镜头上移\n- `camera moves down` - 镜头下移  \n- `camera moves left` - 镜头左移\n- `camera moves right` - 镜头右移\n- `camera moves forward` - 镜头前推\n- `camera moves backward` - 镜头后拉\n\n#### 2. **镜头旋转（Rotation）**\n- `camera slowly turns left` - 镜头缓慢左转\n- `camera slowly turns right` - 镜头缓慢右转\n- `camera looks up` - 镜头仰视\n- `camera looks down` - 镜头俯视\n\n#### 3. **焦距变化（Focus）**\n- `slowly zoom in` - 缓慢拉近\n- `slowly zoom out` - 缓慢拉远\n- `focus on the face` - 聚焦面部\n- `wide view of scene` - 广角全景\n\n#### 4. **镜头速度（Speed）**\n- `very slow` - 非常缓慢\n- `gentle` - 轻柔\n- `smooth` - 平滑\n- `gradual` - 渐进\n\n### 运镜匹配建议：\n\n| 诗句类型 | 推荐运镜 | 示例 |\n|---------|---------|------|\n| 望月、登高 | 镜头上移 | `camera moves up slowly to show the moon` |\n| 送别、远去 | 镜头后拉 | `camera moves backward showing the distance` |\n| 思念、回忆 | 缓慢推近 | `slowly zoom in on her face` |\n| 江河、行路 | 镜头横移 | `camera moves right following the river` |\n| 落花、飘雪 | 镜头下移 | `camera moves down with falling petals` |\n| 孤独、寂寞 | 缓慢拉远 | `slowly zoom out to show loneliness` |\n\n### 视频提示词组合模板：\n```\n[主体动作], [简单运镜]\n```\n\n示例：\n- `character looks up at the moon, camera moves up slowly`\n- `character waves goodbye, camera moves backward gradually`\n- `petals fall around character, camera moves down following them`\n\n---\n\n## 📊 输出格式\n\n```json\n[\n  {\n    \"verse\": \"标题和作者\",\n    \"prompt\": \"整体意境图片提示词（专注场景氛围）\",\n    \"prompt1\": \"简单的开场视频运镜\"\n  },\n  {\n    \"verse\": \"诗句原文\",\n    \"prompt\": \"图片提示词（专注动作、环境、氛围）\",\n    \"prompt1\": \"动作描述, 简单运镜指令\"\n  }\n]\n```\n\n---\n\n## ✅ 注意事项\n\n### 图片提示词优化重点：\n1. **去除人物外貌描述**：不再描述面容、发型、服饰细节\n2. **强化动作描述**：重点描述人物的具体动作和姿态\n3. **丰富环境细节**：增加背景环境的具体描述\n4. **突出氛围营造**：通过光影、色彩、意境词汇营造诗意\n\n### 必须做到：\n1. 人物由参考图提供，提示词专注于**动作+环境+氛围**\n2. 使用**最简单直接**的运镜描述\n3. 避免使用专业影视术语\n4. 每个运镜指令不超过10个单词\n\n### 绝对避免：\n1. ❌ 不要描述人物长相、发型、服饰颜色等细节\n2. ❌ 不要用专业影视术语\n3. ❌ 不要用过于复杂的组合运镜\n4. ❌ 不要解释任何问题，直接按要求输出json\n\n---\n\n## 🌟 实际应用示例\n\n**输入**：《静夜思》[唐·李白]  \n床前明月光，疑是地上霜。  \n举头望明月，低头思故乡。\n\n**输出**：\n```json\n[\n  {\n    \"verse\": \"《静夜思》[唐·李白]\",\n    \"prompt\": \"This is a simple cartoon style image. A traditional Chinese bedroom at night with moonlight streaming through wooden lattice windows. The room features elegant furniture and silk curtains. Soft silver moonbeams create peaceful shadows across the floor. Serene night atmosphere with gentle breeze.\",\n    \"prompt1\": \"full room view at night, camera moves forward slowly\"\n  },\n  {\n    \"verse\": \"床前明月光，疑是地上霜\",\n    \"prompt\": \"The character sits on a traditional wooden bed looking down at the floor. Bright moonlight streams through the window creating a silver pool of light on the ground. The room has a contemplative atmosphere. The illustration adopts a simple cartoon style with soft lighting.\",\n    \"prompt1\": \"moonlight shines on floor, camera moves down gently\"\n  },\n  {\n    \"verse\": \"举头望明月\",\n    \"prompt\": \"This is a simple cartoon style image. The character slowly raises their head to look up at the bright full moon through the window. The moonlight illuminates the room with soft silver glow. Expression shows wonder and contemplation in the peaceful night scene.\",\n    \"prompt1\": \"character looks up slowly, camera moves up following gaze\"\n  },\n  {\n    \"verse\": \"低头思故乡\",\n    \"prompt\": \"The character lowers their head in deep thought with hands clasped together. The moonlit room creates a nostalgic and melancholic atmosphere. Shadows dance softly around the traditional furniture. The illustration adopts a simple cartoon style emphasizing the contemplative mood.\",\n    \"prompt1\": \"character lowers head slowly, camera moves down gently\"\n  }\n]\n```"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        -768,
+        496
+      ],
+      "id": "99fc43a5-477d-45a6-a2cf-1ed3618ffd94",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "[\n  {\n    \"verse\": \"string\",\n    \"prompt\": \"string\",\n    \"prompt1\": \"string\"\n  },\n  {\n    \"verse\": \"string\",\n    \"prompt\": \"string\",\n    \"prompt1\": \"string\"\n  }\n]",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -672,
+        736
+      ],
+      "id": "db85f5cc-11e3-44b3-9dff-02d1531ca2b4",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -464,
+        496
+      ],
+      "id": "d1acaa3f-40bc-4757-beca-fce42e5926bc",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -224,
+        496
+      ],
+      "id": "45146a5b-9c1c-4aaf-a682-917d86d9779c",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ff76c20d-3aa3-4423-b7f4-f20660e2ec55",
+              "name": "SignatureNonce",
+              "value": "={{ Math.random().toString(36).slice(2) }}",
+              "type": "string"
+            },
+            {
+              "id": "5d898505-d002-4340-920e-4dd9aaa75e34",
+              "name": "Timestamp",
+              "value": "={{ Date.now().toString() }}",
+              "type": "string"
+            },
+            {
+              "id": "c783143e-088f-4143-9b2d-530ce4d1d1bf",
+              "name": "prompt",
+              "value": "={{ $json.prompt }}",
+              "type": "string"
+            },
+            {
+              "id": "a0ebbb98-8bdf-4be2-8f36-7cc4a4854c08",
+              "name": "copyVoice",
+              "value": "F:/女朗诵.WAV",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        512
+      ],
+      "id": "0e2debd0-f262-414c-9d88-5fa78e006169",
+      "name": "参数"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        512,
+        112
+      ],
+      "id": "74de7252-0702-48d1-88e0-e5dd58ac9074",
+      "name": "Wait2",
+      "webhookId": "61524f60-28d4-4f62-b7c4-b90e9772240c"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cfe8f6da-3234-4b31-b860-38dd869535a9",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "success",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "9f025996-239d-44be-a174-2525f2183312",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "fail",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "871cfc87-5f9d-441c-83b5-68adca7bba12",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "done",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        928,
+        112
+      ],
+      "id": "0c8f776e-df91-46cb-bbc1-e81c7556fc4d",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8080/api/v1/videos",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "= {\n    \"video_subject\": \"\",\n    \"video_script\": {{ JSON.stringify($json.srt_content) }}, \n    \"video_terms\": \"\",\n    \"video_aspect\": \"9:16\",\n    \"video_concat_mode\": \"random\",\n    \"video_transition_mode\": \"Shuffle\",\n    \"video_clip_duration\": 3,\n    \"video_count\": 1,\n    \"alignment_mode\": true,\n    \"alignment_videos\": {{ JSON.stringify($('视频地址和文案').item.json.alignment_videos) }},\n    \"alignment_trim_to_audio\":true,\n    \"video_language\": \"\",\n    \"voice_name\": \"megatts3:default\",\n    \"voice_volume\": 1.5,\n    \"voice_rate\": 2.0,\n    \"megatts3_reference_audio\": \"{{ $('参数').first().json.copyVoice}}\",\n    \"megatts3_reference_npy\": \"\",\n    \"megatts3_infer_timestep\": 32,\n    \"megatts3_intelligibility_weight\": 1.4,\n    \"megatts3_similarity_weight\": 3.0,\n    \"bgm_type\": \"\",\n    \"bgm_file\": \"\",\n    \"bgm_volume\": 0.2,\n    \"subtitle_enabled\": true,\n    \"subtitle_position\": \"custom\",\n    \"custom_position\": 60.0,\n    \"font_name\": \"MicrosoftYaHeiBold.ttc\",\n    \"text_fore_color\": \"#FFFFFF\",\n    \"text_background_color\": true,\n    \"font_size\": 89,\n    \"stroke_color\": \"#000000\",\n    \"stroke_width\": 1.5,\n    \"n_threads\": 2,\n    \"paragraph_number\": 1,\n    \"cleanup_intermediate_files\": true\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        320,
+        112
+      ],
+      "id": "fae7481f-2878-4390-9a0c-61b1dd39ed4e",
+      "name": "本地视频合成服务"
+    },
+    {
+      "parameters": {
+        "url": "=http://127.0.0.1:8080/api/v1/tasks/{{$('本地视频合成服务').item.json.data.task_id}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        112
+      ],
+      "id": "70d80fb6-ae76-4e30-8161-32f6f0266ae5",
+      "name": "视频状态"
+    },
+    {
+      "parameters": {
+        "jsCode": "const splitOutData = $('Split Out').all();\nconst verses = splitOutData.map(item => item.json.verse);\n// 获取所有输入项的video_urls\nconst urls = $input.all().map(item => item.json.video_urls);\n// 创建alignment_videos数组\nconst alignment_videos = [];\n// 遍历所有urls\nurls.forEach(url => {\n  // 如果url存在且不为空\n  if (url) {\n    alignment_videos.push({\n      \"provider\": \"local\",\n      \"url\": url,\n      \"duration\": 0\n    });\n  }\n});\n// 用换行符连接verses\nconst srtString = verses.filter(item => item).join('\\n');\n// 返回结果\nreturn {\n  json: {\n    alignment_videos: alignment_videos,\n    srt_content: srtString\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        144,
+        112
+      ],
+      "id": "fce2a591-04f0-4b5c-9b19-f6127c778e8b",
+      "name": "视频地址和文案"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c8519ea8-a060-4113-bfc3-68abc06aeaa6",
+              "name": "api_pic",
+              "value": "={\n  \"2\": {\n    \"inputs\": {\n      \"max_shift\": 1.15,\n      \"base_shift\": 0.5,\n      \"width\": [\n        \"10\",\n        1\n      ],\n      \"height\": [\n        \"10\",\n        2\n      ],\n      \"model\": [\n        \"469\",\n        0\n      ]\n    },\n    \"class_type\": \"ModelSamplingFlux\",\n    \"_meta\": {\n      \"title\": \"ModelSamplingFlux\"\n    }\n  },\n  \"4\": {\n    \"inputs\": {\n      \"clip_name1\": \"t5xxl_fp16.safetensors\",\n      \"clip_name2\": \"clip_l.safetensors\",\n      \"type\": \"flux\",\n      \"device\": \"default\"\n    },\n    \"class_type\": \"DualCLIPLoader\",\n    \"_meta\": {\n      \"title\": \"DualCLIPLoader\"\n    }\n  },\n  \"6\": {\n    \"inputs\": {\n      \"vae_name\": \"ae.safetensors\"\n    },\n    \"class_type\": \"VAELoader\",\n    \"_meta\": {\n      \"title\": \"Load VAE\"\n    }\n  },\n  \"8\": {\n    \"inputs\": {\n      \"image\": \"{{$('ref_pic').item.json.ref_pic}}\"\n    },\n    \"class_type\": \"LoadImage\",\n    \"_meta\": {\n      \"title\": \"Load Image\"\n    }\n  },\n  \"10\": {\n    \"inputs\": {\n      \"width\": 720,\n      \"height\": 1280,\n      \"interpolation\": \"lanczos\",\n      \"method\": \"keep proportion\",\n      \"condition\": \"always\",\n      \"multiple_of\": 2,\n      \"image\": [\n        \"8\",\n        0\n      ]\n    },\n    \"class_type\": \"ImageResize+\",\n    \"_meta\": {\n      \"title\": \"🔧 Image Resize\"\n    }\n  },\n  \"11\": {\n    \"inputs\": {\n      \"images\": [\n        \"10\",\n        0\n      ]\n    },\n    \"class_type\": \"PreviewImage\",\n    \"_meta\": {\n      \"title\": \"Preview Image\"\n    }\n  },\n  \"14\": {\n    \"inputs\": {\n      \"noise\": [\n        \"15\",\n        0\n      ],\n      \"guider\": [\n        \"18\",\n        0\n      ],\n      \"sampler\": [\n        \"19\",\n        0\n      ],\n      \"sigmas\": [\n        \"20\",\n        0\n      ],\n      \"latent_image\": [\n        \"467\",\n        0\n      ]\n    },\n    \"class_type\": \"SamplerCustomAdvanced\",\n    \"_meta\": {\n      \"title\": \"SamplerCustomAdvanced\"\n    }\n  },\n  \"15\": {\n    \"inputs\": {\n      \"noise_seed\": 282057202217683\n    },\n    \"class_type\": \"RandomNoise\",\n    \"_meta\": {\n      \"title\": \"RandomNoise\"\n    }\n  },\n  \"17\": {\n    \"inputs\": {\n      \"text\": [\n        \"443\",\n        0\n      ],\n      \"speak_and_recognation\": {\n        \"__value__\": [\n          false,\n          true\n        ]\n      },\n      \"clip\": [\n        \"4\",\n        0\n      ]\n    },\n    \"class_type\": \"CLIPTextEncode\",\n    \"_meta\": {\n      \"title\": \"CLIP Text Encode (Prompt)\"\n    }\n  },\n  \"18\": {\n    \"inputs\": {\n      \"model\": [\n        \"36\",\n        0\n      ],\n      \"conditioning\": [\n        \"32\",\n        0\n      ]\n    },\n    \"class_type\": \"BasicGuider\",\n    \"_meta\": {\n      \"title\": \"BasicGuider\"\n    }\n  },\n  \"19\": {\n    \"inputs\": {\n      \"sampler_name\": \"euler\"\n    },\n    \"class_type\": \"KSamplerSelect\",\n    \"_meta\": {\n      \"title\": \"KSamplerSelect\"\n    }\n  },\n  \"20\": {\n    \"inputs\": {\n      \"scheduler\": \"simple\",\n      \"steps\": 20,\n      \"denoise\": 1,\n      \"model\": [\n        \"36\",\n        0\n      ]\n    },\n    \"class_type\": \"BasicScheduler\",\n    \"_meta\": {\n      \"title\": \"BasicScheduler\"\n    }\n  },\n  \"22\": {\n    \"inputs\": {\n      \"pixels\": [\n        \"10\",\n        0\n      ],\n      \"vae\": [\n        \"6\",\n        0\n      ]\n    },\n    \"class_type\": \"VAEEncode\",\n    \"_meta\": {\n      \"title\": \"VAE Encode\"\n    }\n  },\n  \"31\": {\n    \"inputs\": {\n      \"samples\": [\n        \"14\",\n        0\n      ],\n      \"vae\": [\n        \"6\",\n        0\n      ]\n    },\n    \"class_type\": \"VAEDecode\",\n    \"_meta\": {\n      \"title\": \"VAE Decode\"\n    }\n  },\n  \"32\": {\n    \"inputs\": {\n      \"conditioning\": [\n        \"33\",\n        0\n      ],\n      \"latent\": [\n        \"22\",\n        0\n      ]\n    },\n    \"class_type\": \"ReferenceLatent\",\n    \"_meta\": {\n      \"title\": \"ReferenceLatent\"\n    }\n  },\n  \"33\": {\n    \"inputs\": {\n      \"guidance\": 2.5,\n      \"conditioning\": [\n        \"17\",\n        0\n      ]\n    },\n    \"class_type\": \"FluxGuidance\",\n    \"_meta\": {\n      \"title\": \"FluxGuidance\"\n    }\n  },\n  \"34\": {\n    \"inputs\": {\n      \"filename_prefix\": \"ComfyUI\",\n      \"images\": [\n        \"31\",\n        0\n      ]\n    },\n    \"class_type\": \"SaveImage\",\n    \"_meta\": {\n      \"title\": \"Save Image\"\n    }\n  },\n  \"35\": {\n    \"inputs\": {\n      \"rgthree_comparer\": {\n        \"images\": [\n          {\n            \"name\": \"A\",\n            \"selected\": true,\n            \"url\": \"/api/view?filename=rgthree.compare._temp_edqau_00001_.png&type=temp&subfolder=&rand=0.056082422654154085\"\n          },\n          {\n            \"name\": \"B\",\n            \"selected\": true,\n            \"url\": \"/api/view?filename=rgthree.compare._temp_edqau_00002_.png&type=temp&subfolder=&rand=0.3059814553162392\"\n          }\n        ]\n      },\n      \"image_a\": [\n        \"10\",\n        0\n      ],\n      \"image_b\": [\n        \"31\",\n        0\n      ]\n    },\n    \"class_type\": \"Image Comparer (rgthree)\",\n    \"_meta\": {\n      \"title\": \"Image Comparer (rgthree)\"\n    }\n  },\n  \"36\": {\n    \"inputs\": {\n      \"anything\": [\n        \"2\",\n        0\n      ]\n    },\n    \"class_type\": \"easy cleanGpuUsed\",\n    \"_meta\": {\n      \"title\": \"Clean VRAM Used\"\n    }\n  },\n  \"51\": {\n    \"inputs\": {\n      \"text\": \"1024\",\n      \"anything\": [\n        \"10\",\n        1\n      ]\n    },\n    \"class_type\": \"easy showAnything\",\n    \"_meta\": {\n      \"title\": \"Show Any\"\n    }\n  },\n  \"443\": {\n    \"inputs\": {\n      \"text\": \"{{ $json.prompt }}\",\n      \"speak_and_recognation\": {\n        \"__value__\": [\n          false,\n          true\n        ]\n      }\n    },\n    \"class_type\": \"CR Text\",\n    \"_meta\": {\n      \"title\": \"🔤 CR Text\"\n    }\n  },\n  \"464\": {\n    \"inputs\": {\n      \"text\": [\n        \"443\",\n        0\n      ]\n    },\n    \"class_type\": \"ViewText\",\n    \"_meta\": {\n      \"title\": \"View Text\"\n    }\n  },\n  \"467\": {\n    \"inputs\": {\n      \"width\": 512,\n      \"height\": 512,\n      \"batch_size\": 1\n    },\n    \"class_type\": \"EmptyLatentImage\",\n    \"_meta\": {\n      \"title\": \"Empty Latent Image\"\n    }\n  },\n  \"469\": {\n    \"inputs\": {\n      \"unet_name\": \"FLUX_flux1-dev-kontext_fp8_scaled.safetensors\",\n      \"weight_dtype\": \"fp8_e4m3fn_fast\"\n    },\n    \"class_type\": \"UNETLoader\",\n    \"_meta\": {\n      \"title\": \"Load Diffusion Model\"\n    }\n  }\n}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        304,
+        512
+      ],
+      "id": "9c9f8701-d1f6-424c-bc44-107cad5a5e05",
+      "name": "comfyui_pic_api"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d26298fb-e4a1-447f-9ee4-ed459963298b",
+              "leftValue": "={{ $('轮询图片').item.json }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1312,
+        512
+      ],
+      "id": "242b3cff-5389-45a2-8c0d-235f41dc9b86",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8188/prompt",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"prompt\":{{ $json.toJsonString() }}\n}",
+        "options": {}
+      },
+      "id": "50e6d98d-dba4-4f1d-9061-8fe8db33f2fb",
+      "name": "执行生图",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        752,
+        512
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d26298fb-e4a1-447f-9ee4-ed459963298b",
+              "leftValue": "={{ $('轮询视频').item.json }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1104,
+        928
+      ],
+      "id": "5fdcb8a1-d2a9-4ae3-95f0-bb27a1b86078",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8188/prompt",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"prompt\":{{ $json.toJsonString()}}\n}",
+        "options": {}
+      },
+      "id": "19576262-ec88-490e-9cb7-34884703c827",
+      "name": "执行图生视频",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        512,
+        928
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b6cb63fe-22e7-4eaf-8c07-edaeec8099cb",
+              "name": "api_video",
+              "value": "={\n  \"8\": {\n    \"inputs\": {\n      \"samples\": [\n        \"380\",\n        0\n      ],\n      \"vae\": [\n        \"291\",\n        0\n      ]\n    },\n    \"class_type\": \"VAEDecode\",\n    \"_meta\": {\n      \"title\": \"VAE Decode\"\n    }\n  },\n  \"289\": {\n    \"inputs\": {\n      \"unet_name\": \"WAN\\\\wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors\",\n      \"weight_dtype\": \"fp8_e4m3fn_fast\"\n    },\n    \"class_type\": \"UNETLoader\",\n    \"_meta\": {\n      \"title\": \"Load Diffusion Model\"\n    }\n  },\n  \"290\": {\n    \"inputs\": {\n      \"clip_name\": \"WAN\\\\umt5_xxl_fp8_e4m3fn_scaled.safetensors\",\n      \"type\": \"wan\",\n      \"device\": \"default\"\n    },\n    \"class_type\": \"CLIPLoader\",\n    \"_meta\": {\n      \"title\": \"Load CLIP\"\n    }\n  },\n  \"291\": {\n    \"inputs\": {\n      \"vae_name\": \"WAN\\\\wan_2.1_vae.safetensors\"\n    },\n    \"class_type\": \"VAELoader\",\n    \"_meta\": {\n      \"title\": \"Load VAE\"\n    }\n  },\n  \"293\": {\n    \"inputs\":{\n\"image\":\"F:/ComfyUI/ComfyUI/comfyui_torch2.7cu12.8/ComfyUI/output/{{$json.values().first().outputs['34'].images.first().filename}}\"\n    },\n    \"class_type\": \"LoadImage\",\n    \"_meta\": {\n      \"title\": \"Load Image\"\n    }\n  },\n  \"294\": {\n    \"inputs\": {\n      \"crop\": \"none\",\n      \"clip_vision\": [\n        \"299\",\n        0\n      ],\n      \"image\": [\n        \"301\",\n        0\n      ]\n    },\n    \"class_type\": \"CLIPVisionEncode\",\n    \"_meta\": {\n      \"title\": \"CLIP Vision Encode\"\n    }\n  },\n  \"295\": {\n    \"inputs\": {\n      \"width\": [\n        \"301\",\n        3\n      ],\n      \"height\": [\n        \"301\",\n        4\n      ],\n      \"length\": [\n        \"315\",\n        0\n      ],\n      \"batch_size\": 1,\n      \"positive\": [\n        \"373\",\n        0\n      ],\n      \"negative\": [\n        \"374\",\n        0\n      ],\n      \"vae\": [\n        \"291\",\n        0\n      ],\n      \"clip_vision_output\": [\n        \"294\",\n        0\n      ],\n      \"start_image\": [\n        \"301\",\n        0\n      ]\n    },\n    \"class_type\": \"WanImageToVideo\",\n    \"_meta\": {\n      \"title\": \"WanImageToVideo\"\n    }\n  },\n  \"298\": {\n    \"inputs\": {\n      \"frame_rate\": 16,\n      \"loop_count\": 0,\n      \"filename_prefix\": \"Video-wan2.2\",\n      \"format\": \"video/h264-mp4\",\n      \"pix_fmt\": \"yuv420p\",\n      \"crf\": 19,\n      \"save_metadata\": true,\n      \"trim_to_audio\": false,\n      \"pingpong\": false,\n      \"save_output\": true,\n      \"images\": [\n        \"8\",\n        0\n      ]\n    },\n    \"class_type\": \"VHS_VideoCombine\",\n    \"_meta\": {\n      \"title\": \"Video Combine 🎥🅥🅗🅢\"\n    }\n  },\n  \"299\": {\n    \"inputs\": {\n      \"clip_name\": \"WAN\\\\clip_vision_h.safetensors\"\n    },\n    \"class_type\": \"CLIPVisionLoader\",\n    \"_meta\": {\n      \"title\": \"Load CLIP Vision\"\n    }\n  },\n  \"300\": {\n    \"inputs\": {\n      \"shift\": 8.000000000000002,\n      \"model\": [\n        \"303\",\n        0\n      ]\n    },\n    \"class_type\": \"ModelSamplingSD3\",\n    \"_meta\": {\n      \"title\": \"ModelSamplingSD3\"\n    }\n  },\n  \"301\": {\n    \"inputs\": {\n      \"aspect_ratio\": \"original\",\n      \"proportional_width\": 1,\n      \"proportional_height\": 1,\n      \"fit\": \"crop\",\n      \"method\": \"lanczos\",\n      \"round_to_multiple\": \"64\",\n      \"scale_to_side\": \"longest\",\n      \"scale_to_length\": [\n        \"310\",\n        0\n      ],\n      \"background_color\": \"#000000\",\n      \"image\": [\n        \"293\",\n        0\n      ]\n    },\n    \"class_type\": \"LayerUtility: ImageScaleByAspectRatio V2\",\n    \"_meta\": {\n      \"title\": \"LayerUtility: ImageScaleByAspectRatio V2\"\n    }\n  },\n  \"303\": {\n    \"inputs\": {\n      \"sage_attention\": \"auto\",\n      \"model\": [\n        \"390\",\n        0\n      ]\n    },\n    \"class_type\": \"PathchSageAttentionKJ\",\n    \"_meta\": {\n      \"title\": \"Patch Sage Attention KJ\"\n    }\n  },\n  \"310\": {\n    \"inputs\": {\n      \"value\": 512\n    },\n    \"class_type\": \"easy int\",\n    \"_meta\": {\n      \"title\": \"Int\"\n    }\n  },\n  \"314\": {\n    \"inputs\": {\n      \"Value\": 1\n    },\n    \"class_type\": \"DF_Integer\",\n    \"_meta\": {\n      \"title\": \"时长\"\n    }\n  },\n  \"315\": {\n    \"inputs\": {\n      \"value\": \"a*16+1\",\n      \"a\": [\n        \"314\",\n        0\n      ]\n    },\n    \"class_type\": \"SimpleMath+\",\n    \"_meta\": {\n      \"title\": \"🔧 Simple Math\"\n    }\n  },\n  \"373\": {\n    \"inputs\": {\n      \"text\": [\n        \"377\",\n        0\n      ],\n      \"speak_and_recognation\": {\n        \"__value__\": [\n          false,\n          true\n        ]\n      },\n      \"clip\": [\n        \"290\",\n        0\n      ]\n    },\n    \"class_type\": \"CLIPTextEncode\",\n    \"_meta\": {\n      \"title\": \"CLIP Text Encode (Prompt)\"\n    }\n  },\n  \"374\": {\n    \"inputs\": {\n      \"text\": \"色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走\",\n      \"speak_and_recognation\": {\n        \"__value__\": [\n          false,\n          true\n        ]\n      },\n      \"clip\": [\n        \"290\",\n        0\n      ]\n    },\n    \"class_type\": \"CLIPTextEncode\",\n    \"_meta\": {\n      \"title\": \"CLIP Text Encode (Prompt)\"\n    }\n  },\n  \"377\": {\n    \"inputs\": {\n      \"anything\": [\n        \"403\",\n        0\n      ]\n    },\n    \"class_type\": \"easy cleanGpuUsed\",\n    \"_meta\": {\n      \"title\": \"Clean VRAM Used\"\n    }\n  },\n  \"378\": {\n    \"inputs\": {\n      \"add_noise\": \"enable\",\n      \"noise_seed\": 498170892593793,\n      \"steps\": 8,\n      \"cfg\": 1,\n      \"sampler_name\": \"euler\",\n      \"scheduler\": \"simple\",\n      \"start_at_step\": 0,\n      \"end_at_step\": 4,\n      \"return_with_leftover_noise\": \"enable\",\n      \"model\": [\n        \"300\",\n        0\n      ],\n      \"positive\": [\n        \"295\",\n        0\n      ],\n      \"negative\": [\n        \"295\",\n        1\n      ],\n      \"latent_image\": [\n        \"295\",\n        2\n      ]\n    },\n    \"class_type\": \"KSamplerAdvanced\",\n    \"_meta\": {\n      \"title\": \"KSampler (Advanced)\"\n    }\n  },\n  \"380\": {\n    \"inputs\": {\n      \"add_noise\": \"disable\",\n      \"noise_seed\": 126,\n      \"steps\": 8,\n      \"cfg\": 1,\n      \"sampler_name\": \"euler\",\n      \"scheduler\": \"simple\",\n      \"start_at_step\": 4,\n      \"end_at_step\": 10000,\n      \"return_with_leftover_noise\": \"disable\",\n      \"model\": [\n        \"382\",\n        0\n      ],\n      \"positive\": [\n        \"295\",\n        0\n      ],\n      \"negative\": [\n        \"295\",\n        1\n      ],\n      \"latent_image\": [\n        \"378\",\n        0\n      ]\n    },\n    \"class_type\": \"KSamplerAdvanced\",\n    \"_meta\": {\n      \"title\": \"KSampler (Advanced)\"\n    }\n  },\n  \"381\": {\n    \"inputs\": {\n      \"unet_name\": \"WAN\\\\wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors\",\n      \"weight_dtype\": \"fp8_e4m3fn_fast\"\n    },\n    \"class_type\": \"UNETLoader\",\n    \"_meta\": {\n      \"title\": \"Load Diffusion Model\"\n    }\n  },\n  \"382\": {\n    \"inputs\": {\n      \"shift\": 8.000000000000002,\n      \"model\": [\n        \"388\",\n        0\n      ]\n    },\n    \"class_type\": \"ModelSamplingSD3\",\n    \"_meta\": {\n      \"title\": \"ModelSamplingSD3\"\n    }\n  },\n  \"388\": {\n    \"inputs\": {\n      \"sage_attention\": \"auto\",\n      \"model\": [\n        \"391\",\n        0\n      ]\n    },\n    \"class_type\": \"PathchSageAttentionKJ\",\n    \"_meta\": {\n      \"title\": \"Patch Sage Attention KJ\"\n    }\n  },\n  \"390\": {\n    \"inputs\": {\n      \"lora_name\": \"WAN\\\\Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors\",\n      \"strength_model\": 1,\n      \"model\": [\n        \"289\",\n        0\n      ]\n    },\n    \"class_type\": \"LoraLoaderModelOnly\",\n    \"_meta\": {\n      \"title\": \"LoraLoaderModelOnly\"\n    }\n  },\n  \"391\": {\n    \"inputs\": {\n      \"lora_name\": \"WAN\\\\Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors\",\n      \"strength_model\": 1,\n      \"model\": [\n        \"381\",\n        0\n      ]\n    },\n    \"class_type\": \"LoraLoaderModelOnly\",\n    \"_meta\": {\n      \"title\": \"LoraLoaderModelOnly\"\n    }\n  },\n  \"393\": {\n    \"inputs\": {\n      \"purge_cache\": true,\n      \"purge_models\": true,\n      \"anything\": [\n        \"378\",\n        0\n      ]\n    },\n    \"class_type\": \"LayerUtility: PurgeVRAM V2\",\n    \"_meta\": {\n      \"title\": \"LayerUtility: Purge VRAM V2\"\n    }\n  },\n  \"394\": {\n    \"inputs\": {\n      \"purge_cache\": true,\n      \"purge_models\": true,\n      \"anything\": [\n        \"380\",\n        0\n      ]\n    },\n    \"class_type\": \"LayerUtility: PurgeVRAM V2\",\n    \"_meta\": {\n      \"title\": \"LayerUtility: Purge VRAM V2\"\n    }\n  },\n  \"402\": {\n    \"inputs\": {\n      \"text\": [\n        \"377\",\n        0\n      ]\n    },\n    \"class_type\": \"ShowText|pysssss\",\n    \"_meta\": {\n      \"title\": \"Show Text 🐍\"\n    }\n  },\n  \"403\": {\n    \"inputs\": {\n      \"text\": \"{{$('参数').first().json.prompt1}}\",\n      \"speak_and_recognation\": {\n        \"__value__\": [\n          false,\n          true\n        ]\n      }\n    },\n    \"class_type\": \"JjkText\",\n    \"_meta\": {\n      \"title\": \"Text\"\n    }\n  }\n}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        928
+      ],
+      "id": "c21520cb-7456-4eae-a525-a4fbfb51d1fd",
+      "name": "comfyui_api_video"
+    },
+    {
+      "parameters": {},
+      "id": "4dcd69ca-4655-44e1-bdef-0c6ab02b5696",
+      "name": "wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        944,
+        512
+      ],
+      "webhookId": "0cb3a35d-0b84-437d-9b5b-ae2f928385a0"
+    },
+    {
+      "parameters": {
+        "url": "=http://127.0.0.1:8188/history/{{ $('执行图生视频').item.json.prompt_id }}",
+        "options": {}
+      },
+      "id": "adab20a8-ff9f-45e2-81ed-7a30293c1a65",
+      "name": "轮询视频",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        928
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "id": "f96b84a7-a7ce-47b3-9db6-de85d0cf1baa",
+      "name": "wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        752,
+        928
+      ],
+      "webhookId": "0cb3a35d-0b84-437d-9b5b-ae2f928385a0"
+    },
+    {
+      "parameters": {
+        "url": "=http://127.0.0.1:8188/history/{{ $('执行生图').item.json.prompt_id }}",
+        "options": {}
+      },
+      "id": "f6bc732f-7190-4cff-befa-0d7cca8c7f18",
+      "name": "轮询图片",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1136,
+        512
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "444eb744-004c-4113-a01c-96b19afdbcce",
+              "name": "video_urls",
+              "value": "={{  $json.values().first().outputs[\"298\"].gifs[0].fullpath }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1328,
+        944
+      ],
+      "id": "8e16ad3c-4c52-41f6-bbe3-b0903dea9f44",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-reasoner",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        -912,
+        720
+      ],
+      "id": "91ca38fb-7c47-45da-b10a-043ad31443ea",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "6brcltcleUmFsWlE",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        896
+      ],
+      "id": "da2c12d0-ff78-427a-a3d2-012be298dccf",
+      "name": "DeepSeek Chat Model1",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "6brcltcleUmFsWlE",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1136,
+        96
+      ],
+      "id": "665a75a5-2e31-4aba-a439-b76db8d5ba73",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b163a83e-ab10-4041-8356-61d785960491",
+              "name": "ref_pic",
+              "value": "F:/pic/202940977-024bcd59babf0fb978ba4a286a888f0fd8550ceb9865a55e92fece02c37500a0.jpg",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -944,
+        496
+      ],
+      "id": "a6849bb0-d2d4-4e56-ad79-dac7c15cdb86",
+      "name": "ref_pic"
+    },
+    {
+      "parameters": {
+        "formTitle": "诗词",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "content",
+              "fieldType": "textarea",
+              "placeholder": "适当的标点符号，有助于语音推理的断句",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        -1136,
+        496
+      ],
+      "id": "c00c4c02-3055-44fa-ac09-0bff82ee5c57",
+      "name": "创意",
+      "webhookId": "3590788a-195a-4c19-802e-c94774553b46"
+    },
+    {
+      "parameters": {
+        "jsCode": "let jsonString = $input.first().json.api_video;\n\n// 反斜杠转义问题\njsonString = jsonString.replace(/\\\\/g, '\\\\\\\\');\n\nreturn JSON.parse(jsonString);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        288,
+        928
+      ],
+      "id": "b64c89de-f0a6-49ad-b5eb-b600acfcba62",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "jsCode": "let jsonString = $input.first().json.api_pic;\n\n// 反斜杠转义问题\njsonString = jsonString.replace(/\\\\/g, '\\\\\\\\');\n\nreturn JSON.parse(jsonString);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        512
+      ],
+      "id": "f9594f09-dfd0-4c4b-bd69-de064db97b10",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "content": "# LLM推理提示词 ",
+        "height": 656,
+        "width": 1024,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1312,
+        432
+      ],
+      "id": "441ac512-083c-4358-937d-90863a571a0b",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# 调用comfyui生图\n",
+        "height": 352,
+        "width": 1568
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        416
+      ],
+      "id": "b004a191-5eb3-4056-a5a9-1b50d8f6cee8",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# 调用comfyui生视频\n",
+        "height": 352,
+        "width": 1568
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        848
+      ],
+      "id": "8ce154b1-5730-4b7d-ab51-14bc6fd1e85e",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# 音频推理+合成视频\n",
+        "height": 352,
+        "width": 1568
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "cc14b329-bc16-445f-942f-6c6d94f43f62",
+      "name": "Sticky Note3"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8nbak",
+  "repo_owner": "wodaili-kingpwf",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-10-14T16:57:53.681Z",
+      "createdAt": "2025-10-14T16:57:53.681Z",
+      "role": "workflow:owner",
+      "workflowId": "LWoWrNoBhccmYXSl",
+      "projectId": "bhYbeEidmtHtdTx7"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-10-25T16:02:23.000Z",
+  "versionId": "c67b63ca-82ab-4964-aac6-ce2847b4ed52"
+}
