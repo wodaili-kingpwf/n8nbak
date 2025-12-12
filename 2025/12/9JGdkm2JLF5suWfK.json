@@ -1,0 +1,1 @@
+{{$('isDiffOrNew').item.json["n8n_data_stringy"]}}
